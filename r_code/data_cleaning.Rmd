@@ -12,11 +12,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Load packages & datasets
 
-```{r}
+```{r, message = F}
 library(tidyverse)
 
-schools_ds = read_csv("schools.xlsx - schools.csv")
-inst_ds = read_csv("instLevel.xlsx - instLevel.csv")
+schools_ds = read_csv("../raw_data/schools.csv")
+inst_ds = read_csv("../raw_data/instLevel.csv")
 ```
 
 
