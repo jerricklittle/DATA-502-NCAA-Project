@@ -1,0 +1,297 @@
+---
+title: "Untitled"
+author: "Jenna Hopkins"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Load packages & datasets
+
+```{r}
+library(tidyverse)
+
+schools_ds = read_csv("schools.xlsx - schools.csv")
+inst_ds = read_csv("instLevel.xlsx - instLevel.csv")
+```
+
+
+# Create sports_ds
+
+```{r}
+# make one row for each gender for each sport
+gender_long = schools_ds %>%
+  pivot_longer(
+    cols = c(
+      PARTIC_MEN,
+      PARTIC_WOMEN,
+      PARTIC_COED_MEN,
+      PARTIC_COED_WOMEN
+    ),
+    names_to = "athlete_gender",
+    values_to = "n_athletes"
+  ) %>%
+  mutate(
+    team_type = recode_values(
+      athlete_gender,
+      "PARTIC_MEN" ~ "Men",
+      "PARTIC_WOMEN" ~ "Women",
+      "PARTIC_COED_MEN" ~ "Coed",
+      "PARTIC_COED_WOMEN" ~ "Coed"
+    ),
+    athlete_gender = recode_values(
+      athlete_gender,
+      "PARTIC_MEN" ~ "Men",
+      "PARTIC_COED_MEN" ~ "Men",
+      "PARTIC_WOMEN" ~ "Women",
+      "PARTIC_COED_WOMEN" ~ "Women"
+    ),
+    Sports = recode_values(
+      team_type,
+      "Men" ~ paste("Men's", Sports),
+      "Women" ~ paste("Women's", Sports),
+      "Coed" ~ paste("Coed", Sports)
+    )
+  ) %>%
+  filter(!is.na(n_athletes)) %>%
+  mutate(
+    op_exp_per_athlete = recode_values(
+      team_type,
+      "Men" ~ OPEXPPERPART_MEN,
+      "Women" ~ OPEXPPERPART_WOMEN,
+      "Coed" ~ OPEXPPERPART_COED_MEN
+    ),
+    op_exp = recode_values(
+      team_type,
+      "Men" ~ OPEXPPERTEAM_MEN,
+      "Women" ~ OPEXPPERTEAM_WOMEN,
+      "Coed" ~ OPEXPPERTEAM_COED_MEN
+    ),
+    revenue = recode_values(
+      team_type,
+      "Men" ~ REV_MEN,
+      "Women" ~ REV_WOMEN,
+      "Coed" ~ REV_COED_MEN
+    ),
+    expense = recode_values(
+      team_type,
+      "Men" ~ EXP_MEN,
+      "Women" ~ EXP_WOMEN,
+      "Coed" ~ EXP_COED_MEN
+    )
+  ) %>%
+  select(-c(
+    team_type,
+    OPEXPPERPART_MEN, OPEXPPERTEAM_MEN,
+    OPEXPPERPART_WOMEN, OPEXPPERTEAM_WOMEN,
+    OPEXPPERPART_COED_MEN, OPEXPPERTEAM_COED_MEN,
+    OPEXP_PART_COED_WOMEN, OPEXP_TEAM_COED_WOMEN,
+    REV_MEN, REV_WOMEN, REV_COED_MEN, REV_COED_WOMEN,
+    EXP_MEN, EXP_WOMEN, EXP_COED_MEN, EXP_COED_WOMEN
+  ))
+
+# pivot longer expense grouping for each sport
+expense_long = gender_long %>%
+  pivot_longer(
+    cols = c(
+      n_athletes,
+      op_exp_per_athlete,
+      op_exp,
+      expense,
+      revenue
+    ),
+    names_to = "metric",
+    values_to = "value"
+  )
+
+
+# create num coaches metric/value
+coach_long = gender_long %>%
+  mutate(
+    total_head_coaches = case_when(
+      grepl("^Men's", Sports) ~ MEN_TOTAL_HEADCOACH,
+      grepl("^Women's", Sports) ~ WOMEN_TOTAL_HDCOACH,
+      grepl("^Coed", Sports) ~ COED_TOTAL_HDCOACH
+    ),
+    total_assistant_coaches = case_when(
+      grepl("^Men's", Sports) ~ MEN_TOTAL_ASSTCOACH,
+      grepl("^Women's", Sports) ~ WOMEN_TOTAL_ASTCOACH,
+      grepl("^Coed", Sports) ~ COED_TOTAL_ASTCOACH
+    )
+  ) %>%
+  select(
+    -c(op_exp_per_athlete, op_exp, expense, revenue),
+    total_head_coaches,
+    total_assistant_coaches
+  ) %>%
+  pivot_longer(
+    cols = c(total_head_coaches, total_assistant_coaches),
+    names_to = "metric",
+    values_to = "value"
+  )
+
+# add expense data with coach data
+expense_coach_long = bind_rows(
+  expense_long,
+  coach_long
+) %>%
+mutate(
+  value = case_when(
+    metric %in% c("total_head_coaches", "total_assistant_coaches") ~
+  replace_na(value, 0),
+    .default = value
+  )
+) %>%
+arrange(institution_name, Sports, athlete_gender) 
+
+
+# select only relevant columns
+sports_ds = expense_coach_long %>%
+  select(unitid, institution_name, Sports, athlete_gender, metric, value) %>%
+  rename("sport" = Sports)
+
+sports_ds
+
+```
+
+
+
+# Create coach_ds
+
+
+```{r}
+# preserve the totals for validation
+coach_totals = schools_ds %>%
+  select(
+    unitid, institution_name, Sports, MEN_TOTAL_HEADCOACH, WOMEN_TOTAL_HDCOACH, COED_TOTAL_HDCOACH, MEN_TOTAL_ASSTCOACH, WOMEN_TOTAL_ASTCOACH, COED_TOTAL_ASTCOACH, SUM_FTHDCOACH_MALE, SUM_PTHDCOACH_MALE, SUM_FTUNIVEMP_MALE, SUM_PTUNIVEMP_MALE, SUM_FTHDCOACH_FEM, SUM_PTHDCOACH_FEM, SUM_FTUNIVEMP_FEM, SUM_PTUNIVEMP_FEM, SUM_FTASCOACH_MALE, SUM_PTASCOACH_MALE, SUM_FTACUNIVEMP_MALE, SUM_PTACUNIVEMP_MALE, SUM_FTASCOACH_FEM, SUM_PTASCOACH_FEM, SUM_FTACUNIVEMP_FEM, SUM_PTACUNIVEMP_FEM, SUM_TOTAL_ASSTCOACH, SUM_TOTAL_HDCOACH
+  )
+
+
+# map the source variables to their meanings
+coach_map = tribble( 
+  ~athlete_gender, ~coach_role, ~coach_gender, ~team_assignment, ~assignment_var, ~employment_var,
+
+  "Men", "Head", "Male", "Full-time", "MEN_FTHEADCOACH_MALE", "MEN_FTUNIVEMPLOY_MALE",
+  "Men", "Head", "Male", "Part-time", "MEN_PTHEADCOACH_MALE", "MEN_PTUNIVEMPLOY_MALE",
+  "Men", "Head", "Female", "Full-time", "MEN_FTHEADCOACH_FEM", "MEN_FTUNIVEMPLOY_FEM",
+  "Men", "Head", "Female", "Part-time", "MEN_PTHEADCOACH_FEM", "MEN_PTUNIVEMPLOY_FEM",
+
+  "Women", "Head", "Male", "Full-time", "WOMEN_FTHDCOACH_MALE", "WOMEN_FTUNIVEMP_MALE",
+  "Women", "Head", "Male", "Part-time", "WOMEN_PTHDCOACH_MALE", "WOMEN_PTUNIVEMP_MALE",
+  "Women", "Head", "Female", "Full-time", "WOMEN_FTHDCOACH_FEM", "WOMEN_FTUNIVEMP_FEM",
+  "Women", "Head", "Female", "Part-time", "WOMEN_PTHDCOACH_FEM", "WOMEN_PTUNIVEMP_FEM",
+
+  "Coed", "Head", "Male", "Full-time", "COED_FTHDCOACH_MALE", "COED_FTUNIVEMP_MALE",
+  "Coed", "Head", "Male", "Part-time", "COED_PTHDCOACH_MALE", "COED_PTUNIVEMP_MALE",
+  "Coed", "Head", "Female", "Full-time", "COED_FTHDCOACH_FEM", "COED_FTUNIVEMP_FEM",
+  "Coed", "Head", "Female", "Part-time", "COED_PTHDCOACH_FEM", "COED_PTUNIVEMP_FEM",
+
+  "Men", "Assistant", "Male", "Full-time", "MEN_FTASCOACH_MALE", "MEN_FTACUNIVEMP_MALE",
+  "Men", "Assistant", "Male", "Part-time", "MEN_PTASCOACH_MALE", "MEN_PTACUNIVEMP_MALE",
+  "Men", "Assistant", "Female", "Full-time", "MEN_FTASSTCOACH_FEM", "MEN_FTACUNIVEMP_FEM",
+  "Men", "Assistant", "Female", "Part-time", "MEN_PTASSTCOACH_FEM", "MEN_PTACUNIVEMP_FEM",
+
+  "Women", "Assistant", "Male", "Full-time", "WOMEN_FTASCOACH_MALE", "WOMEN_FTACUNEMP_MALE",
+  "Women", "Assistant", "Male", "Part-time", "WOMEN_PTASCOACH_MALE", "WOMEN_PTACUNEMP_MALE",
+  "Women", "Assistant", "Female", "Full-time", "WOMEN_FTASTCOACH_FEM", "WOMN_FTACUNIVEMP_FEM",
+  "Women", "Assistant", "Female", "Part-time", "WOMEN_PTASTCOACH_FEM", "WOMN_PTACUNIVEMP_FEM",
+
+  "Coed", "Assistant", "Male", "Full-time", "COED_FTASCOACH_MALE", "COED_FTACUNEMP_MALE",
+  "Coed", "Assistant", "Male", "Part-time", "COED_PTASCOACH_MALE", "COED_PTACUNEMP_MALE",
+  "Coed", "Assistant", "Female", "Full-time", "COED_FTASTCOACH_FEM", "COED_FTACUNIVEMP_FEM",
+  "Coed", "Assistant", "Female", "Part-time", "COED_PTASTCOACH_FEM", "COED_PTACUNIVEMP_FEM"
+)
+
+
+# expand team-assignment counts into one row per coach
+coach_assignments = schools_ds %>%
+  select(
+    unitid, institution_name, Sports,
+    all_of(coach_map$assignment_var)
+  ) %>%
+  pivot_longer(
+    cols = -c(unitid, institution_name, Sports),
+    names_to = "source_variable",
+    values_to = "count"
+  ) %>%
+  left_join(
+    coach_map,
+    by = c("source_variable" = "assignment_var")
+  ) %>%
+  filter(!is.na(count), count > 0) %>%
+  uncount(weights = count, .id = "coach_number")
+
+
+# expand university employment counts into a separate roster
+coach_employment = schools_ds %>%
+  select(
+    unitid, institution_name, Sports,
+    all_of(coach_map$employment_var)
+  ) %>%
+  pivot_longer(
+    cols = -c(unitid, institution_name, Sports),
+    names_to = "source_variable",
+    values_to = "count"
+  ) %>%
+  left_join(
+    coach_map,
+    by = c("source_variable" = "employment_var")
+  ) %>%
+  filter(!is.na(count), count > 0) %>%
+  uncount(weights = count, .id = "employment_number") %>%
+  group_by(
+    unitid, institution_name, Sports,
+    athlete_gender, coach_role, coach_gender
+  ) %>%
+  mutate(coach_number = row_number()) %>%
+  ungroup() %>%
+  select(
+    unitid, institution_name, Sports,
+    athlete_gender, coach_role, coach_gender,
+    coach_number, university_employment = team_assignment
+  )
+
+
+# match the rosters and retain the totals
+coach_ds = coach_assignments %>%
+  group_by(
+    unitid, institution_name, Sports,
+    athlete_gender, coach_role, coach_gender
+  ) %>%
+  mutate(coach_number = row_number()) %>%
+  ungroup() %>%
+  left_join(
+    coach_employment,
+    by = c(
+      "unitid", "institution_name", "Sports",
+      "athlete_gender", "coach_role", "coach_gender",
+      "coach_number"
+    )
+  ) %>%
+  select(
+    unitid, institution_name, Sports,
+    athlete_gender, coach_role, coach_gender,
+    team_assignment, university_employment,
+    coach_number
+  ) %>%
+  rename("sport" = Sports) %>%
+  arrange(institution_name, sport, athlete_gender) 
+
+coach_ds
+```
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
