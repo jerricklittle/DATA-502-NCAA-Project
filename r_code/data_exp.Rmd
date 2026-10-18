@@ -7,6 +7,7 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "C:/Users/jerri/OneDrive/Documents/DATA 502/DATA-502-NCAA-Project/clean_data") #Jerrick
 ```
 
 # load packages and datasets
@@ -189,6 +190,34 @@ d3_sports %>%
     fill = "School"
   )
 
+```
+```{r}
+head(d3_instLevel)
+
+d3_instLevel %>%
+  mutate(HC_sal = HDCOACH_SAL_FTE_MEN+HDCOACH_SAL_FTE_WOMN) %>%
+  filter(institution_name %in% nwc| institution_name == "Willamette University")%>%
+  ggplot(aes(x = year, y = HC_sal)) + 
+  geom_line(linewidth = 1, alpha = .6, aes(color = institution_name == "Willamette University",
+        group = institution_name)) + 
+  scale_x_continuous(breaks = c(2016,2018,2020,2022,2024))+
+  scale_color_manual(
+    values = c("TRUE" = "darkred", "FALSE" = "gray70"),
+    guide = "none"
+  )+
+  theme_bw()
+
+d3_instLevel %>%
+  mutate(HC_sal = HDCOACH_SAL_FTE_MEN+HDCOACH_SAL_FTE_WOMN) %>%
+  filter(institution_name %in% nwc| institution_name == "Willamette University")%>%
+  ggplot(aes(x = year, y = HC_sal, color = institution_name)) + 
+  geom_line(linewidth = 1, alpha = .6) + 
+  scale_x_continuous(breaks = c(2016,2018,2020,2022,2024))+
+  # scale_color_manual(
+  #   values = c("TRUE" = "darkred", "FALSE" = "gray70"),
+  #   guide = "none"
+  # )+
+  theme_bw()
 ```
 
 
