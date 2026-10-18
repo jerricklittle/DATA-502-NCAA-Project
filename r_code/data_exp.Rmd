@@ -1,0 +1,74 @@
+---
+title: "data_exp"
+author: "Jenna Hopkins"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# load packages and datasets
+
+```{r, message = F}
+library(tidyverse)
+
+d3_instLevel = read_csv("../clean_data/d3_instLevel_ds.csv")
+d3_sports = read_csv("../clean_data/d3_sports_ds.csv")
+d3_coach = read_csv("../clean_data/d3_coach_ds.csv")
+```
+
+# eda plots
+
+```{r}
+nwc = c(
+  "Linfield University", "George Fox University", "Whitworth University", "Whitman University", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
+)
+
+ds = d3_sports %>%
+  filter(sport == "Men's Football", year == 2025) %>%
+  mutate(
+    color = case_when(
+      institution_name %in% nwc ~ "nwc",
+      institution_name == "Willamette University" ~ "willamette",
+      .default = "d3"
+    )
+  )
+
+colorpal = c(
+  "willamette" = "darkred",
+  "nwc" = "blue",
+  "d3" = "black"
+)
+
+
+solid = ds %>%
+  filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
+  mutate(
+    color = case_when(
+      institution_name %in% nwc ~ "nwc",
+      institution_name == "Willamette University" ~ "willamette",
+      .default = "d3"
+    )
+  )
+
+ds %>%
+  filter(!(institution_name %in% nwc), !(institution_name == "Willamette University")) %>%
+  ggplot(aes(x = n_athletes, y = op_exp, color = color)) +
+  geom_point(alpha = .1) +
+  geom_point(data = solid, aes(x = n_athletes, y = op_exp, color = color), size = 2) +
+  geom_text(data = solid, aes(label = institution_name), hjust = -.1, size = 2) +
+  geom_abline(intercept = 0, slope = median(ds$op_exp, na.rm = TRUE)/median(ds$n_athletes), color = "black", linetype = "dashed") +
+  scale_color_manual(values = colorpal) +
+  scale_x_continuous(limits = c(0, max(ds$n_athletes)), expand = c(0, 0)) +
+  scale_y_continuous(labels = function (x) paste0(x/1000, "k"), limits = c(0, max(ds$op_exp)), expand = c(0, 0)) +
+  theme_bw() +
+  labs(
+    title = "d3 football operating expenses vs number of athletes",
+    subtitle = "dashed line = median op_exp / median n_athletes",
+  )
+```
+
+
+

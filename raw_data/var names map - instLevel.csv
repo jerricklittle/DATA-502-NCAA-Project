@@ -1,0 +1,170 @@
+new_name,name_06,name_05,label
+unitid,unitid,unitid,National Center for Education Statistics (NCES) Unit Identification Number
+OPEID,,,Federal Student Aid (U.S. Department of Education) Office of Postsecondary Education Identification
+institution_name,institution_name,institution_name,
+addr1_txt,addr1_txt,addr1_txt,
+addr2_txt,addr2_txt,addr2_txt,
+city_txt,city_txt,city_txt,
+state_cd,state_cd,state_cd,
+zip_text,zip_text,zip_text,
+ClassificationCode,ClassificationCode,ClassificationCode,
+classification_name,value_name,value_name,
+ClassificationOther,ClassificationOther,ClassificationOther,
+EFMaleCount,EFMaleCount,EFRACE15,Total Men
+EFFemaleCount,EFFemaleCount,EFRACE16,Total Women
+EFTotalCount,EFTotalCount,EFRACE24,Grand Total
+sector_cd,,,
+sector_name,,,
+,,enrollment_description,
+STUDENTAID_MEN,A4,A4,Athletically-Related Student Aid for Men's Team
+STUDENTAID_WOMEN,A5,A5,Athletically-Related Student Aid for Women's Team
+STUDENTAID_COED,A6,A6,Athletically-Related Student Aid for Coed Team
+STUDENTAID_TOTAL,A7,A7,"Total amount of Athletically-Related Student Aid for Men's Team, Women's Team and Coed Team"
+STUAID_MEN_RATIO,A8,A8,Ratio (percent) of Athletically-Related Student Aid for Men's Team
+STUAID_WOMEN_RATIO,A9,A9,Ratio (percent) of Athletically-Related Student Aid for Women's Team
+STUAID_COED_RATIO,A10,A10,Ratio (percent) of Athletically-Related Student Aid for Coed Team
+RECRUITEXP_MEN,A11,A11,Recruiting Expenses for Men's Team
+RECRUITEXP_WOMEN,A12,A12,Recruiting Expenses for Women's Team
+RECRUITEXP_COED,A13,,
+RECRUITEXP_TOTAL,A14,A13,Total Recruiting Expenses for Men's Team and Women's Team
+HDCOACH_SALARY_MEN,A15,A14,Annual Institutional Salary per Person for Head Coaches in Men's Team
+HDCOACH_SALARY_WOMEN,A16,A15,Annual Institutional Salary per Person for Head Coaches in Women's Team
+HDCOACH_SALARY_COED,A17,A16,Annual Institutional Salary per Person for Head Coaches in Coed Team
+NUM_HDCOACH_MEN,A18,A17,Number of Head Coaches Included in Average for Men's Team
+NUM_HDCOACH_WOMEN,A19,A18,Number of Head Coaches Included in Average for Women's Team
+NUM_HDCOACH_COED,A20,A19,Number of Head Coaches Included in Average for Coed Team
+HDCOACH_SAL_FTE_MEN,A21,A20,Average Annual Institutional Salary per FTE for Men's Team
+HDCOACH_SAL_FTE_WOMN,A22,A21,Average Annual Institutional Salary per FTE for Women's Team
+HDCOACH_SAL_FTE_COED,A23,A22,Average Annual Institutional Salary per FTE for Coed Team
+FTE_HDCOACH_MEN,A24,A23,Number of FTEs included in Average for Men's Team
+FTE_HDCOACH_WOMEN,A25,A24,Number of FTEs included in Average for Women's Team
+FTE_HDCOACH_COED,A26,A25,Number of FTEs included in Average for Coed Team
+ASCOACH_SALARY_MEN,A27,A26,Annual Institutional Salary per Person for Assistant Coaches in Men's Team
+ASCOACH_SALARY_WOMEN,A28,A27,Annual Institutional Salary per Person for Assistant Coaches in Women's Team
+ASCOACH_SALARY_COED,A29,A28,Annual Institutional Salary per Person for Assistant Coaches in Coed Team
+NUM_ASCOACH_MEN,A30,A29,Number of Assistant Coaches Included in Average for Men's Team
+NUM_ASCOACH_WOMEN,A31,A30,Number of Assistant Coaches Included in Average for Women's Team
+NUM_ASCOACH_COED,A32,A31,Number of Assistant Coaches Included in Average for Coed Team
+ASCOACH_SAL_FTE_MEN,A33,A32,Average Annual Institutional Salary per FTE for Men's Team
+ASCOACH_SAL_FTE_WOMN,A34,A33,Average Annual Institutional Salary per FTE for Women's Team
+ASCOACH_SAL_FTE_COED,A35,A34,Average Annual Institutional Salary per FTE for Coed Team
+FTE_ASCOACH_MEN,A36,A35,Number of FTEs included in Average for Men's Team
+FTE_ASCOACH_WOMEN,A37,A36,Number of FTEs included in Average for Women's Team
+FTE_ASCOACH_COED,A38,A37,Number of FTEs included in Average for Coed Team
+IL_PARTIC_MEN,b4,b4,Total Number of Participants in Men's Team
+IL_PARTIC_WOMEN,b5,b5,Total Number of Participants in Women's Team
+IL_PARTIC_COED_MEN,b6,b6,Total Number of Participants in Men's Coed Team
+IL_PARTIC_COED_WOMEN,b7,b7,Total Number of Participants in Women's Coed Team
+IL_SUM_PARTIC_MEN,b8,b8,Total number of Participants in Men's Team and Men's Coed Team
+IL_SUM_PARTIC_WOMEN,b9,b9,Total number of Participants in Women's Team and Women's Coed Team
+IL_OPEXPPERPART_MEN,b10,b10,Total Operating Expenses per Participant for Men
+IL_OPEXPPERTEAM_MEN,b11,b11,Total Operating Expenses per Team for Men
+IL_OPEXPPERPART_WOMEN,b12,b12,Total Operating Expenses per Participant for Women
+IL_OPEXPPERTEAM_WOMEN,b13,b13,Total Operating Expenses per Team for Women
+IL_TOTAL_OPEXP_MENWOMEN,b14,b14,Total Operating Expenses (Men + Women)
+IL_OPEXPPERPART_COED_MEN,b15,b15,Total Operating Expenses per Participant for Men (Coed team)
+IL_OPEXPPERTEAM_COED_MEN,b16,b16,Total Operating Expenses per Team for Men (Coed team)
+IL_OPEXP_PART_COED_WOMEN,b17,b17,Total Operating Expenses per Participant for Women (Coed team)
+IL_OPEXP_TEAM_COED_WOMEN,b18,b18,Total Operating Expenses per Team for Women (Coed team)
+IL_TOTAL_OPEXP_COEDTEAM,b19,b19,Total Operating Expenses (Coed Men + Coed Women)
+IL_SUM_OPEXPPERPART_MEN,b20,b20,Total amount of expenses per Participant in Men's Team and Men's Coed Team
+IL_SUM_OPEXPPERTEAM_MEN,b21,b21,Total amount of expenses per Team in Men's Team and Men's Coed Team
+IL_SUM_OPEXPPERPART_WOMEN,b22,b22,Total amount of expenses per participant in Women's Team and Women's Coed Team
+IL_SUM_OPEXPPERTEAM_WOMEN,b23,b23,Total amount of expenses per team in Women's Team and Women's Coed Team
+IL_TOTAL_OPEXP_INCLCOED,b24,b24,Total Operating Expenses (Men + Women + Coed Men + Coed Women)
+IL_MEN_FTHEADCOACH_MALE,b25,b25,Total Number of Head Coaches in Men's Team for Male Full Time Coaching Duties
+IL_MEN_PTHEADCOACH_MALE,b26,b26,Total Number of Head Coaches in Men's Team for Male Part Time Coaching Duties
+IL_MEN_FTUNIVEMPLOY_MALE,b27,b27,Total Number of Head Coaches in Men's Team for Male Full Time University Employee
+IL_MEN_PTUNIVEMPLOY_MALE,b28,b28,Total Number of Head Coaches in Men's Team for Male Part Time University Employee or Volunteer
+IL_MEN_FTHEADCOACH_FEM,b29,b29,Total Number of Head Coaches in Men's Team for Female Full Time Coaching Duties
+IL_MEN_PTHEADCOACH_FEM,b30,b30,Total Number of Head Coaches in Men's Team for Female Part Time Coaching Duties
+IL_MEN_FTUNIVEMPLOY_FEM,b31,b31,Total Number of Head Coaches in Men's Team for Female Full Time University Employee
+IL_MEN_PTUNIVEMPLOY_FEM,b32,b32,Total Number of Head Coaches in Men's Team for Female Part Time University Employee or Volunteer
+IL_MEN_TOTAL_HEADCOACH,b33,b33,Total Number of Total Head Coaches in Men's Team
+IL_WOMEN_FTHDCOACH_MALE,b34,b34,Total Number of Head Coaches in Women's Team for Male Full Time Coaching Duties
+IL_WOMEN_PTHDCOACH_MALE,b35,b35,Total Number of Head Coaches in Women's Team for Male Part Time Coaching Duties
+IL_WOMEN_FTUNIVEMP_MALE,b36,b36,Total Number of Head Coaches in Women's Team for Male Full Time University Employee
+IL_WOMEN_PTUNIVEMP_MALE,b37,b37,Total Number of Head Coaches in Women's Team for Male Part Time University Employee or Volunteer
+IL_WOMEN_FTHDCOACH_FEM,b38,b38,Total Number of Head Coaches in Women's Team for Female Full Time Coaching Duties
+IL_WOMEN_PTHDCOACH_FEM,b39,b39,Total Number of Head Coaches in Women's Team for Female Part Time Coaching Duties
+IL_WOMEN_FTUNIVEMP_FEM,b40,b40,Total Number of Head Coaches in Women's Team for Female Full Time University Employee
+IL_WOMEN_PTUNIVEMP_FEM,b41,b41,Total Number of Head Coaches in Women's Team for Female Part Time University Employee or Volunteer
+IL_WOMEN_TOTAL_HDCOACH,b42,b42,Total Number of Total Head Coaches in Women's Team
+IL_COED_FTHDCOACH_MALE,b43,b43,Total Number of Head Coaches in Coed Team for Male Full Time Coaching Duties
+IL_COED_PTHDCOACH_MALE,b44,b44,Total Number of Head Coaches in Coed Team for Male Part Time Coaching Duties
+IL_COED_FTUNIVEMP_MALE,b45,b45,Total Number of Head Coaches in Coed Team for Male Full Time University Employee
+IL_COED_PTUNIVEMP_MALE,b46,b46,Total Number of Head Coaches in Coed Team for Male Part Time University Employee or Volunteer
+IL_COED_FTHDCOACH_FEM,b47,b47,Total Number of Head Coaches in Coed Team for Female Full Time Coaching Duties
+IL_COED_PTHDCOACH_FEM,b48,b48,Total Number of Head Coaches in Coed Team for Female Part Time Coaching Duties
+IL_COED_FTUNIVEMP_FEM,b49,b49,Total Number of Head Coaches in Coed Team for Female Full Time University Employee
+IL_COED_PTUNIVEMP_FEM,b50,b50,Total Number of Head Coaches in Coed Team for Female Part Time University Employee or Volunteer
+IL_COED_TOTAL_HDCOACH,b51,b51,Total Number of Total Head Coaches in Coed Team
+IL_SUM_FTHDCOACH_MALE,b52,b52,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Male Full Time Coaching Duties"
+IL_SUM_PTHDCOACH_MALE,b53,b53,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Male Part Time Coaching Duties"
+IL_SUM_FTUNIVEMP_MALE,b54,b54,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Male Full Time University Employee"
+IL_SUM_PTUNIVEMP_MALE,b55,b55,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Male Part Time University Employee or Volunteer"
+IL_SUM_FTHDCOACH_FEM,b56,b56,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Female Full Time Coaching Duties"
+IL_SUM_PTHDCOACH_FEM,b57,b57,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Female Part Time Coaching Duties"
+IL_SUM_FTUNIVEMP_FEM,b58,b58,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Female Full Time University Employee"
+IL_SUM_PTUNIVEMP_FEM,b59,b59,"Total number of Head Coaches in Men's Team, Women's Team and Coed Team for Female Part Time University Employee or Volunteer"
+IL_SUM_TOTAL_HDCOACH,b60,b60,"Total number of Total Head Coaches in Men's Team, Women's Team and Coed Team"
+IL_MEN_FTASCOACH_MALE,b61,b61,Total Number of Assistant Coaches in Men's Team for Male Full Time Coaching Duties
+IL_MEN_PTASCOACH_MALE,b62,b62,Total Number of Assistant Coaches in Men's Team for Male Part Time Coaching Duties
+IL_MEN_FTACUNIVEMP_MALE,b63,b63,Total Number of Assistant Coaches in Men's Team for Male Full Time University Employee
+IL_MEN_PTACUNIVEMP_MALE,b64,b64,Total Number of Assistant Coaches in Men's Team for Male Part Time University Employee or Volunteer
+IL_MEN_FTASSTCOACH_FEM,b65,b65,Total Number of Assistant Coaches in Men's Team for Female Full Time Coaching Duties
+IL_MEN_PTASSTCOACH_FEM,b66,b66,Total Number of Assistant Coaches in Men's Team for Female Part Time Coaching Duties
+IL_MEN_FTACUNIVEMP_FEM,b67,b67,Total Number of Assistant Coaches in Men's Team for Female Full Time University Employee
+IL_MEN_PTACUNIVEMP_FEM,b68,b68,Total Number of Assistant Coaches in Men's Team for Female Part Time University Employee or Volunteer
+IL_MEN_TOTAL_ASSTCOACH,b69,b69,Total Number of Total Assistant Coaches in Men's Team
+IL_WOMEN_FTASCOACH_MALE,b70,b70,Total Number of Assistant Coaches in Women's Team for Male Full Time Coaching Duties
+IL_WOMEN_PTASCOACH_MALE,b71,b71,Total Number of Assistant Coaches in Women's Team for Male Part Time Coaching Duties
+IL_WOMEN_FTACUNEMP_MALE,b72,b72,Total Number of Assistant Coaches in Women's Team for Male Full Time University Employee
+IL_WOMEN_PTACUNEMP_MALE,b73,b73,Total Number of Assistant Coaches in Women's Team for Male Part Time University Employee or Volunteer
+IL_WOMEN_FTASTCOACH_FEM,b74,b74,Total Number of Assistant Coaches in Women's Team for Female Full Time Coaching Duties
+IL_WOMEN_PTASTCOACH_FEM,b75,b75,Total Number of Assistant Coaches in Women's Team for Female Part Time Coaching Duties
+IL_WOMN_FTACUNIVEMP_FEM,b76,b76,Total Number of Assistant Coaches in Women's Team for Female Full Time University Employee
+IL_WOMN_PTACUNIVEMP_FEM,b77,b77,Total Number of Assistant Coaches in Women's Team for Female Part Time University Employee or Volunteer
+IL_WOMEN_TOTAL_ASTCOACH,b78,b78,Total Number of Total Assistant Coaches in Women's Team
+IL_COED_FTASCOACH_MALE,b79,b79,Total Number of Assistant Coaches in Coed Team for Male Full Time Coaching Duties
+IL_COED_PTASCOACH_MALE,b80,b80,Total Number of Assistant Coaches in Coed Team for Male Part Time Coaching Duties
+IL_COED_FTACUNEMP_MALE,b81,b81,Total Number of Assistant Coaches in Coed Team for Male Full Time University Employee
+IL_COED_PTACUNEMP_MALE,b82,b82,Total Number of Assistant Coaches in Coed Team for Male Part Time University Employee or Volunteer
+IL_COED_FTASTCOACH_FEM,b83,b83,Total Number of Assistant Coaches in Coed Team for Female Full Time Coaching Duties
+IL_COED_PTASTCOACH_FEM,b84,b84,Total Number of Assistant Coaches in Coed Team for Female Part Time Coaching Duties
+IL_COED_FTACUNIVEMP_FEM,b85,b85,Total Number of Assistant Coaches in Coed Team for Female Full Time University Employee
+IL_COED_PTACUNIVEMP_FEM,b86,b86,Total Number of Assistant Coaches in Coed Team for Female Part Time University Employee or Volunteer
+IL_COED_TOTAL_ASTCOACH,b87,b87,Total Number of Total Assistant Coaches in Coed Team
+IL_SUM_FTASCOACH_MALE,b88,b88,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Male Full Time Coaching Duties"
+IL_SUM_PTASCOACH_MALE,b89,b89,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Male Part Time Coaching Duties"
+IL_SUM_FTACUNIVEMP_MALE,b90,b90,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Male Full Time University Employee"
+IL_SUM_PTACUNIVEMP_MALE,b91,b91,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Male Part Time University Employee or Volunteer"
+IL_SUM_FTASCOACH_FEM,b92,b92,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Female Full Time Coaching Duties"
+IL_SUM_PTASCOACH_FEM,b93,b93,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Female Part Time Coaching Duties"
+IL_SUM_FTACUNIVEMP_FEM,b94,b94,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Female Full Time University Employee"
+IL_SUM_PTACUNIVEMP_FEM,b95,b95,"Total number of Assistant Coaches in Men's Team, Women's Team and Coed Team for Female Part Time University Employee or Volunteer"
+IL_SUM_TOTAL_ASSTCOACH,b96,b96,"Total number of Total Assistant Coaches in Men's Team, Women's Team and Coed Team"
+IL_REV_MEN,b97,b97,"Total Revenues per Team for Men of all Sports, Except Football and Basketball Combined"
+IL_REV_WOMEN,b98,b98,"Total Revenues per Team for Women of all Sports, Except Football and Basketball Combine"
+IL_TOTAL_REV_MENWOMEN,b99,b99,"Total Revenues per Team for Men and Women of all Sports, Except Football and Basketball Combine"
+IL_REV_COED_MEN,b100,b100,Total Revenues per Team for Coed Men
+IL_REV_COED_WOMEN,b101,b101,Total Revenues per Team for Coed Women
+IL_TOTAL_REV_COED,b102,b102,Total Revenues per Team for Coed Men and Coed Women
+IL_REVENUE_MENALL,b103,b103,Total amount of Revenues per Team for Men's Team and Coed Men
+IL_REVENUE_WOMENALL,b104,b104,Total amount of Revenues per Team for Women's Team and Coed Women
+IL_TOTAL_REVENUE_ALL,b105,b105,Total Revenues per Team and Total Coed Revenues
+IL_EXP_MEN,b106,b106,"Total Expenses per Team for Men of all Sports, Except Football and Basketball Combined"
+IL_EXP_WOMEN,b107,b107,"Total Expenses per Team for Women of all Sports, Except Football and Basketball Combined"
+IL_TOTAL_EXP_MENWOMEN,b108,b108,"Total Expenses per Team for Men and Women of all Sports, Except Football and Basketball Combined"
+IL_EXP_COED_MEN,b109,b109,Total Expenses per Team for Coed Men
+IL_EXP_COED_WOMEN,b110,b110,Total Expenses per Team for Coed Women
+IL_TOTAL_EXP_COED,b111,b111,Total Expenses per Team for Coed Men and Coed Women
+IL_EXPENSE_MENALL,b112,b112,Total amount of Expenses per Team for Men's Team and Coed Men
+IL_EXPENSE_WOMENALL,b113,b113,Total amount of Expenses per Team for Women's Team and Coed Women
+IL_TOTAL_EXPENSE_ALL,b114,b114,Total Expenses per Team and Total Coed Expenses
+UNDUP_CT_PARTIC_MEN,c8,c8,Unduplicated Counts of Participants in Men's Team and Men's Coed Team
+UNDUP_CT_PARTIC_WOMEN,c9,c9,Unduplicated Counts of Participants in Wmen's Team and Women's Coed Team.
+TOT_REVENUE_ALL_NOTALLOC,c105,c105,Total Revenues Not Allocated by Gender/Sport
+TOT_EXPENSE_ALL_NOTALLOC,c114,c114,Total Expenses Not Allocated by Gender/Sport
+GRND_TOTAL_REVENUE,d105,d105,Grand Total Revenues
+GRND_TOTAL_EXPENSE,d114,d114,Grand Total Expenses

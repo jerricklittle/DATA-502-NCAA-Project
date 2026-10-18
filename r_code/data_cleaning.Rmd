@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Cleaning EADA Data 2005-2025"
 author: "Jenna Hopkins"
 date: "`r Sys.Date()`"
 output: pdf_document
@@ -10,21 +10,359 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# Load packages & datasets
+# Load packages
 
 ```{r, message = F}
 library(tidyverse)
+library(readxl)
+```
 
-schools_ds = read_csv("../raw_data/schools.csv")
-inst_ds = read_csv("../raw_data/instLevel.csv")
+# Load datasets
+
+## Load institution-level datasets from years 2005-2025
+
+First, read in every dataset from raw data files
+
+```{r}
+# loop over every dataset to read it in and save to a different variable
+for(i in 5:25) {
+  if (i == 5) { # 2004-2005 had one excel file with docs + data
+    var_name = "instLevel_05"
+    path = "../raw_data/EADA_2004-2005/EADA 2004-2005 Institution--inst file.xls"
+    ds = read_excel(path, sheet = "instleveldata")
+    
+  } else if (i < 10) { # years before 2010 get a preceding 0
+    var_name = paste0("instLevel_0", i)
+    path = paste0("../raw_data/EADA_200", as.character(i-1), "-200", as.character(i), "/Instleveldata.xls")
+    ds = read_excel(path) %>%
+      mutate(zip_text = as.character(zip_text))
+    
+  } else if (i == 10) { # 2010 combines preceding 0 and no 0 in filename
+    var_name = "instLevel_10"
+    path = "../raw_data/EADA_2009-2010/Instleveldata.xls"
+    ds = read_excel(path) %>%
+      mutate(zip_text = as.character(zip_text))
+    
+  } else if (i < 13) { # until 2013, new filename and old version of excel
+    var_name = paste0("instLevel_", i)
+    path = paste0("../raw_data/EADA_20", as.character(i-1), "-20", as.character(i), "/Instlevel.xls")
+    ds = read_excel(path)
+    
+  } else { # after 2013 saved with new version of excel
+    var_name = paste0("instLevel_", i)
+    path = paste0("../raw_data/EADA_20", as.character(i-1), "-20", as.character(i), "/instLevel.xlsx")
+    ds = read_excel(path)
+  }
+  
+  ds$year = i # add year column to ds to distinguish when combining
+  assign(var_name, ds) # save ds to its variable name
+}
+```
+
+Next, convert every ds to the same format. Years 2004-2005 and 2005-2006 especially need it
+
+```{r}
+# key to map the old year var names to the newer practice
+key = read_csv("../raw_data/var names map - instLevel.csv")
+
+# 2005 map
+map_05 = key %>%
+  filter(!is.na(new_name) & !(new_name %in% c("", "OPEID", "sector_cd", "sector_name", "RECRUITEXP_COED"))) %>%
+  select(name_05, new_name)
+
+# 2006 map
+map_06 = key %>%
+  filter(!is.na(new_name) & !(new_name %in% c("", "OPEID", "sector_cd", "sector_name"))) %>%
+  select(name_06, new_name)
+
+# create map of uppercase recent inst names to be used to convert 2005 ds
+name_map = instLevel_25 %>%
+  rename("new_name" = institution_name) %>%
+  select(new_name) %>%
+  distinct() %>%
+  mutate(match_key = toupper(new_name))
+
+# create map of sector names and codes to add columns to 2005 and 2006 ds
+sector_lookup = instLevel_25 %>%
+  select(unitid, sector_cd, sector_name) %>%
+  distinct(unitid, .keep_all = TRUE)
+
+# create map of opeid to add column to 2005 and 2006 ds
+opeid_lookup = instLevel_25 %>%
+  select(unitid, OPEID) %>%
+  distinct(unitid, .keep_all = TRUE)
+
+
+# clean 2005 ds and convert to same format as recent years
+instLevel_05 = instLevel_05 %>% 
+  select(-enrollment_description) %>% # enroll desc column only in 2005
+  rename_with( # convert column names to recent year format
+    ~ deframe(map_05)[.x], 
+    .cols = intersect(names(instLevel_05), map_05$name_05)
+  ) %>%
+  mutate(
+    # names that aren't mapped to 2025 will not remain all uppercase
+    institution_name = str_to_title(institution_name),
+    match_key = toupper(institution_name), # make sure all upper for match
+    RECRUITEXP_COED = NA_real_ # add column that appears in all other ds
+  ) %>%
+  left_join(name_map, by = "match_key") %>% # match inst names with 2025 to convert case
+  mutate(
+    name = coalesce(new_name, institution_name), # keep old name if not matched
+    across( # convert column types to numeric to match other ds
+      all_of(c("STUDENTAID_COED", "HDCOACH_SALARY_COED", "NUM_HDCOACH_COED")),
+      as.numeric
+    )
+  ) %>%
+  select(-match_key, -new_name, -institution_name) %>% # remove matching cols
+  rename("institution_name" = name) %>%
+  left_join(sector_lookup, by = "unitid") %>% # add sector_cd and sector_name cols
+  left_join(opeid_lookup, by = "unitid") %>% # add OPEID col
+  select(names(instLevel_25)) # reorder cols
+
+# clean 2006 ds and convert to same format as recent years
+instLevel_06 = instLevel_06 %>% 
+  rename_with( # convert column names to recent year format
+    ~ deframe(map_06)[.x], 
+    .cols = intersect(names(instLevel_06), map_06$name_06)
+  ) %>%
+  left_join(sector_lookup, by = "unitid") %>% # add sector_cd and sector_name cols
+  left_join(opeid_lookup, by = "unitid") %>% # add OPEID col
+  select(names(instLevel_25)) # reorder cols
+```
+
+Finally, combine all years into one ds
+
+```{r}
+# combine years into one ds
+instLevel_all = bind_rows(
+  instLevel_05,
+  instLevel_06,
+  instLevel_07,
+  instLevel_08,
+  instLevel_09,
+  instLevel_10,
+  instLevel_11,
+  instLevel_12,
+  instLevel_13,
+  instLevel_14,
+  instLevel_15,
+  instLevel_16,
+  instLevel_17,
+  instLevel_18,
+  instLevel_19,
+  instLevel_20,
+  instLevel_21,
+  instLevel_22,
+  instLevel_23,
+  instLevel_24,
+  instLevel_25
+) %>%
+  mutate( # store whole year not just last 2 digits
+    year = year + 2000
+  ) %>%
+  arrange(year, institution_name)
+  
+instLevel_all
+
+# save data to clean folder
+write_csv(instLevel_all, "../clean_data/instLevel_ds.csv")
 ```
 
 
-# Create sports_ds
+
+## Load sport-level datasets from years 2005-2025
+
+First, read in every dataset from raw data files
+
+```{r}
+# loop over every dataset to read it in and save to a different variable
+# guess_max used b/c there was an issue with NAs and guessing the wrong col type
+for(i in 5:25) {
+  if (i == 5) { # 2004-2005 had one excel file with docs + data
+    var_name = "schools_05"
+    path = "../raw_data/EADA_2004-2005/EADA 2004-2005 institution--multiple records rev and exp.xls"
+    ds = read_excel(path, sheet = "schools", guess_max = 16000)
+    
+  } else if (i < 10) { # years before 2010 get a preceding 0
+    var_name = paste0("schools_0", i)
+    path = paste0("../raw_data/EADA_200", as.character(i-1), "-200", as.character(i), "/Schools.xls")
+    ds = read_excel(path, guess_max = 16000) %>%
+      mutate(zip_text = as.character(zip_text))
+    
+  } else if (i == 10) { # 2010 combines a preceding 0 and no 0 in filename
+    var_name = "schools_10"
+    path = "../raw_data/EADA_2009-2010/Schools.xls"
+    ds = read_excel(path, guess_max = 16000) %>%
+      mutate(zip_text = as.character(zip_text))
+    
+  } else if (i < 13) { # before 2013 uses old excel file type
+    var_name = paste0("schools_", i)
+    path = paste0("../raw_data/EADA_20", as.character(i-1), "-20", as.character(i), "/Schools.xls")
+    ds = read_excel(path, guess_max = 16000)
+    
+  } else if (i < 24) { # until 2024 uses uppercase S in filename
+    var_name = paste0("schools_", i)
+    path = paste0("../raw_data/EADA_20", as.character(i-1), "-20", as.character(i), "/Schools.xlsx")
+    ds = read_excel(path, guess_max = 16000)
+    
+  } else { # 2025 uses lowercase s in filename
+    var_name = paste0("schools_", i)
+    path = paste0("../raw_data/EADA_20", as.character(i-1), "-20", as.character(i), "/schools.xlsx")
+    ds = read_excel(path, guess_max = 16000)
+  }
+  
+  ds$year = i # add year column to ds to distinguish when combining
+  assign(var_name, ds) # save ds to its variable name
+}
+```
+
+Next, convert every ds to the same format. Years 2005, 2006, 2019 especially need it
+
+```{r}
+# key to map the old year var names to the newer practice
+key = read_csv("../raw_data/var names map - schools.csv")
+
+# 2005 map
+map_05 = key %>%
+  filter(!is.na(new_name) & !(new_name %in% c("", "OPEID", "sector_cd", "sector_name"))) %>%
+  select(name_05, new_name)
+
+# 2006 map
+map_06 = key %>%
+  filter(!is.na(new_name) & !(new_name %in% c("", "OPEID", "sector_cd", "sector_name"))) %>%
+  select(name_06, new_name)
+
+# create map of uppercase recent inst names to be used to convert 2005 ds
+name_map = schools_25 %>%
+  rename("new_name" = institution_name) %>%
+  select(new_name) %>%
+  distinct() %>%
+  mutate(match_key = toupper(new_name))
+
+# create map of sector names and codes to add cols to 2005 and 2006 ds
+sector_lookup = schools_25 %>%
+  select(unitid, sector_cd, sector_name) %>%
+  distinct(unitid, .keep_all = TRUE)
+
+# create map of opeid to add col to 2005 and 2006 ds
+opeid_lookup = schools_25 %>%
+  select(unitid, OPEID) %>%
+  distinct(unitid, .keep_all = TRUE) 
+
+
+# clean 2005 and convert to same format as recent years
+schools_05 = schools_05 %>% 
+  select(-enrollment_description) %>% # enroll desc not used in other ds
+  rename_with( # convert col names to recent format
+    ~ deframe(map_05)[.x], 
+    .cols = intersect(names(schools_05), map_05$name_05)
+  ) %>%
+  mutate(
+    # names that aren't mapped to 2025 will not remain all uppercase
+    institution_name = str_to_title(institution_name),
+    match_key = toupper(institution_name) # make sure all upper for match
+  ) %>%
+  # match inst names with 2025 to convert case
+  left_join(name_map, by = "match_key") %>%
+  mutate(
+    name = coalesce(new_name, institution_name), # keep old name if not matched
+    across( # coed vars read in as char for some reason, convert to num
+      all_of(c(
+        "TOTAL_EXP_COED", "EXP_COED_WOMEN", "EXP_COED_MEN",
+        "TOTAL_REV_COED", "REV_COED_WOMEN", "REV_COED_MEN",
+        "COED_PTACUNIVEMP_FEM", "COED_FTACUNIVEMP_FEM",
+        "COED_PTASTCOACH_FEM", "COED_FTASTCOACH_FEM",
+        "COED_PTACUNEMP_MALE", "COED_FTACUNEMP_MALE",
+        "COED_PTASCOACH_MALE", "COED_FTASCOACH_MALE",
+        "COED_TOTAL_ASTCOACH", "COED_TOTAL_HDCOACH",
+        "COED_PTUNIVEMP_FEM", "COED_FTUNIVEMP_FEM",
+        "COED_PTHDCOACH_FEM", "COED_FTHDCOACH_FEM",
+        "COED_PTUNIVEMP_MALE", "COED_FTUNIVEMP_MALE",
+        "COED_PTHDCOACH_MALE", "COED_FTHDCOACH_MALE",
+        "TOTAL_OPEXP_COEDTEAM", "OPEXPPERTEAM_COED_MEN",
+        "PARTIC_COED_MEN")
+      ),
+      as.numeric
+    )
+  ) %>%
+  select(-match_key, -new_name, -institution_name) %>% # remove matching cols
+  rename("institution_name" = name) %>%
+  left_join(sector_lookup, by = "unitid") %>% # add sector_cd and sector_name cols
+  left_join(opeid_lookup, by = "unitid") %>% # add OPEID col
+  select(names(schools_25)) # reorder cols
+
+
+# clean 2006 and convert to same format as recent years
+schools_06 = schools_06 %>% 
+  rename_with( # convert col names to recent format
+    ~ deframe(map_06)[.x], 
+    .cols = intersect(names(schools_06), map_06$name_06)
+  ) %>%
+  left_join(sector_lookup, by = "unitid") %>% # add sector_cd and sector_name cols
+  left_join(opeid_lookup, by = "unitid") %>% # add OPEID col
+  select(names(schools_25)) # reorder cols
+
+
+# vars in 2019 ds that were read in as char, need to convert to num
+char_names = c(
+  names(schools_19[16:127]),
+  "sector_cd", 
+  "EFTotalCount", 
+  "EFFemaleCount", 
+  "EFMaleCount", 
+  "ClassificationCode", 
+  "unitid"
+)
+
+# convert char cols that should be num
+schools_19 = schools_19 %>%
+  mutate(across(all_of(char_names), as.numeric))
+```
+
+Finally, combine all years into one ds
+
+```{r}
+# combine all years into one ds
+schools_all = bind_rows(
+  schools_05,
+  schools_06,
+  schools_07,
+  schools_08,
+  schools_09,
+  schools_10,
+  schools_11,
+  schools_12,
+  schools_13,
+  schools_14,
+  schools_15,
+  schools_16,
+  schools_17,
+  schools_18,
+  schools_19,
+  schools_20,
+  schools_21,
+  schools_22,
+  schools_23,
+  schools_24,
+  schools_25
+) %>%
+  mutate( # convert to whole year format instead of last 2 digits
+    year = year + 2000
+  )
+
+schools_all
+```
+
+
+
+
+# Create sports_ds from schools_all
+sports_ds contains one observation for one sport at one school, with coed exception which is split into 2 to track men and women participation.
 
 ```{r}
 # make one row for each gender for each sport
-gender_long = schools_ds %>%
+gender_long = schools_all %>%
   pivot_longer(
     cols = c(
       PARTIC_MEN,
@@ -36,142 +374,111 @@ gender_long = schools_ds %>%
     values_to = "n_athletes"
   ) %>%
   mutate(
-    team_type = recode_values(
+    team_type = recode_values( # preserve whether men, women, or coed
       athlete_gender,
       "PARTIC_MEN" ~ "Men",
       "PARTIC_WOMEN" ~ "Women",
       "PARTIC_COED_MEN" ~ "Coed",
       "PARTIC_COED_WOMEN" ~ "Coed"
     ),
-    athlete_gender = recode_values(
+    athlete_gender = recode_values( # determine sport gender of row (coed split)
       athlete_gender,
       "PARTIC_MEN" ~ "Men",
       "PARTIC_COED_MEN" ~ "Men",
       "PARTIC_WOMEN" ~ "Women",
       "PARTIC_COED_WOMEN" ~ "Women"
     ),
-    Sports = recode_values(
+    Sports = recode_values( # add preceding gender type to sport label (for coed id)
       team_type,
       "Men" ~ paste("Men's", Sports),
       "Women" ~ paste("Women's", Sports),
       "Coed" ~ paste("Coed", Sports)
     )
   ) %>%
-  filter(!is.na(n_athletes)) %>%
+  filter(!is.na(n_athletes)) %>% # remove rows where there was no participation
   mutate(
-    op_exp_per_athlete = recode_values(
+    op_exp_per_athlete = recode_values( # operating expense per athlete metric
       team_type,
       "Men" ~ OPEXPPERPART_MEN,
       "Women" ~ OPEXPPERPART_WOMEN,
       "Coed" ~ OPEXPPERPART_COED_MEN
     ),
-    op_exp = recode_values(
+    op_exp = recode_values( # operating expense per team metric
       team_type,
       "Men" ~ OPEXPPERTEAM_MEN,
       "Women" ~ OPEXPPERTEAM_WOMEN,
       "Coed" ~ OPEXPPERTEAM_COED_MEN
     ),
-    revenue = recode_values(
+    revenue = recode_values( # revenue per team metric
       team_type,
       "Men" ~ REV_MEN,
       "Women" ~ REV_WOMEN,
       "Coed" ~ REV_COED_MEN
     ),
-    expense = recode_values(
+    expense = recode_values( # expense per team metric
       team_type,
       "Men" ~ EXP_MEN,
       "Women" ~ EXP_WOMEN,
       "Coed" ~ EXP_COED_MEN
     )
-  ) %>%
-  select(-c(
-    team_type,
-    OPEXPPERPART_MEN, OPEXPPERTEAM_MEN,
-    OPEXPPERPART_WOMEN, OPEXPPERTEAM_WOMEN,
-    OPEXPPERPART_COED_MEN, OPEXPPERTEAM_COED_MEN,
-    OPEXP_PART_COED_WOMEN, OPEXP_TEAM_COED_WOMEN,
-    REV_MEN, REV_WOMEN, REV_COED_MEN, REV_COED_WOMEN,
-    EXP_MEN, EXP_WOMEN, EXP_COED_MEN, EXP_COED_WOMEN
-  ))
-
-# pivot longer expense grouping for each sport
-expense_long = gender_long %>%
-  pivot_longer(
-    cols = c(
-      n_athletes,
-      op_exp_per_athlete,
-      op_exp,
-      expense,
-      revenue
-    ),
-    names_to = "metric",
-    values_to = "value"
   )
 
 
-# create num coaches metric/value
-coach_long = gender_long %>%
+# clean coaches data and select relevant vars
+sports_ds = gender_long %>%
   mutate(
-    total_head_coaches = case_when(
+    total_hc = case_when( # get total number of head coaches for team
       grepl("^Men's", Sports) ~ MEN_TOTAL_HEADCOACH,
       grepl("^Women's", Sports) ~ WOMEN_TOTAL_HDCOACH,
       grepl("^Coed", Sports) ~ COED_TOTAL_HDCOACH
     ),
-    total_assistant_coaches = case_when(
+    total_ac = case_when( # get total number of assistant coaches for team
       grepl("^Men's", Sports) ~ MEN_TOTAL_ASSTCOACH,
       grepl("^Women's", Sports) ~ WOMEN_TOTAL_ASTCOACH,
       grepl("^Coed", Sports) ~ COED_TOTAL_ASTCOACH
     )
   ) %>%
-  select(
-    -c(op_exp_per_athlete, op_exp, expense, revenue),
-    total_head_coaches,
-    total_assistant_coaches
+  mutate( # replace na with 0; na means there was not a coach but maybe still team
+    total_hc = replace_na(total_hc, 0),
+    total_ac = replace_na(total_ac, 0)
   ) %>%
-  pivot_longer(
-    cols = c(total_head_coaches, total_assistant_coaches),
-    names_to = "metric",
-    values_to = "value"
-  )
-
-# add expense data with coach data
-expense_coach_long = bind_rows(
-  expense_long,
-  coach_long
-) %>%
-mutate(
-  value = case_when(
-    metric %in% c("total_head_coaches", "total_assistant_coaches") ~
-  replace_na(value, 0),
-    .default = value
-  )
-) %>%
-arrange(institution_name, Sports, athlete_gender) 
-
-
-# select only relevant columns
-sports_ds = expense_coach_long %>%
-  select(unitid, institution_name, Sports, athlete_gender, metric, value) %>%
-  rename("sport" = Sports)
+  select( # remove old/unnecessary cols
+    year,
+    unitid,
+    institution_name,
+    sport = Sports,
+    athlete_gender,
+    n_athletes,
+    op_exp,
+    op_exp_per_athlete,
+    expense,
+    revenue,
+    total_hc,
+    total_ac
+  ) %>%
+  arrange(year, institution_name, sport, athlete_gender)
 
 sports_ds
 
+# save data to clean folder
+write_csv(sports_ds, "../clean_data/sports_ds.csv")
 ```
 
 
 
-# Create coach_ds
 
+# Create coach_ds
+coach_ds contains one observation for one coach for one sport at one school. Coaches can be full or part-time coaches and full or part-time employees at the school.
 
 ```{r}
 # preserve the totals for validation
-coach_totals = schools_ds %>%
+coach_totals = schools_all %>%
   select(
-    unitid, institution_name, Sports, MEN_TOTAL_HEADCOACH, WOMEN_TOTAL_HDCOACH, COED_TOTAL_HDCOACH, MEN_TOTAL_ASSTCOACH, WOMEN_TOTAL_ASTCOACH, COED_TOTAL_ASTCOACH, SUM_FTHDCOACH_MALE, SUM_PTHDCOACH_MALE, SUM_FTUNIVEMP_MALE, SUM_PTUNIVEMP_MALE, SUM_FTHDCOACH_FEM, SUM_PTHDCOACH_FEM, SUM_FTUNIVEMP_FEM, SUM_PTUNIVEMP_FEM, SUM_FTASCOACH_MALE, SUM_PTASCOACH_MALE, SUM_FTACUNIVEMP_MALE, SUM_PTACUNIVEMP_MALE, SUM_FTASCOACH_FEM, SUM_PTASCOACH_FEM, SUM_FTACUNIVEMP_FEM, SUM_PTACUNIVEMP_FEM, SUM_TOTAL_ASSTCOACH, SUM_TOTAL_HDCOACH
+    year, unitid, institution_name, Sports, MEN_TOTAL_HEADCOACH, WOMEN_TOTAL_HDCOACH, COED_TOTAL_HDCOACH, MEN_TOTAL_ASSTCOACH, WOMEN_TOTAL_ASTCOACH, COED_TOTAL_ASTCOACH, SUM_FTHDCOACH_MALE, SUM_PTHDCOACH_MALE, SUM_FTUNIVEMP_MALE, SUM_PTUNIVEMP_MALE, SUM_FTHDCOACH_FEM, SUM_PTHDCOACH_FEM, SUM_FTUNIVEMP_FEM, SUM_PTUNIVEMP_FEM, SUM_FTASCOACH_MALE, SUM_PTASCOACH_MALE, SUM_FTACUNIVEMP_MALE, SUM_PTACUNIVEMP_MALE, SUM_FTASCOACH_FEM, SUM_PTASCOACH_FEM, SUM_FTACUNIVEMP_FEM, SUM_PTACUNIVEMP_FEM, SUM_TOTAL_ASSTCOACH, SUM_TOTAL_HDCOACH
   )
 
 
-# map the source variables to their meanings
+# map the source variables to their meanings (lot of different spellings)
 coach_map = tribble( 
   ~athlete_gender, ~coach_role, ~coach_gender, ~team_assignment, ~assignment_var, ~employment_var,
 
@@ -208,49 +515,49 @@ coach_map = tribble(
 
 
 # expand team-assignment counts into one row per coach
-coach_assignments = schools_ds %>%
+coach_assignments = schools_all %>%
   select(
-    unitid, institution_name, Sports,
+    year, unitid, institution_name, Sports,
     all_of(coach_map$assignment_var)
   ) %>%
-  pivot_longer(
-    cols = -c(unitid, institution_name, Sports),
+  pivot_longer( # make by coach instead of by sport
+    cols = -c(year, unitid, institution_name, Sports),
     names_to = "source_variable",
     values_to = "count"
   ) %>%
-  left_join(
+  left_join( # map descriptive vars onto each row
     coach_map,
     by = c("source_variable" = "assignment_var")
   ) %>%
-  filter(!is.na(count), count > 0) %>%
-  uncount(weights = count, .id = "coach_number")
+  filter(!is.na(count), count > 0) %>% # only need rows where a coach exists
+  uncount(weights = count, .id = "coach_number") # number of coaches in that 'group'
 
 
 # expand university employment counts into a separate roster
-coach_employment = schools_ds %>%
+coach_employment = schools_all %>%
   select(
-    unitid, institution_name, Sports,
+    year, unitid, institution_name, Sports,
     all_of(coach_map$employment_var)
   ) %>%
-  pivot_longer(
-    cols = -c(unitid, institution_name, Sports),
+  pivot_longer( # make by coach instead of by sport
+    cols = -c(year, unitid, institution_name, Sports),
     names_to = "source_variable",
     values_to = "count"
   ) %>%
-  left_join(
+  left_join( # map descriptive vars onto each row
     coach_map,
     by = c("source_variable" = "employment_var")
   ) %>%
-  filter(!is.na(count), count > 0) %>%
-  uncount(weights = count, .id = "employment_number") %>%
+  filter(!is.na(count), count > 0) %>% # only need rows where a coach exists
+  uncount(weights = count, .id = "employment_number") %>% # n coaches in that 'group'
   group_by(
-    unitid, institution_name, Sports,
+    year, unitid, institution_name, Sports,
     athlete_gender, coach_role, coach_gender
   ) %>%
   mutate(coach_number = row_number()) %>%
   ungroup() %>%
-  select(
-    unitid, institution_name, Sports,
+  select( # only keep relevant vars
+    year, unitid, institution_name, Sports,
     athlete_gender, coach_role, coach_gender,
     coach_number, university_employment = team_assignment
   )
@@ -259,38 +566,74 @@ coach_employment = schools_ds %>%
 # match the rosters and retain the totals
 coach_ds = coach_assignments %>%
   group_by(
-    unitid, institution_name, Sports,
+    year, unitid, institution_name, Sports,
     athlete_gender, coach_role, coach_gender
   ) %>%
   mutate(coach_number = row_number()) %>%
   ungroup() %>%
-  left_join(
+  left_join( # join assignment and employment data into same ds
     coach_employment,
     by = c(
-      "unitid", "institution_name", "Sports",
+      "year", "unitid", "institution_name", "Sports",
       "athlete_gender", "coach_role", "coach_gender",
       "coach_number"
     )
   ) %>%
-  select(
-    unitid, institution_name, Sports,
+  select( # only keep relevant vars
+    year, unitid, institution_name, sport = Sports,
     athlete_gender, coach_role, coach_gender,
     team_assignment, university_employment,
     coach_number
   ) %>%
-  rename("sport" = Sports) %>%
-  arrange(institution_name, sport, athlete_gender) 
+  arrange(year, institution_name, sport, athlete_gender) 
 
 coach_ds
+
+# save data to clean folder
+write_csv(coach_ds, "../clean_data/coach_ds.csv")
 ```
 
+
+
+# Pull out DIII data to be used in later analysis
 
 ```{r}
+# filter for d3 instLevel
+d3_instLevel = instLevel_all %>%
+  filter(classification_name %in% c("NCAA Division III with football", "NCAA Division III without football", "NCAA Division III"))
 
+d3_instLevel
+
+# save data to clean folder
+write_csv(d3_instLevel, "../clean_data/d3_instLevel_ds.csv")
+
+
+
+# get id of schools that are d3 level to pull other data
+d3_schools = d3_instLevel %>% pull(unitid)
+
+
+
+# select d3 schools from sports_ds
+d3_sports = sports_ds %>%
+  filter(unitid %in% d3_schools)
+
+d3_sports
+
+# save data to clean folder
+write_csv(d3_sports, "../clean_data/d3_sports_ds.csv")
+
+
+
+# select d3 schools from coach_ds
+d3_coach = coach_ds %>%
+  filter(unitid %in% d3_schools)
+
+d3_coach
+
+# save data to clean folder
+write_csv(d3_coach, "../clean_data/d3_coach_ds.csv")
 ```
-
-
-
 
 
 
