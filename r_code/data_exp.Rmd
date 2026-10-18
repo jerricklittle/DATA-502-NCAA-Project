@@ -22,8 +22,16 @@ d3_coach = read_csv("../clean_data/d3_coach_ds.csv")
 # eda plots
 
 ```{r}
+d3_sports = d3_sports %>%
+  mutate(
+    institution_name = case_when(
+      institution_name == "Linfield College" ~ "Linfield University",
+      .default = institution_name
+    )
+  )
+
 nwc = c(
-  "Linfield University", "George Fox University", "Whitworth University", "Whitman University", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
+  "Linfield University", "George Fox University", "Whitworth University", "Whitman College", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
 )
 
 ds = d3_sports %>%
@@ -44,14 +52,8 @@ colorpal = c(
 
 
 solid = ds %>%
-  filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
-  mutate(
-    color = case_when(
-      institution_name %in% nwc ~ "nwc",
-      institution_name == "Willamette University" ~ "willamette",
-      .default = "d3"
-    )
-  )
+  filter(institution_name %in% nwc | institution_name == "Willamette University")
+
 
 ds %>%
   filter(!(institution_name %in% nwc), !(institution_name == "Willamette University")) %>%
@@ -69,6 +71,127 @@ ds %>%
     subtitle = "dashed line = median op_exp / median n_athletes",
   )
 ```
+
+```{r}
+points = d3_sports %>%
+  filter(sport == "Men's Football", institution_name %in% nwc)
+  
+willamette = d3_sports %>%
+  filter(sport == "Men's Football", institution_name == "Willamette University")
+  
+  
+  
+points %>%
+  ggplot(aes(x = year, y = op_exp_per_athlete)) +
+  geom_point(color = "grey70", alpha = .4) +
+  geom_smooth(se = F, color = "grey70", alpha = .5) +
+  geom_point(data = willamette, aes(x = year, y = op_exp_per_athlete), color = "darkred") +
+  #geom_line(data = willamette, aes(x = year, y = op_exp_per_athlete), color = "darkred") +
+  geom_smooth(data = willamette, se = F, color = "darkred") +
+  theme_light() +
+  labs(
+    title = "Willamette Consistently Spends Less per Athlete",
+    subtitle = "Compared with other NWC schools",
+    x = "Year",
+    y = "Operating Expenses per Athlete ($)"
+  )
+```
+
+
+```{r}
+d3_sports %>%
+  filter(institution_name %in% nwc | institution_name == "Willamette University", year >= 2020) %>%
+  ggplot(aes(x = fct_reorder(institution_name, op_exp_per_athlete, .fun = median), y = op_exp_per_athlete)) +
+  geom_point(aes(color = institution_name == "Willamette University",
+        group = institution_name), alpha = .2, position = "jitter") +
+  geom_boxplot(aes(color = institution_name == "Willamette University", group = institution_name), alpha = 0) +
+  theme_light() +
+  scale_x_discrete(
+    labels = c(
+      "Willamette University" = "WU", "University of Puget Sound" = "UPS", "Lewis & Clark College" = "L&C", "Pacific Lutheran University" = "PLU", "Pacific University" = "Pacific", "Whitworth University" = "Whitworth", "George Fox University" = "GFU", "Linfield University" = "Linfield", "Whitman College" = "Whitman"
+    )
+  ) +
+  scale_color_manual(
+    values = c("TRUE" = "darkred", "FALSE" = "gray70"),
+    guide = "none"
+  ) +
+  labs(
+    x = ""
+  )
+```
+
+
+```{r}
+library(tidytext)
+
+
+school_labels = c(
+  "Willamette University" = "WU", "University of Puget Sound" = "UPS", 
+  "Lewis & Clark College" = "L&C", "Pacific Lutheran University" = "PLU", 
+  "Pacific University" = "Pacific", "Whitworth University" = "Whitworth", 
+  "George Fox University" = "GFU", "Linfield University" = "Linfield", 
+  "Whitman College" = "Whitman"
+)
+
+
+
+wu_sports = d3_sports %>%
+  filter(institution_name == "Willamette University", year == 2025) %>%
+  distinct(sport) %>%
+  pull(sport)
+
+wu_sports
+
+d3_sports %>%
+  filter(institution_name %in% nwc | institution_name == "Willamette University", year == 2025, sport %in% wu_sports) %>%
+  ggplot(aes(x = reorder_within(institution_name, total_hc + total_ac, sport), y = total_hc + total_ac)) +
+  geom_col(aes(fill = institution_name == "Willamette University",
+        group = institution_name)) +
+  theme_light() +
+  facet_wrap(
+    ~ sport,
+    scales = "free_x",
+    labeller = as_labeller(c(
+      "Women's Basketball" = "WBB",
+      "Men's Basketball" = "MBB",
+      "Women's Soccer" = "WSOC",
+      "Men's Soccer" = "MSOC",
+      "Women's Softball" = "Softball",
+      "Men's Baseball" = "Baseball",
+      "Men's Football" = "Football",
+      "Women's Volleyball" = "Volleyball",
+      "Men's Track and Field (Indoor)" = "M T&F (I)",
+      "Men's Track and Field (Outdoor)" = "M T&F (O)",
+      "Women's Track and Field (Indoor)" = "W T&F (I)",
+      "Women's Track and Field (Outdoor)" = "W T&F (O)",
+      "Women's Lacrosse" = "Lacrosse",
+      "Men's Cross Country" = "M XC",
+      "Women's Cross Country" = "W XC",
+      "Men's Golf" = "M Golf",
+      "Women's Golf" = "W Golf",
+      "Men's Swimming" = "M Swim",
+      "Women's Swimming" = "W Swim",
+      "Women's Tennis" = "W Tennis",
+      "Men's Tennis" = "M Tennis",
+      "Women's Other Sports" = "W Other Sports"
+    ))
+  ) +
+  scale_x_reordered(
+    breaks = c()
+  ) +
+  scale_fill_manual(
+    values = c("TRUE" = "darkred", "FALSE" = "gray70"),
+    labels = c("TRUE" = "Willamette", "FALSE" = "Other NWC")
+  ) +
+  labs(
+    x = "",
+    y = "Total Number of Coaches",
+    fill = "School"
+  )
+
+```
+
+
 
 
 
