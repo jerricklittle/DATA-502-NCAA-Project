@@ -18,11 +18,7 @@ library(tidyverse)
 d3_instLevel = read_csv("../clean_data/d3_instLevel_ds.csv")
 d3_sports = read_csv("../clean_data/d3_sports_ds.csv")
 d3_coach = read_csv("../clean_data/d3_coach_ds.csv")
-```
 
-# eda plots
-
-```{r}
 d3_sports = d3_sports %>%
   mutate(
     institution_name = case_when(
@@ -34,21 +30,30 @@ d3_sports = d3_sports %>%
 nwc = c(
   "Linfield University", "George Fox University", "Whitworth University", "Whitman College", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
 )
+```
+
+# eda plots
+
+```{r}
+selected_sport = "Men's Football"
+selected_year = 2025
+
+title = paste0("Divison III ", selected_sport, " Operating Expenses vs Number of Athletes in ", as.numeric(selected_year))
 
 ds = d3_sports %>%
-  filter(sport == "Men's Football", year == 2025) %>%
+  filter(sport == selected_sport, year == selected_year) %>%
   mutate(
     color = case_when(
-      institution_name %in% nwc ~ "nwc",
-      institution_name == "Willamette University" ~ "willamette",
-      .default = "d3"
+      institution_name %in% nwc ~ "Northwest Conference",
+      institution_name == "Willamette University" ~ "Willamette University",
+      .default = "Division III"
     )
   )
 
 colorpal = c(
-  "willamette" = "darkred",
-  "nwc" = "blue",
-  "d3" = "black"
+  "Willamette University" = "darkred",
+  "Northwest Conference" = "blue",
+  "Division III" = "black"
 )
 
 
@@ -68,42 +73,53 @@ ds %>%
   scale_y_continuous(labels = function (x) paste0(x/1000, "k"), limits = c(0, max(ds$op_exp)), expand = c(0, 0)) +
   theme_bw() +
   labs(
-    title = "D3 football operating expenses vs number of athletes",
-    subtitle = "dashed line = median op_exp / median n_athletes",
-    x = "# of Athletes",
-    y = "Operating expenses"
+    title = title,
+    subtitle = "Dashed line = median operating expense per athlete",
+    x = "Number of Athletes",
+    y = "Operating Expenses ($)",
+    color = "Institution"
   )
 ```
 
 ```{r}
+selected_sport = "Men's Football"
+
+title = paste0("Willamette Consistently Spends Less per Athlete for ", selected_sport)
+
 points = d3_sports %>%
-  filter(sport == "Men's Football", institution_name %in% nwc)
+  filter(sport == selected_sport, institution_name %in% nwc)
   
 willamette = d3_sports %>%
-  filter(sport == "Men's Football", institution_name == "Willamette University")
+  filter(sport == selected_sport, institution_name == "Willamette University")
   
   
   
 points %>%
   ggplot(aes(x = year, y = op_exp_per_athlete)) +
-  geom_point(color = "grey70", alpha = .4) +
-  geom_smooth(se = F, color = "grey70", alpha = .5) +
-  geom_point(data = willamette, aes(x = year, y = op_exp_per_athlete), color = "darkred") +
-  #geom_line(data = willamette, aes(x = year, y = op_exp_per_athlete), color = "darkred") +
-  geom_smooth(data = willamette, se = F, color = "darkred") +
+  geom_point(alpha = .4, aes(color = "Other NWC Schools")) +
+  geom_smooth(se = F, alpha = .5, aes(color = "Other NWC Schools")) +
+  geom_point(data = willamette, aes(x = year, y = op_exp_per_athlete, color = "Willamette University")) +
+  geom_smooth(data = willamette, se = F, aes(color = "Willamette University")) +
   theme_light() +
+  scale_color_manual(
+    values = c(
+      "Willamette University" = "darkred",
+      "Other NWC Schools" = "grey70"
+    )
+  ) +
   labs(
-    title = "Willamette Consistently Spends Less per Athlete",
-    subtitle = "Compared with other NWC schools",
+    title = title,
+    subtitle = "Compared with other Northwest Conference schools",
     x = "Year",
-    y = "Operating Expenses per Athlete ($)"
+    y = "Operating Expense per Athlete ($)",
+    color = "Institution"
   )
 ```
 
 
 ```{r}
 d3_sports %>%
-  filter(institution_name %in% nwc | institution_name == "Willamette University", year >= 2020) %>%
+  filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
   ggplot(aes(x = fct_reorder(institution_name, op_exp_per_athlete, .fun = median), y = op_exp_per_athlete)) +
   geom_point(aes(color = institution_name == "Willamette University",
         group = institution_name), alpha = .2, position = "jitter") +
@@ -139,14 +155,6 @@ school_labels = c(
   "Whitman College" = "Whitman"
 )
 
-
-
-wu_sports = d3_sports %>%
-  filter(institution_name == "Willamette University", year == 2025) %>%
-  distinct(sport) %>%
-  pull(sport)
-
-wu_sports
 
 d3_sports %>%
   filter(institution_name %in% nwc | institution_name == "Willamette University", year == 2025, sport %in% wu_sports) %>%
@@ -190,6 +198,7 @@ d3_sports %>%
     labels = c("TRUE" = "Willamette", "FALSE" = "Other NWC")
   ) +
   labs(
+    title = "Total Number of Coaches by Sport",
     x = "",
     y = "Total Number of Coaches",
     fill = "School",
@@ -198,6 +207,8 @@ d3_sports %>%
   )
 
 ```
+
+
 ```{r}
 head(d3_instLevel)
 
@@ -233,6 +244,371 @@ d3_instLevel %>%
   # )+
   theme_bw()
 ```
+
+
+```{r}
+nwc_med = d3_instLevel %>%
+  filter(institution_name %in% nwc) %>%
+  summarize(
+    .by = year, 
+    med_opexp_athlete = median(IL_TOTAL_OPEXP_INCLCOED/(UNDUP_CT_PARTIC_MEN + UNDUP_CT_PARTIC_WOMEN)),
+    med_exp_athlete = median(GRND_TOTAL_EXPENSE/(UNDUP_CT_PARTIC_MEN + UNDUP_CT_PARTIC_WOMEN))
+  )
+
+wu_med = d3_instLevel %>%
+  filter(institution_name == "Willamette University") %>%
+  summarize(
+    .by = year, 
+    med_opexp_athlete = median(IL_TOTAL_OPEXP_INCLCOED/(UNDUP_CT_PARTIC_MEN + UNDUP_CT_PARTIC_WOMEN)),
+    med_exp_athlete = median(GRND_TOTAL_EXPENSE/(UNDUP_CT_PARTIC_MEN + UNDUP_CT_PARTIC_WOMEN))
+    )
+
+
+nwc_med %>%
+  ggplot(aes(x = year)) +
+  
+  # Other NWC schools: operating expenses (dashed)
+  geom_point(aes(y = med_opexp_athlete, color = "Other NWC Schools")) +
+  geom_line(aes(y = med_opexp_athlete, color = "Other NWC Schools", linetype = "Operating Expenses")) +
+
+  # Other NWC schools: total expenses (solid)
+  geom_point(aes(y = med_exp_athlete, color = "Other NWC Schools")) +
+  geom_line(aes(y = med_exp_athlete, color = "Other NWC Schools", linetype = "Total Expenses")
+  ) +
+
+  # Willamette: operating expenses (dashed)
+  geom_point(data = wu_med, aes(y = med_opexp_athlete, color = "Willamette University")) +
+  geom_line(data = wu_med, aes(y = med_opexp_athlete, color = "Willamette University", linetype = "Operating Expenses")) +
+
+  # Willamette: total expenses (solid)
+  geom_point(data = wu_med, aes(y = med_exp_athlete, color = "Willamette University")) +
+  geom_line(data = wu_med, aes(y = med_exp_athlete, color = "Willamette University", linetype = "Total Expenses")) +
+
+  scale_color_manual(
+    name = "Institution",
+    values = c(
+      "Other NWC Schools" = "grey60",
+      "Willamette University" = "darkred"
+    )
+  ) +
+  scale_linetype_manual(
+    name = "Expense Type",
+    values = c(
+      "Operating Expenses" = "dashed",
+      "Total Expenses" = "solid"
+    )
+  ) +
+  scale_x_continuous(
+    breaks = seq(2000, 2025, by = 1)
+  ) +
+  theme_light() +
+  labs(
+    title = "Less of Willamette's Athletic Expenses Go Directly to Athletes",
+    subtitle = "Compared with other NWC schools",
+    x = "Year",
+    y = "Expenses per Athlete ($)"
+  )
+```
+
+```{r}
+nwc_ = d3_instLevel %>%
+  filter(institution_name %in% nwc)
+
+wu = d3_instLevel %>%
+  filter(institution_name == "Willamette University")
+
+nwc_ %>%
+  bind_rows(wu) %>%
+  ggplot(aes(x = year, y = RECRUITEXP_TOTAL/(UNDUP_CT_PARTIC_MEN + UNDUP_CT_PARTIC_WOMEN))) +
+  geom_point(aes(color = institution_name == "Willamette University")) +
+  geom_smooth(data = wu, se = F, color = "darkred") +
+  geom_smooth(data = nwc_, se = F, color = "grey70") +
+  theme_light() +
+  scale_color_manual(
+    values = c("TRUE" = "darkred", "FALSE" = "gray70"),
+    labels = c("TRUE" = "Willamette", "FALSE" = "Other NWC")
+  ) +
+  scale_x_continuous(
+    breaks = seq(2000, 2025, by = 1)
+  ) +
+  labs(
+    title = "How Much is Spent on Recruiting Over Time",
+    x = "Year",
+    y = "Amount Spent on Recruiting per Athlete ($)",
+    color = "Institution"
+  )
+```
+
+
+```{r}
+expense_breakdown = d3_instLevel %>%
+  filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
+  mutate(
+    hc_salaries =
+      coalesce(HDCOACH_SALARY_MEN * NUM_HDCOACH_MEN, 0) +
+      coalesce(HDCOACH_SALARY_WOMEN * NUM_HDCOACH_WOMEN, 0) +
+      coalesce(HDCOACH_SALARY_COED * NUM_HDCOACH_COED, 0),
+
+    ac_salaries =
+      coalesce(ASCOACH_SALARY_MEN * NUM_ASCOACH_MEN, 0) +
+      coalesce(ASCOACH_SALARY_WOMEN * NUM_ASCOACH_WOMEN, 0) +
+      coalesce(ASCOACH_SALARY_COED * NUM_ASCOACH_COED, 0),
+
+    recruiting =
+      coalesce(RECRUITEXP_MEN, 0) +
+      coalesce(RECRUITEXP_WOMEN, 0) +
+      coalesce(RECRUITEXP_COED, 0),
+
+    operating = IL_TOTAL_OPEXP_INCLCOED,
+    
+    other = GRND_TOTAL_EXPENSE - operating - recruiting - hc_salaries - ac_salaries
+  )
+
+
+selected_year = 2025
+title = paste0("Where Willamette's Athletic Spending Differed in ", selected_year)
+
+expense_breakdown %>%
+  filter(year == selected_year) %>%
+  mutate(
+    operating = operating / GRND_TOTAL_EXPENSE * 100,
+    recruiting = recruiting / GRND_TOTAL_EXPENSE * 100,
+    hc_salaries = hc_salaries / GRND_TOTAL_EXPENSE * 100,
+    ac_salaries = ac_salaries / GRND_TOTAL_EXPENSE * 100,
+    other = other / GRND_TOTAL_EXPENSE * 100
+  ) %>%
+  select(
+    institution_name,
+    operating,
+    recruiting,
+    hc_salaries,
+    ac_salaries,
+    other
+  ) %>%
+  pivot_longer(
+    cols = -institution_name,
+    names_to = "category",
+    values_to = "percentage"
+  ) %>%
+  group_by(category) %>%
+  mutate(
+    nwc_median = median(
+      percentage[institution_name %in% nwc],
+      na.rm = TRUE
+    )
+  ) %>%
+  ungroup() %>%
+  filter(institution_name == "Willamette University") %>%
+  mutate(
+    difference = percentage - nwc_median,
+    category = recode(
+      category,
+      operating = "Operating expenses",
+      recruiting = "Recruiting",
+      hc_salaries = "Head coach salaries",
+      ac_salaries = "Assistant coach salaries",
+      other = "Other expenses"
+    )
+  ) %>%
+  ggplot(aes(x = difference, y = reorder(category, difference), fill = difference > 0)) +
+  geom_col() +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  scale_x_continuous(
+    labels = \(x) paste0(x, " pp")
+  ) +
+  theme_light() +
+  theme(
+    legend.position = "none"
+  ) +
+  labs(
+    title = title,
+    subtitle = "Difference in budget share from the NWC median",
+    x = "Difference in percentage points",
+    y = ""
+  )
+```
+
+```{}
+
+expense_breakdown %>%
+  filter(year == 2025) %>%
+  select(institution_name, operating, recruiting, hc_salaries, ac_salaries, other) %>%
+  pivot_longer(
+    cols = c(operating, recruiting, hc_salaries, ac_salaries, other),
+    names_to = "category",
+    values_to = "expense"
+  ) %>%
+  ggplot(aes(
+    x = institution_name,
+    y = expense,
+    fill = category
+  )) +
+  geom_col() +
+  labs(
+    x = NULL,
+    y = "Grand Total Expenses ($)",
+    fill = "Expense Category"
+  ) +
+  theme_light() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+
+expense_breakdown %>%
+  filter(year == 2025) %>%
+  select(
+    institution_name,
+    operating, recruiting,
+    hc_salaries, ac_salaries, other
+  ) %>%
+  pivot_longer(
+    cols = c(operating, recruiting, hc_salaries, ac_salaries, other),
+    names_to = "category",
+    values_to = "expense"
+  ) %>%
+  ggplot(aes(
+    x = reorder(institution_name, expense),
+    y = expense,
+    fill = institution_name == "Willamette University"
+  )) +
+  geom_col() +
+  facet_wrap(~ category, scales = "free_y") +
+  coord_flip() +
+  scale_fill_manual(
+    values = c("TRUE" = "darkred", "FALSE" = "gray70"),
+    guide = "none"
+  ) +
+  labs(
+    x = NULL,
+    y = "Expenses ($)",
+    title = "Athletic Expense Breakdown by School, 2025"
+  ) +
+  theme_light()
+
+
+
+expense_breakdown %>%
+  filter(year == 2025) %>%
+  mutate(
+    operating_pct = operating / GRND_TOTAL_EXPENSE * 100,
+    recruiting_pct = recruiting / GRND_TOTAL_EXPENSE * 100,
+    hc_salaries_pct = hc_salaries / GRND_TOTAL_EXPENSE * 100,
+    ac_salaries_pct = ac_salaries / GRND_TOTAL_EXPENSE * 100,
+    other_pct = other / GRND_TOTAL_EXPENSE * 100
+  ) %>%
+  select(
+    institution_name,
+    operating_pct, recruiting_pct,
+    hc_salaries_pct, ac_salaries_pct, other_pct
+  ) %>%
+  pivot_longer(
+    cols = ends_with("_pct"),
+    names_to = "category",
+    values_to = "percentage"
+  ) %>%
+  ggplot(aes(
+    x = institution_name,
+    y = percentage,
+    fill = category
+  )) +
+  geom_col() +
+  labs(
+    x = NULL,
+    y = "Percentage of Grand Total Expenses",
+    fill = "Expense Category",
+    title = "Athletic Expense Composition by School",
+    subtitle = "2025"
+  ) +
+  scale_y_continuous(
+    labels = \(x) paste0(x, "%"),
+    limits = c(0, 100)
+  ) +
+  theme_light() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+
+expense_breakdown %>%
+  filter(year == 2025) %>%
+  select(
+    institution_name,
+    operating, recruiting,
+    hc_salaries, ac_salaries, other
+  ) %>%
+  pivot_longer(
+    cols = -institution_name,
+    names_to = "category",
+    values_to = "percentage"
+  ) %>%
+  mutate(
+    category = recode(
+      category,
+      operating = "Op Exp",
+      recruiting = "Rec",
+      hc_salaries = "HC Sal",
+      ac_salaries = "AC Sal",
+      other = "Other"
+    )
+  ) %>%
+  group_by(institution_name) %>%
+  mutate(
+    category = reorder(category, percentage)
+  ) %>%
+  ungroup() %>%
+  ggplot(aes(x = percentage, y = category)) +
+  geom_col(fill = "gray65") +
+  facet_wrap(~ institution_name, scales = "free_y") +
+  labs(
+    x = "Percent of Grand Total Expenses",
+    y = NULL,
+    title = "Athletic Expense Composition by School",
+    subtitle = "2025"
+  ) +
+  theme_light()
+
+```
+
+
+
+
+
+```{r}
+expense_breakdown %>%
+  mutate(
+    operating_pct = operating / GRND_TOTAL_EXPENSE * 100
+  ) %>%
+  group_by(year) %>%
+  mutate(
+    nwc_median = median(operating_pct[institution_name %in% nwc], na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  filter(institution_name == "Willamette University") %>%
+  ggplot(aes(x = year)) +
+  geom_line(aes(y = operating_pct, color = "Willamette University"), linewidth = 1) +
+  geom_line(aes(y = nwc_median, color = "Other NWC Schools"), linewidth = 1, linetype = "dashed") +
+  labs(
+    title = "Operating Expenses as a Share of Athletics Spending",
+    x = "Year",
+    y = "Operating expenses (% of total)",
+    color = "Institution"
+  ) +
+  scale_color_manual(
+    values = c(
+      "Other NWC Schools" = "grey60",
+      "Willamette University" = "darkred"
+    )
+  ) +
+  scale_y_continuous(
+    labels = \(x) paste0(x, "%")
+  ) +
+  scale_x_continuous(
+    breaks = seq(2000, 2025, by = 1)
+  ) +
+  theme_light()
+```
+
 
 
 
