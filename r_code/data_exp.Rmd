@@ -1,6 +1,6 @@
 ---
-title: "data_exp"
-author: "Jenna Hopkins"
+title: "Project Milestone 4"
+author: "Jenna Hopkins, Jerrick Little"
 date: "`r Sys.Date()`"
 output: pdf_document
 ---
