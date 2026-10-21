@@ -23,8 +23,7 @@ d3_coach = read_csv("../clean_data/d3_coach_ds.csv")
 d3_sports = d3_sports %>%
   mutate(
     institution_name = case_when(
-      institution_name == "Linfield College" ~ "Linfield University",
-      institution_name == "Linfield College-McMinnville Campus" ~ "Linfield University",
+      str_starts(institution_name, "Linfield") ~ "Linfield University",
       .default = institution_name
     )
   )
@@ -32,7 +31,7 @@ d3_sports = d3_sports %>%
 d3_instLevel = d3_instLevel %>%
   mutate(
     institution_name = case_when(
-      institution_name == "Linfield College-McMinnville Campus" ~ "Linfield University",
+      str_starts(institution_name, "Linfield") ~ "Linfield University",
       .default = institution_name
     )
   )
@@ -40,7 +39,7 @@ d3_instLevel = d3_instLevel %>%
 d3_coach = d3_coach %>%
   mutate(
     institution_name = case_when(
-      institution_name == "Linfield College" ~ "Linfield University",
+      str_starts(institution_name, "Linfield") ~ "Linfield University",
       .default = institution_name
     )
   )
@@ -158,10 +157,12 @@ Analysis
 ```{r, warning = F, message = F}
 d3_sports %>%
   filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
-  ggplot(aes(x = fct_reorder(institution_name, op_exp_per_athlete, .fun = median), y = op_exp_per_athlete)) +
+  filter(year >= 2020) %>%
+  ggplot(aes(x = reorder_within(institution_name, op_exp_per_athlete,year, fun = "median"), y = op_exp_per_athlete)) +
   geom_point(aes(color = institution_name == "Willamette University",
         group = institution_name), alpha = .2, position = "jitter") +
   geom_boxplot(aes(color = institution_name == "Willamette University", group = institution_name), alpha = 0) +
+    facet_wrap(~year)+
   theme_light() +
   scale_x_discrete(
     labels = c(
@@ -177,13 +178,14 @@ d3_sports %>%
     y = "Amount Spent per Athlete",
     title = "How Spoiled Are Athletes?",
     subtitle = "$(USD) spent on individual athletes by school"
-  )
+  )+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 Analysis
 
 
-```{}
+```{r}
 library(tidytext)
 
 
