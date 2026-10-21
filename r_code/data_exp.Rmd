@@ -23,37 +23,10 @@ d3_instLevel = read_csv("../clean_data/d3_instLevel_ds.csv")
 d3_sports = read_csv("../clean_data/d3_sports_ds.csv")
 d3_coach = read_csv("../clean_data/d3_coach_ds.csv")
 
-d3_sports = d3_sports %>%
-  mutate(
-    institution_name = case_when(
-      str_starts(institution_name, "Linfield") ~ "Linfield University", #Linfield has a bunch names
-      .default = institution_name
-    )
-  )
 
-d3_instLevel = d3_instLevel %>%
-  mutate(
-    institution_name = case_when(
-      str_starts(institution_name, "Linfield") ~ "Linfield University",
-      .default = institution_name
-    )
-  )
-
-d3_coach = d3_coach %>%
-  mutate(
-    institution_name = case_when(
-      str_starts(institution_name, "Linfield") ~ "Linfield University",
-      .default = institution_name
-    )
-  )
-
-nwc = c(
+nwc = c( # NWC teams with the exception of Willamette
   "Linfield University", "George Fox University", "Whitworth University", "Whitman College", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
-) #NWC teams
-
-# 
-# d3_sports %>%
-#   filter(str_starts(institution_name, "Linfield"))
+)
 ```
 
 # EDA plots
