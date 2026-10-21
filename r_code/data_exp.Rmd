@@ -24,6 +24,7 @@ d3_sports = d3_sports %>%
   mutate(
     institution_name = case_when(
       institution_name == "Linfield College" ~ "Linfield University",
+      institution_name == "Linfield College-McMinnville Campus" ~ "Linfield University",
       .default = institution_name
     )
   )
@@ -47,6 +48,7 @@ d3_coach = d3_coach %>%
 nwc = c(
   "Linfield University", "George Fox University", "Whitworth University", "Whitman College", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
 )
+
 ```
 
 # EDA plots
