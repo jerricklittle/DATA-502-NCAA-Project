@@ -98,16 +98,20 @@ ds %>%
   scale_x_continuous(limits = c(0, max(ds$n_athletes)), expand = c(0, 0)) +
   scale_y_continuous(labels = function (x) paste0(x/1000, "k"), limits = c(0, max(ds$op_exp)), expand = c(0, 0)) +
   theme_bw() +
+  theme(
+    plot.caption.position = "plot"
+  ) +
   labs(
     title = "Willamette Football Spends Less With Less Athletes Than Other NWC Schools",
-    subtitle = "Dashed line = median operating expense per athlete",
+    subtitle = "Dashed line = median operating expense per athlete in 2025",
+    caption = "Data retrieved from the Equity in Athletics Data Analysis Cutting Tool\nby the U.S. Department of Education (https://ope.ed.gov/athletics/).",
     x = "Number of Athletes",
     y = "Operating Expenses ($)",
     color = "Institution"
   )
 ```
 
-Analysis
+This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which can show multiple different sports and years, we can show that this finding is consistent and change needs to be made.
 
 ## Plot 2: Operating Expenses per Athlete by Year
 
@@ -134,6 +138,9 @@ points %>%
   geom_point(data = willamette, aes(x = year, y = op_exp_per_athlete, color = "Willamette University")) +
   geom_smooth(data = willamette, se = F, aes(color = "Willamette University")) +
   theme_light() +
+  theme(
+    plot.caption.position = "plot"
+  ) +
   scale_color_manual(
     values = c(
       "Willamette University" = "darkred",
@@ -145,12 +152,13 @@ points %>%
     subtitle = "Compared with other Northwest Conference schools",
     x = "Year",
     y = "Operating Expense per Athlete ($)",
-    color = "Institution"
+    color = "Institution",
+    caption = "Data retrieved from the Equity in Athletics Data Analysis Cutting Tool\nby the U.S. Department of Education (https://ope.ed.gov/athletics/)."
   )
 ```
 
 
-Analysis
+This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which can show multiple different sports over time, we can show that this finding is consistent and change needs to be made.
 
 ## Plot 3: Operating Expenses per Athlete by School
 
@@ -159,12 +167,17 @@ Analysis
 
 ```{r, warning = F, message = F}
 d3_sports %>%
-  filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
+  filter(institution_name %in% nwc | institution_name == "Willamette University", year >= 2020) %>%
   ggplot(aes(x = fct_reorder(institution_name, op_exp_per_athlete, .fun = median), y = op_exp_per_athlete)) +
   geom_point(aes(color = institution_name == "Willamette University",
         group = institution_name), alpha = .2, position = "jitter") +
   geom_boxplot(aes(color = institution_name == "Willamette University", group = institution_name), alpha = 0) +
+  facet_wrap(~year) +
   theme_light() +
+  theme(
+    plot.caption.position = "plot",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )  +
   scale_x_discrete(
     labels = c(
       "Willamette University" = "WU", "University of Puget Sound" = "UPS", "Lewis & Clark College" = "L&C", "Pacific Lutheran University" = "PLU", "Pacific University" = "Pacific", "Whitworth University" = "Whitworth", "George Fox University" = "GFU", "Linfield University" = "Linfield", "Whitman College" = "Whitman"
@@ -175,14 +188,15 @@ d3_sports %>%
     guide = "none"
   ) +
   labs(
-    x = "",
-    y = "Amount Spent per Athlete",
-    title = "How Spoiled Are Athletes?",
-    subtitle = "$(USD) spent on individual athletes by school"
+    x = "School",
+    y = "Operating Expense per Athlete",
+    title = "Willamette Has Less Operating Expenses Than Other NWC Schools",
+    subtitle = "$(USD) spent on individual athletes by school",
+    caption = "Data retrieved from the Equity in Athletics Data Analysis Cutting Tool\nby the U.S. Department of Education (https://ope.ed.gov/athletics/)."
   )
 ```
 
-Analysis
+This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which shows data for all sports at once across multiple different years, we can show that this finding is consistent and change needs to be made.
 
 
 ```{}
@@ -268,17 +282,21 @@ d3_instLevel %>%
     labels = c("TRUE" = "Willamette", "FALSE" = "Other NWC")
   )+
   theme_bw() +
+  theme(
+    plot.caption.position = "plot"
+  ) +
   labs(
-    title ="Who Splurgles on Head Coaches?",
+    title ="Willamette Pays Their Coaches Among the Lowest in the NWC",
     subtitle = "Total NWC HC salaries across years",
     y = "Cumulative Head Coach Salaries ($)",
     x = "Year",
-    color = "School"
+    color = "School",
+    caption = "Data retrieved from the Equity in Athletics Data Analysis Cutting Tool\nby the U.S. Department of Education (https://ope.ed.gov/athletics/)."
   )
 ```
 
+Willamette, on average, per individual coach, ranks the lowest in 2025 in the Northwest Conference. This is significant because Willamette sports are continuing to generally struggle. Inability to pay top candidates hurts the ability of our teams to be the most competitive they can, because development of our athletes is limited. Investing higher amounts in coaches is needed to observe change instead of seeing a continuous slump.
 
-Analysis
 
 ```{}
 d3_instLevel %>%
@@ -472,18 +490,20 @@ expense_breakdown %>%
   ) +
   theme_light() +
   theme(
-    legend.position = "none"
+    legend.position = "none",
+    plot.caption.position = "plot"
   ) +
   labs(
-    title = title,
-    subtitle = "Difference in budget share from the NWC median",
+    title = "Coaching Salaries Has More Share in Willamette's Budget",
+    subtitle = "Compared to NWC median",
     x = "Difference in percentage points",
-    y = ""
+    y = "Expense Category",
+    caption = "Data retrieved from the Equity in Athletics Data Analysis Cutting Tool\nby the U.S. Department of Education (https://ope.ed.gov/athletics/)."
   )
 ```
 
 
-Analysis
+While Willamette coaches need to be more invested in like our graph states above, the gap between expenses on athletes needs to be closed. As a result, more immediate change can be forecasted by increasing the percentage of our budget we spend on recruiting, operating expenses, and other expenses.
 
 ```{}
 
