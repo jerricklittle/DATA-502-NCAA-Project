@@ -111,7 +111,7 @@ ds %>%
   )
 ```
 
-This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which can show multiple different sports and years, we can show that this finding is consistent and change needs to be made.
+**Analysis** This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which can show multiple different sports and years, we can show that this finding is consistent and change needs to be made.
 
 ## Plot 2: Operating Expenses per Athlete by Year
 
@@ -158,7 +158,7 @@ points %>%
 ```
 
 
-This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which can show multiple different sports over time, we can show that this finding is consistent and change needs to be made.
+**Analysis** This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which can show multiple different sports over time, we can show that this finding is consistent and change needs to be made.
 
 ## Plot 3: Operating Expenses per Athlete by School
 
@@ -196,7 +196,7 @@ d3_sports %>%
   )
 ```
 
-This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which shows data for all sports at once across multiple different years, we can show that this finding is consistent and change needs to be made.
+**Analysis** This is our main point, that Willamette spends less than other schools, which leads us with less opportunities for growth. By presenting this graphic which shows data for all sports at once across multiple different years, we can show that this finding is consistent and change needs to be made.
 
 
 ```{}
@@ -295,7 +295,7 @@ d3_instLevel %>%
   )
 ```
 
-Willamette, on average, per individual coach, ranks the lowest in 2025 in the Northwest Conference. This is significant because Willamette sports are continuing to generally struggle. Inability to pay top candidates hurts the ability of our teams to be the most competitive they can, because development of our athletes is limited. Investing higher amounts in coaches is needed to observe change instead of seeing a continuous slump.
+**Analysis** Willamette, on average, per individual coach, ranks the lowest in 2025 in the Northwest Conference. This is significant because Willamette sports are continuing to generally struggle. Inability to pay top candidates hurts the ability of our teams to be the most competitive they can, because development of our athletes is limited. Investing higher amounts in coaches is needed to observe change instead of seeing a continuous slump.
 
 
 ```{}
@@ -503,7 +503,7 @@ expense_breakdown %>%
 ```
 
 
-While Willamette coaches need to be more invested in like our graph states above, the gap between expenses on athletes needs to be closed. As a result, more immediate change can be forecasted by increasing the percentage of our budget we spend on recruiting, operating expenses, and other expenses.
+**Analysis** While Willamette coaches need to be more invested in like our graph states above, the gap between expenses on athletes needs to be closed. As a result, more immediate change can be forecasted by increasing the percentage of our budget we spend on recruiting, operating expenses, and other expenses.
 
 ```{}
 
