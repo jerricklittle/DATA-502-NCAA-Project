@@ -48,6 +48,9 @@ nwc = c(
   "Linfield University", "George Fox University", "Whitworth University", "Whitman College", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
 )
 
+
+d3_sports %>%
+  filter(str_starts(institution_name, "Linfield"))
 ```
 
 # EDA plots
@@ -96,7 +99,7 @@ ds %>%
   scale_y_continuous(labels = function (x) paste0(x/1000, "k"), limits = c(0, max(ds$op_exp)), expand = c(0, 0)) +
   theme_bw() +
   labs(
-    title = title,
+    title = "Willamette Football Has Less Athletes and Spends Less Than Other NWC Schools",
     subtitle = "Dashed line = median operating expense per athlete",
     x = "Number of Athletes",
     y = "Operating Expenses ($)",
