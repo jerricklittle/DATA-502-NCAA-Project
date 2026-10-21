@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
-# load packages and datasets
+# Load packages and datasets
 
 ```{r, message = F}
 library(tidyverse)
@@ -49,7 +49,12 @@ nwc = c(
 )
 ```
 
-# eda plots
+# EDA plots
+
+## Plot 1: Operating Expenses vs Number of Athletes
+
+* Geometries: Points, ABline, text
+* Aesthetics: x = number of athletes, y = operating expenses, color = type of school
 
 ```{r}
 selected_sport = "Men's Football"
@@ -98,7 +103,14 @@ ds %>%
   )
 ```
 
-```{r}
+Analysis
+
+## Plot 2: Operating Expenses per Athlete by Year
+
+* Geometries: Points, smooth line
+* Aesthetics: x = year, y = operating expenses per athlete, color = type of school
+
+```{r, warning = F, message = F}
 selected_sport = "Men's Football"
 
 title = paste0("Willamette Consistently Spends Less per Athlete for ", selected_sport)
@@ -134,7 +146,14 @@ points %>%
 ```
 
 
-```{r}
+Analysis
+
+## Plot 3: Operating Expenses per Athlete by School
+
+* Geometries: Points, boxplot
+* Aesthetics: x = school, color = type of school
+
+```{r, warning = F, message = F}
 d3_sports %>%
   filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
   ggplot(aes(x = fct_reorder(institution_name, op_exp_per_athlete, .fun = median), y = op_exp_per_athlete)) +
@@ -159,8 +178,10 @@ d3_sports %>%
   )
 ```
 
+Analysis
 
-```{r}
+
+```{}
 library(tidytext)
 
 
@@ -225,6 +246,11 @@ d3_sports %>%
 ```
 
 
+## Plot 4: Headcoach Salary vs Year
+
+* Geometries: Lines
+* Aesthetics: x = year, y = head coach salaries, color = type of school
+
 ```{r}
 d3_instLevel %>%
   mutate(HC_sal = HDCOACH_SAL_FTE_MEN+HDCOACH_SAL_FTE_WOMN) %>%
@@ -245,7 +271,12 @@ d3_instLevel %>%
     x = "Year",
     color = "School"
   )
+```
 
+
+Analysis
+
+```{}
 d3_instLevel %>%
   mutate(HC_sal = HDCOACH_SAL_FTE_MEN+HDCOACH_SAL_FTE_WOMN) %>%
   filter(institution_name %in% nwc| institution_name == "Willamette University")%>%
@@ -260,7 +291,7 @@ d3_instLevel %>%
 ```
 
 
-```{r}
+```{}
 nwc_med = d3_instLevel %>%
   filter(institution_name %in% nwc) %>%
   summarize(
@@ -324,7 +355,7 @@ nwc_med %>%
   )
 ```
 
-```{r}
+```{}
 nwc_ = d3_instLevel %>%
   filter(institution_name %in% nwc)
 
@@ -353,6 +384,11 @@ nwc_ %>%
   )
 ```
 
+
+## Plot 5: Percent Difference in Expense Categories from NWC Median
+
+* Geometries: Columns, vline
+* Aesthetics: x = difference in percentage, y = expense category, fill = positive/negative
 
 ```{r}
 expense_breakdown = d3_instLevel %>%
@@ -441,6 +477,9 @@ expense_breakdown %>%
     y = ""
   )
 ```
+
+
+Analysis
 
 ```{}
 
@@ -588,7 +627,7 @@ expense_breakdown %>%
 
 
 
-```{r}
+```{}
 expense_breakdown %>%
   mutate(
     operating_pct = operating / GRND_TOTAL_EXPENSE * 100
