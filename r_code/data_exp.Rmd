@@ -99,7 +99,7 @@ ds %>%
   scale_y_continuous(labels = function (x) paste0(x/1000, "k"), limits = c(0, max(ds$op_exp)), expand = c(0, 0)) +
   theme_bw() +
   labs(
-    title = "Willamette Football Has Less Athletes and Spends Less Than Other NWC Schools",
+    title = "Willamette Football Spends Less With Less Athletes Than Other NWC Schools",
     subtitle = "Dashed line = median operating expense per athlete",
     x = "Number of Athletes",
     y = "Operating Expenses ($)",
@@ -160,12 +160,10 @@ Analysis
 ```{r, warning = F, message = F}
 d3_sports %>%
   filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
-  filter(year >= 2020) %>%
-  ggplot(aes(x = reorder_within(institution_name, op_exp_per_athlete,year, fun = "median"), y = op_exp_per_athlete)) +
+  ggplot(aes(x = fct_reorder(institution_name, op_exp_per_athlete, .fun = median), y = op_exp_per_athlete)) +
   geom_point(aes(color = institution_name == "Willamette University",
         group = institution_name), alpha = .2, position = "jitter") +
   geom_boxplot(aes(color = institution_name == "Willamette University", group = institution_name), alpha = 0) +
-    facet_wrap(~year)+
   theme_light() +
   scale_x_discrete(
     labels = c(
@@ -181,14 +179,13 @@ d3_sports %>%
     y = "Amount Spent per Athlete",
     title = "How Spoiled Are Athletes?",
     subtitle = "$(USD) spent on individual athletes by school"
-  )+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  )
 ```
 
 Analysis
 
 
-```{r}
+```{}
 library(tidytext)
 
 
