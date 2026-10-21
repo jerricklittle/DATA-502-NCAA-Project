@@ -68,8 +68,10 @@ ds %>%
   scale_y_continuous(labels = function (x) paste0(x/1000, "k"), limits = c(0, max(ds$op_exp)), expand = c(0, 0)) +
   theme_bw() +
   labs(
-    title = "d3 football operating expenses vs number of athletes",
+    title = "D3 football operating expenses vs number of athletes",
     subtitle = "dashed line = median op_exp / median n_athletes",
+    x = "# of Athletes",
+    y = "Operating expenses"
   )
 ```
 
@@ -117,7 +119,10 @@ d3_sports %>%
     guide = "none"
   ) +
   labs(
-    x = ""
+    x = "",
+    y = "Amount Spent per Athlete",
+    title = "How Spoiled Are Athletes?",
+    subtitle = "$(USD) spent on individual athletes by school"
   )
 ```
 
@@ -187,7 +192,9 @@ d3_sports %>%
   labs(
     x = "",
     y = "Total Number of Coaches",
-    fill = "School"
+    fill = "School",
+    title = "Is Willamette Undercoached?",
+    subtitle = "Total # of coaches by sport in the NWC"
   )
 
 ```
@@ -203,9 +210,16 @@ d3_instLevel %>%
   scale_x_continuous(breaks = c(2016,2018,2020,2022,2024))+
   scale_color_manual(
     values = c("TRUE" = "darkred", "FALSE" = "gray70"),
-    guide = "none"
+    labels = c("TRUE" = "Willamette", "FALSE" = "Other NWC")
   )+
-  theme_bw()
+  theme_bw() +
+  labs(
+    title ="Who Splurgles on Head Coaches?",
+    subtitle = "Total NWC HC salaries across years",
+    y = "Cumulative Head Coach Salaries",
+    x = "Year",
+    color = "School"
+  )
 
 d3_instLevel %>%
   mutate(HC_sal = HDCOACH_SAL_FTE_MEN+HDCOACH_SAL_FTE_WOMN) %>%
