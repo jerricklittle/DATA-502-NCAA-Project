@@ -23,7 +23,7 @@ d3_coach = read_csv("../clean_data/d3_coach_ds.csv")
 d3_sports = d3_sports %>%
   mutate(
     institution_name = case_when(
-      str_starts(institution_name, "Linfield") ~ "Linfield University",
+      str_starts(institution_name, "Linfield") ~ "Linfield University", #Linfield has a bunch names
       .default = institution_name
     )
   )
@@ -46,11 +46,11 @@ d3_coach = d3_coach %>%
 
 nwc = c(
   "Linfield University", "George Fox University", "Whitworth University", "Whitman College", "Pacific University", "University of Puget Sound", "Pacific Lutheran University", "Lewis & Clark College"
-)
+) #NWC teams
 
-
-d3_sports %>%
-  filter(str_starts(institution_name, "Linfield"))
+# 
+# d3_sports %>%
+#   filter(str_starts(institution_name, "Linfield"))
 ```
 
 # EDA plots
@@ -61,10 +61,10 @@ d3_sports %>%
 * Aesthetics: x = number of athletes, y = operating expenses, color = type of school
 
 ```{r}
-selected_sport = "Men's Football"
-selected_year = 2025
+selected_sport = "Men's Football" #User chooses
+selected_year = 2025 #User chooses
 
-title = paste0("Divison III ", selected_sport, " Operating Expenses vs Number of Athletes in ", as.numeric(selected_year))
+title = paste0("Divison III ", selected_sport, " Operating Expenses vs Number of Athletes in ", as.numeric(selected_year)) #clean title
 
 ds = d3_sports %>%
   filter(sport == selected_sport, year == selected_year) %>%
@@ -73,7 +73,7 @@ ds = d3_sports %>%
       institution_name %in% nwc ~ "Northwest Conference",
       institution_name == "Willamette University" ~ "Willamette University",
       .default = "Division III"
-    )
+    ) #This is for later grouping
   )
 
 colorpal = c(
@@ -84,7 +84,7 @@ colorpal = c(
 
 
 solid = ds %>%
-  filter(institution_name %in% nwc | institution_name == "Willamette University")
+  filter(institution_name %in% nwc | institution_name == "Willamette University") #Solid points
 
 
 ds %>%
@@ -99,7 +99,7 @@ ds %>%
   scale_y_continuous(labels = function (x) paste0(x/1000, "k"), limits = c(0, max(ds$op_exp)), expand = c(0, 0)) +
   theme_bw() +
   theme(
-    plot.caption.position = "plot"
+    plot.caption.position = "plot" #Moving caption to the right side
   ) +
   labs(
     title = "Willamette Football Spends Less With Less Athletes Than Other NWC Schools",
@@ -119,7 +119,7 @@ ds %>%
 * Aesthetics: x = year, y = operating expenses per athlete, color = type of school
 
 ```{r, warning = F, message = F}
-selected_sport = "Men's Football"
+selected_sport = "Men's Football" #User chooses
 
 title = paste0("Willamette Consistently Spends Less per Athlete for ", selected_sport)
 
@@ -139,7 +139,7 @@ points %>%
   geom_smooth(data = willamette, se = F, aes(color = "Willamette University")) +
   theme_light() +
   theme(
-    plot.caption.position = "plot"
+    plot.caption.position = "plot" #Moving caption to the right side
   ) +
   scale_color_manual(
     values = c(
@@ -172,10 +172,10 @@ d3_sports %>%
   geom_point(aes(color = institution_name == "Willamette University",
         group = institution_name), alpha = .2, position = "jitter") +
   geom_boxplot(aes(color = institution_name == "Willamette University", group = institution_name), alpha = 0) +
-  facet_wrap(~year) +
+  facet_wrap(~year) + #Comparing between years
   theme_light() +
   theme(
-    plot.caption.position = "plot",
+    plot.caption.position = "plot", #Moving caption to the right side
     axis.text.x = element_text(angle = 45, hjust = 1)
   )  +
   scale_x_discrete(
@@ -271,7 +271,7 @@ d3_sports %>%
 
 ```{r}
 d3_instLevel %>%
-  mutate(HC_sal = HDCOACH_SAL_FTE_MEN+HDCOACH_SAL_FTE_WOMN) %>%
+  mutate(HC_sal = HDCOACH_SAL_FTE_MEN+HDCOACH_SAL_FTE_WOMN) %>% #Adding averages of full time HC sal
   filter(institution_name %in% nwc| institution_name == "Willamette University")%>%
   ggplot(aes(x = year, y = HC_sal)) + 
   geom_line(linewidth = 1, alpha = .6, aes(color = institution_name == "Willamette University",
@@ -283,7 +283,7 @@ d3_instLevel %>%
   )+
   theme_bw() +
   theme(
-    plot.caption.position = "plot"
+    plot.caption.position = "plot" #Moving caption to the right side
   ) +
   labs(
     title ="Willamette Pays Their Coaches Among the Lowest in the NWC",
@@ -417,7 +417,7 @@ expense_breakdown = d3_instLevel %>%
   filter(institution_name %in% nwc | institution_name == "Willamette University") %>%
   mutate(
     hc_salaries =
-      coalesce(HDCOACH_SALARY_MEN * NUM_HDCOACH_MEN, 0) +
+      coalesce(HDCOACH_SALARY_MEN * NUM_HDCOACH_MEN, 0) + #Making 0 if NA
       coalesce(HDCOACH_SALARY_WOMEN * NUM_HDCOACH_WOMEN, 0) +
       coalesce(HDCOACH_SALARY_COED * NUM_HDCOACH_COED, 0),
 
@@ -437,8 +437,8 @@ expense_breakdown = d3_instLevel %>%
   )
 
 
-selected_year = 2025
-title = paste0("Where Willamette's Athletic Spending Differed in ", selected_year)
+selected_year = 2025 #User chooses
+title = paste0("Where Willamette's Athletic Spending Differed in ", selected_year) #User chooses
 
 expense_breakdown %>%
   filter(year == selected_year) %>%
@@ -491,7 +491,7 @@ expense_breakdown %>%
   theme_light() +
   theme(
     legend.position = "none",
-    plot.caption.position = "plot"
+    plot.caption.position = "plot" #Moving caption to the right side
   ) +
   labs(
     title = "Coaching Salaries Has More Share in Willamette's Budget",
