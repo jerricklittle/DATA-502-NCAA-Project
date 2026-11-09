@@ -1,0 +1,790 @@
+School,Sport,Year,Win Pct,Season,Year Played
+Willamette University,Softball,2015-2016,0.424,Spring,2016
+Willamette University,Softball,2016-2017,0.412,Spring,2017
+Willamette University,Softball,2017-2018,0.171,Spring,2018
+Willamette University,Softball,2018-2019,0.179,Spring,2019
+Willamette University,Softball,2019-2020,0.308,Spring,2020
+Willamette University,Softball,2020-2021,0.118,Spring,2021
+Willamette University,Softball,2021-2022,0.237,Spring,2022
+Willamette University,Softball,2022-2023,0.421,Spring,2023
+Willamette University,Softball,2023-2024,0.425,Spring,2024
+Willamette University,Softball,2024-2025,0.526,Spring,2025
+Willamette University,Softball,2025-2026,0.225,Spring,2026
+Willamette University,Football,2015-2016,0.222,Fall,2015
+Willamette University,Football,2016-2017,0.3,Fall,2016
+Willamette University,Football,2017-2018,0,Fall,2017
+Willamette University,Football,2018-2019,0.111,Fall,2018
+Willamette University,Football,2019-2020,0.111,Fall,2019
+Willamette University,Football,2020-2021,0,Fall,2020
+Willamette University,Football,2021-2022,0.1,Fall,2021
+Willamette University,Football,2022-2023,0.2,Fall,2022
+Willamette University,Football,2023-2024,0.1,Fall,2023
+Willamette University,Football,2024-2025,0.2,Fall,2024
+Willamette University,Football,2025-2026,0.1,Fall,2025
+Willamette University,Men's Basketball,2015-2016,0.32,Winter,2015-2016
+Willamette University,Men's Basketball,2016-2017,0.16,Winter,2016-2017
+Willamette University,Men's Basketball,2017-2018,0.44,Winter,2017-2018
+Willamette University,Men's Basketball,2018-2019,0.36,Winter,2018-2019
+Willamette University,Men's Basketball,2019-2020,0.04,Winter,2019-2020
+Willamette University,Men's Basketball,2020-2021,0,Winter,2020-2021
+Willamette University,Men's Basketball,2021-2022,0.25,Winter,2021-2022
+Willamette University,Men's Basketball,2022-2023,0.208,Winter,2022-2023
+Willamette University,Men's Basketball,2023-2024,0.583,Winter,2023-2024
+Willamette University,Men's Basketball,2024-2025,0.375,Winter,2024-2025
+Willamette University,Men's Basketball,2025-2026,0.593,Winter,2025-2026
+Willamette University,Women's Basketball,2015-2016,0.48,Winter,2015-2016
+Willamette University,Women's Basketball,2016-2017,0.48,Winter,2016-2017
+Willamette University,Women's Basketball,2017-2018,0.63,Winter,2017-2018
+Willamette University,Women's Basketball,2018-2019,0.44,Winter,2018-2019
+Willamette University,Women's Basketball,2019-2020,0.52,Winter,2019-2020
+Willamette University,Women's Basketball,2020-2021,,Winter,2020-2021
+Willamette University,Women's Basketball,2021-2022,0.48,Winter,2021-2022
+Willamette University,Women's Basketball,2022-2023,0.538,Winter,2022-2023
+Willamette University,Women's Basketball,2023-2024,0.63,Winter,2023-2024
+Willamette University,Women's Basketball,2024-2025,0.32,Winter,2024-2025
+Willamette University,Women's Basketball,2025-2026,0.4,Winter,2025-2026
+Willamette University,Men's Baseball,2015-2016,,Spring,2016
+Willamette University,Men's Baseball,2016-2017,0.667,Spring,2017
+Willamette University,Men's Baseball,2017-2018,0.62,Spring,2018
+Willamette University,Men's Baseball,2018-2019,0.543,Spring,2019
+Willamette University,Men's Baseball,2019-2020,0.5,Spring,2020
+Willamette University,Men's Baseball,2020-2021,0.667,Spring,2021
+Willamette University,Men's Baseball,2021-2022,0.528,Spring,2022
+Willamette University,Men's Baseball,2022-2023,0.641,Spring,2023
+Willamette University,Men's Baseball,2023-2024,0.644,Spring,2024
+Willamette University,Men's Baseball,2024-2025,0.405,Spring,2025
+Willamette University,Men's Baseball,2025-2026,0.237,Spring,2026
+Willamette University,Women's Lacrosse,2018-2019,0.375,Spring,2016
+Willamette University,Women's Lacrosse,2019-2020,0.667,Spring,2017
+Willamette University,Women's Lacrosse,2020-2021,0.727,Spring,2018
+Willamette University,Women's Lacrosse,2021-2022,0.706,Spring,2019
+Willamette University,Women's Lacrosse,2022-2023,0.722,Spring,2020
+Willamette University,Women's Lacrosse,2023-2024,0.778,Spring,2021
+Willamette University,Women's Lacrosse,2024-2025,0.563,Spring,2022
+Willamette University,Women's Lacrosse,2025-2026,0.444,Spring,2023
+Willamette University,Men's Soccer,2015-2016,0.368,Fall,2015
+Willamette University,Men's Soccer,2016-2017,0.5,Fall,2016
+Willamette University,Men's Soccer,2017-2018,0.579,Fall,2017
+Willamette University,Men's Soccer,2018-2019,0.684,Fall,2018
+Willamette University,Men's Soccer,2019-2020,0.684,Fall,2019
+Willamette University,Men's Soccer,2020-2021,1,Fall,2020
+Willamette University,Men's Soccer,2021-2022,0.735,Fall,2021
+Willamette University,Men's Soccer,2022-2023,0.775,Fall,2022
+Willamette University,Men's Soccer,2023-2024,0.425,Fall,2023
+Willamette University,Men's Soccer,2024-2025,0.45,Fall,2024
+Willamette University,Men's Soccer,2025-2026,0.525,Fall,2025
+Willamette University,Women's Soccer,2015-2016,0.5,Fall,2015
+Willamette University,Women's Soccer,2016-2017,0.525,Fall,2016
+Willamette University,Women's Soccer,2017-2018,0.725,Fall,2017
+Willamette University,Women's Soccer,2018-2019,0.7,Fall,2018
+Willamette University,Women's Soccer,2019-2020,0.6,Fall,2019
+Willamette University,Women's Soccer,2020-2021,0.375,Fall,2020
+Willamette University,Women's Soccer,2021-2022,0.25,Fall,2021
+Willamette University,Women's Soccer,2022-2023,0.368,Fall,2022
+Willamette University,Women's Soccer,2023-2024,0.225,Fall,2023
+Willamette University,Women's Soccer,2024-2025,0.475,Fall,2024
+Willamette University,Women's Soccer,2025-2026,0.5,Fall,2025
+Lewis and Clark University,Softball,2015-2016,0.425,Spring,2016
+Lewis and Clark University,Softball,2016-2017,0.312,Spring,2017
+Lewis and Clark University,Softball,2017-2018,0.25,Spring,2018
+Lewis and Clark University,Softball,2018-2019,0.316,Spring,2019
+Lewis and Clark University,Softball,2019-2020,0.3,Spring,2020
+Lewis and Clark University,Softball,2020-2021,0.531,Spring,2021
+Lewis and Clark University,Softball,2021-2022,0.421,Spring,2022
+Lewis and Clark University,Softball,2022-2023,0.5,Spring,2023
+Lewis and Clark University,Softball,2023-2024,0.636,Spring,2024
+Lewis and Clark University,Softball,2024-2025,0.711,Spring,2025
+Lewis and Clark University,Softball,2025-2026,0.628,Spring,2026
+Lewis and Clark University,Football,2015-2016,0,Fall,2015
+Lewis and Clark University,Football,2016-2017,0,Fall,2016
+Lewis and Clark University,Football,2017-2018,0.222,Fall,2017
+Lewis and Clark University,Football,2018-2019,0.222,Fall,2018
+Lewis and Clark University,Football,2019-2020,0.444,Fall,2019
+Lewis and Clark University,Football,2020-2021,,Fall,2020
+Lewis and Clark University,Football,2021-2022,0.333,Fall,2021
+Lewis and Clark University,Football,2022-2023,0.444,Fall,2022
+Lewis and Clark University,Football,2023-2024,0.5,Fall,2023
+Lewis and Clark University,Football,2024-2025,0.5,Fall,2024
+Lewis and Clark University,Football,2025-2026,0.6,Fall,2025
+Lewis and Clark University,Men's Basketball,2015-2016,0.417,Winter,2015-2016
+Lewis and Clark University,Men's Basketball,2016-2017,0.36,Winter,2016-2017
+Lewis and Clark University,Men's Basketball,2017-2018,0.32,Winter,2017-2018
+Lewis and Clark University,Men's Basketball,2018-2019,0.32,Winter,2018-2019
+Lewis and Clark University,Men's Basketball,2019-2020,0.44,Winter,2019-2020
+Lewis and Clark University,Men's Basketball,2020-2021,,Winter,2020-2021
+Lewis and Clark University,Men's Basketball,2021-2022,0.417,Winter,2021-2022
+Lewis and Clark University,Men's Basketball,2022-2023,0.52,Winter,2022-2023
+Lewis and Clark University,Men's Basketball,2023-2024,0.24,Winter,2023-2024
+Lewis and Clark University,Men's Basketball,2024-2025,0.536,Winter,2024-2025
+Lewis and Clark University,Men's Basketball,2025-2026,0.5,Winter,2025-2026
+Lewis and Clark University,Women's Basketball,2015-2016,0.12,Winter,2015-2016
+Lewis and Clark University,Women's Basketball,2016-2017,0.615,Winter,2016-2017
+Lewis and Clark University,Women's Basketball,2017-2018,0.538,Winter,2017-2018
+Lewis and Clark University,Women's Basketball,2018-2019,0.08,Winter,2018-2019
+Lewis and Clark University,Women's Basketball,2019-2020,0.125,Winter,2019-2020
+Lewis and Clark University,Women's Basketball,2020-2021,,Winter,2020-2021
+Lewis and Clark University,Women's Basketball,2021-2022,0.44,Winter,2021-2022
+Lewis and Clark University,Women's Basketball,2022-2023,0.08,Winter,2022-2023
+Lewis and Clark University,Women's Basketball,2023-2024,0.167,Winter,2023-2024
+Lewis and Clark University,Women's Basketball,2024-2025,0.24,Winter,2024-2025
+Lewis and Clark University,Women's Basketball,2025-2026,0.24,Winter,2025-2026
+Lewis and Clark University,Men's Baseball,2015-2016,0.2,Spring,2016
+Lewis and Clark University,Men's Baseball,2016-2017,0.184,Spring,2017
+Lewis and Clark University,Men's Baseball,2017-2018,0.231,Spring,2018
+Lewis and Clark University,Men's Baseball,2018-2019,0.27,Spring,2019
+Lewis and Clark University,Men's Baseball,2019-2020,0.312,Spring,2020
+Lewis and Clark University,Men's Baseball,2020-2021,0.281,Spring,2021
+Lewis and Clark University,Men's Baseball,2021-2022,0.541,Spring,2022
+Lewis and Clark University,Men's Baseball,2022-2023,0.689,Spring,2023
+Lewis and Clark University,Men's Baseball,2023-2024,0.438,Spring,2024
+Lewis and Clark University,Men's Baseball,2024-2025,0.513,Spring,2025
+Lewis and Clark University,Men's Baseball,2025-2026,0.537,Spring,2026
+Lewis and Clark University,Women's Lacrosse,2015-2016,,Spring,2016
+Lewis and Clark University,Women's Lacrosse,2016-2017,,Spring,2017
+Lewis and Clark University,Women's Lacrosse,2017-2018,,Spring,2018
+Lewis and Clark University,Women's Lacrosse,2018-2019,,Spring,2019
+Lewis and Clark University,Women's Lacrosse,2019-2020,,Spring,2020
+Lewis and Clark University,Women's Lacrosse,2020-2021,,Spring,2021
+Lewis and Clark University,Women's Lacrosse,2021-2022,,Spring,2022
+Lewis and Clark University,Women's Lacrosse,2022-2023,,Spring,2023
+Lewis and Clark University,Women's Lacrosse,2023-2024,0.077,Spring,2024
+Lewis and Clark University,Women's Lacrosse,2024-2025,0.647,Spring,2025
+Lewis and Clark University,Women's Lacrosse,2025-2026,0.611,Spring,2026
+Lewis and Clark University,Men's Soccer,2015-2016,,Fall,2015
+Lewis and Clark University,Men's Soccer,2016-2017,,Fall,2016
+Lewis and Clark University,Men's Soccer,2017-2018,,Fall,2017
+Lewis and Clark University,Men's Soccer,2018-2019,,Fall,2018
+Lewis and Clark University,Men's Soccer,2019-2020,,Fall,2019
+Lewis and Clark University,Men's Soccer,2020-2021,,Fall,2020
+Lewis and Clark University,Men's Soccer,2021-2022,,Fall,2021
+Lewis and Clark University,Men's Soccer,2022-2023,0,Fall,2022
+Lewis and Clark University,Men's Soccer,2023-2024,0.025,Fall,2023
+Lewis and Clark University,Men's Soccer,2024-2025,0,Fall,2024
+Lewis and Clark University,Men's Soccer,2025-2026,0.075,Fall,2025
+Lewis and Clark University,Women's Soccer,2015-2016,0.575,Fall,2015
+Lewis and Clark University,Women's Soccer,2016-2017,0.35,Fall,2016
+Lewis and Clark University,Women's Soccer,2017-2018,0.225,Fall,2017
+Lewis and Clark University,Women's Soccer,2018-2019,0.25,Fall,2018
+Lewis and Clark University,Women's Soccer,2019-2020,0.525,Fall,2019
+Lewis and Clark University,Women's Soccer,2020-2021,0.312,Fall,2020
+Lewis and Clark University,Women's Soccer,2021-2022,0.625,Fall,2021
+Lewis and Clark University,Women's Soccer,2022-2023,0.421,Fall,2022
+Lewis and Clark University,Women's Soccer,2023-2024,0.35,Fall,2023
+Lewis and Clark University,Women's Soccer,2024-2025,0.3,Fall,2024
+Lewis and Clark University,Women's Soccer,2025-2026,0.3,Fall,2025
+Whitworth University,Softball,2015-2016,0.659,Spring,2016
+Whitworth University,Softball,2016-2017,0.771,Spring,2017
+Whitworth University,Softball,2017-2018,0.571,Spring,2018
+Whitworth University,Softball,2018-2019,0.738,Spring,2019
+Whitworth University,Softball,2019-2020,0.357,Spring,2020
+Whitworth University,Softball,2020-2021,0.395,Spring,2021
+Whitworth University,Softball,2021-2022,0.595,Spring,2022
+Whitworth University,Softball,2022-2023,0.548,Spring,2023
+Whitworth University,Softball,2023-2024,0.375,Spring,2024
+Whitworth University,Softball,2024-2025,0.158,Spring,2025
+Whitworth University,Softball,2025-2026,0.282,Spring,2026
+Whitworth University,Football,2015-2016,0.818,Fall,2015
+Whitworth University,Football,2016-2017,0.8,Fall,2016
+Whitworth University,Football,2017-2018,0.8,Fall,2017
+Whitworth University,Football,2018-2019,0.909,Fall,2018
+Whitworth University,Football,2019-2020,0.667,Fall,2019
+Whitworth University,Football,2020-2021,1,Fall,2020
+Whitworth University,Football,2021-2022,0.7,Fall,2021
+Whitworth University,Football,2022-2023,0.6,Fall,2022
+Whitworth University,Football,2023-2024,0.909,Fall,2023
+Whitworth University,Football,2024-2025,0.833,Fall,2024
+Whitworth University,Football,2025-2026,0.727,Fall,2025
+Whitworth University,Men's Basketball,2015-2016,0.929,Winter,2015-2016
+Whitworth University,Men's Basketball,2016-2017,0.821,Winter,2016-2017
+Whitworth University,Men's Basketball,2017-2018,0.857,Winter,2017-2018
+Whitworth University,Men's Basketball,2018-2019,0.778,Winter,2018-2019
+Whitworth University,Men's Basketball,2019-2020,0.793,Winter,2019-2020
+Whitworth University,Men's Basketball,2020-2021,0.706,Winter,2020-2021
+Whitworth University,Men's Basketball,2021-2022,0.815,Winter,2021-2022
+Whitworth University,Men's Basketball,2022-2023,0.643,Winter,2022-2023
+Whitworth University,Men's Basketball,2023-2024,0.69,Winter,2023-2024
+Whitworth University,Men's Basketball,2024-2025,0.846,Winter,2024-2025
+Whitworth University,Men's Basketball,2025-2026,0.786,Winter,2025-2026
+Whitworth University,Women's Basketball,2015-2016,0.577,Winter,2015-2016
+Whitworth University,Women's Basketball,2016-2017,0.4,Winter,2016-2017
+Whitworth University,Women's Basketball,2017-2018,0.4,Winter,2017-2018
+Whitworth University,Women's Basketball,2018-2019,0.52,Winter,2018-2019
+Whitworth University,Women's Basketball,2019-2020,0.56,Winter,2019-2020
+Whitworth University,Women's Basketball,2020-2021,0.5,Winter,2020-2021
+Whitworth University,Women's Basketball,2021-2022,0.4,Winter,2021-2022
+Whitworth University,Women's Basketball,2022-2023,0.4,Winter,2022-2023
+Whitworth University,Women's Basketball,2023-2024,0.36,Winter,2023-2024
+Whitworth University,Women's Basketball,2024-2025,0.32,Winter,2024-2025
+Whitworth University,Women's Basketball,2025-2026,0.2,Winter,2025-2026
+Whitworth University,Men's Baseball,2015-2016,0.698,Spring,2016
+Whitworth University,Men's Baseball,2016-2017,0.585,Spring,2017
+Whitworth University,Men's Baseball,2017-2018,0.459,Spring,2018
+Whitworth University,Men's Baseball,2018-2019,0.643,Spring,2019
+Whitworth University,Men's Baseball,2019-2020,0.688,Spring,2020
+Whitworth University,Men's Baseball,2020-2021,0.39,Spring,2021
+Whitworth University,Men's Baseball,2021-2022,0.263,Spring,2022
+Whitworth University,Men's Baseball,2022-2023,0.289,Spring,2023
+Whitworth University,Men's Baseball,2023-2024,0.667,Spring,2024
+Whitworth University,Men's Baseball,2024-2025,0.617,Spring,2025
+Whitworth University,Men's Baseball,2025-2026,0.66,Spring,2026
+Whitworth University,Women's Lacrosse,2015-2016,,Spring,2016
+Whitworth University,Women's Lacrosse,2016-2017,,Spring,2017
+Whitworth University,Women's Lacrosse,2017-2018,,Spring,2018
+Whitworth University,Women's Lacrosse,2018-2019,0.067,Spring,2019
+Whitworth University,Women's Lacrosse,2019-2020,0.333,Spring,2020
+Whitworth University,Women's Lacrosse,2020-2021,0,Spring,2021
+Whitworth University,Women's Lacrosse,2021-2022,0.312,Spring,2022
+Whitworth University,Women's Lacrosse,2022-2023,0.333,Spring,2023
+Whitworth University,Women's Lacrosse,2023-2024,0.667,Spring,2024
+Whitworth University,Women's Lacrosse,2024-2025,0.5,Spring,2025
+Whitworth University,Women's Lacrosse,2025-2026,0.471,Spring,2026
+Whitworth University,Men's Soccer,2015-2016,0.868,Fall,2015
+Whitworth University,Men's Soccer,2016-2017,0.711,Fall,2016
+Whitworth University,Men's Soccer,2017-2018,0.553,Fall,2017
+Whitworth University,Men's Soccer,2018-2019,0.35,Fall,2018
+Whitworth University,Men's Soccer,2019-2020,0.525,Fall,2019
+Whitworth University,Men's Soccer,2020-2021,0.318,Fall,2020
+Whitworth University,Men's Soccer,2021-2022,0.5,Fall,2021
+Whitworth University,Men's Soccer,2022-2023,0.475,Fall,2022
+Whitworth University,Men's Soccer,2023-2024,0.7,Fall,2023
+Whitworth University,Men's Soccer,2024-2025,0.575,Fall,2024
+Whitworth University,Men's Soccer,2025-2026,0.559,Fall,2025
+Whitworth University,Women's Soccer,2015-2016,0.375,Fall,2015
+Whitworth University,Women's Soccer,2016-2017,0.5,Fall,2016
+Whitworth University,Women's Soccer,2017-2018,0.65,Fall,2017
+Whitworth University,Women's Soccer,2018-2019,0.675,Fall,2018
+Whitworth University,Women's Soccer,2019-2020,0.35,Fall,2019
+Whitworth University,Women's Soccer,2020-2021,0.5,Fall,2020
+Whitworth University,Women's Soccer,2021-2022,0.625,Fall,2021
+Whitworth University,Women's Soccer,2022-2023,0.447,Fall,2022
+Whitworth University,Women's Soccer,2023-2024,0.575,Fall,2023
+Whitworth University,Women's Soccer,2024-2025,0.632,Fall,2024
+Whitworth University,Women's Soccer,2025-2026,0.368,Fall,2025
+Pacific Lutheran University,Softball,2015-2016,0.579,Spring,2016
+Pacific Lutheran University,Softball,2016-2017,0.59,Spring,2017
+Pacific Lutheran University,Softball,2017-2018,0.395,Spring,2018
+Pacific Lutheran University,Softball,2018-2019,0.585,Spring,2019
+Pacific Lutheran University,Softball,2019-2020,0.333,Spring,2020
+Pacific Lutheran University,Softball,2020-2021,0.417,Spring,2021
+Pacific Lutheran University,Softball,2021-2022,0.682,Spring,2022
+Pacific Lutheran University,Softball,2022-2023,0.628,Spring,2023
+Pacific Lutheran University,Softball,2023-2024,0.558,Spring,2024
+Pacific Lutheran University,Softball,2024-2025,0.643,Spring,2025
+Pacific Lutheran University,Softball,2025-2026,0.745,Spring,2026
+Pacific Lutheran University,Football,2015-2016,0.222,Fall,2015
+Pacific Lutheran University,Football,2016-2017,0.556,Fall,2016
+Pacific Lutheran University,Football,2017-2018,0.5,Fall,2017
+Pacific Lutheran University,Football,2018-2019,0.444,Fall,2018
+Pacific Lutheran University,Football,2019-2020,0.222,Fall,2019
+Pacific Lutheran University,Football,2020-2021,0,Fall,2020
+Pacific Lutheran University,Football,2021-2022,0.444,Fall,2021
+Pacific Lutheran University,Football,2022-2023,0.6,Fall,2022
+Pacific Lutheran University,Football,2023-2024,0.5,Fall,2023
+Pacific Lutheran University,Football,2024-2025,0.7,Fall,2024
+Pacific Lutheran University,Football,2025-2026,0.6,Fall,2025
+Pacific Lutheran University,Men's Basketball,2015-2016,0.63,Winter,2015-2016
+Pacific Lutheran University,Men's Basketball,2016-2017,0.48,Winter,2016-2017
+Pacific Lutheran University,Men's Basketball,2017-2018,0.167,Winter,2017-2018
+Pacific Lutheran University,Men's Basketball,2018-2019,0.333,Winter,2018-2019
+Pacific Lutheran University,Men's Basketball,2019-2020,0.538,Winter,2019-2020
+Pacific Lutheran University,Men's Basketball,2020-2021,0.7,Winter,2020-2021
+Pacific Lutheran University,Men's Basketball,2021-2022,0.692,Winter,2021-2022
+Pacific Lutheran University,Men's Basketball,2022-2023,0.52,Winter,2022-2023
+Pacific Lutheran University,Men's Basketball,2023-2024,0.56,Winter,2023-2024
+Pacific Lutheran University,Men's Basketball,2024-2025,0.538,Winter,2024-2025
+Pacific Lutheran University,Men's Basketball,2025-2026,0.44,Winter,2025-2026
+Pacific Lutheran University,Women's Basketball,2015-2016,0.36,Winter,2015-2016
+Pacific Lutheran University,Women's Basketball,2016-2017,0.04,Winter,2016-2017
+Pacific Lutheran University,Women's Basketball,2017-2018,0.2,Winter,2017-2018
+Pacific Lutheran University,Women's Basketball,2018-2019,0.583,Winter,2018-2019
+Pacific Lutheran University,Women's Basketball,2019-2020,0.44,Winter,2019-2020
+Pacific Lutheran University,Women's Basketball,2020-2021,0.273,Winter,2020-2021
+Pacific Lutheran University,Women's Basketball,2021-2022,0.304,Winter,2021-2022
+Pacific Lutheran University,Women's Basketball,2022-2023,0.08,Winter,2022-2023
+Pacific Lutheran University,Women's Basketball,2023-2024,0.44,Winter,2023-2024
+Pacific Lutheran University,Women's Basketball,2024-2025,0.32,Winter,2024-2025
+Pacific Lutheran University,Women's Basketball,2025-2026,0.12,Winter,2025-2026
+Pacific Lutheran University,Men's Baseball,2015-2016,0.604,Spring,2016
+Pacific Lutheran University,Men's Baseball,2016-2017,0.641,Spring,2017
+Pacific Lutheran University,Men's Baseball,2017-2018,0.595,Spring,2018
+Pacific Lutheran University,Men's Baseball,2018-2019,0.571,Spring,2019
+Pacific Lutheran University,Men's Baseball,2019-2020,0.462,Spring,2020
+Pacific Lutheran University,Men's Baseball,2020-2021,0.605,Spring,2021
+Pacific Lutheran University,Men's Baseball,2021-2022,0.55,Spring,2022
+Pacific Lutheran University,Men's Baseball,2022-2023,0.472,Spring,2023
+Pacific Lutheran University,Men's Baseball,2023-2024,0.359,Spring,2024
+Pacific Lutheran University,Men's Baseball,2024-2025,0.436,Spring,2025
+Pacific Lutheran University,Men's Baseball,2025-2026,0.368,Spring,2026
+Pacific Lutheran University,Women's Lacrosse,2015-2016,,Spring,2016
+Pacific Lutheran University,Women's Lacrosse,2016-2017,,Spring,2017
+Pacific Lutheran University,Women's Lacrosse,2017-2018,,Spring,2018
+Pacific Lutheran University,Women's Lacrosse,2018-2019,,Spring,2019
+Pacific Lutheran University,Women's Lacrosse,2019-2020,,Spring,2020
+Pacific Lutheran University,Women's Lacrosse,2020-2021,,Spring,2021
+Pacific Lutheran University,Women's Lacrosse,2021-2022,,Spring,2022
+Pacific Lutheran University,Women's Lacrosse,2022-2023,,Spring,2023
+Pacific Lutheran University,Women's Lacrosse,2023-2024,,Spring,2024
+Pacific Lutheran University,Women's Lacrosse,2024-2025,0.067,Spring,2025
+Pacific Lutheran University,Women's Lacrosse,2025-2026,0.188,Spring,2026
+Pacific Lutheran University,Men's Soccer,2015-2016,0.75,Fall,2015
+Pacific Lutheran University,Men's Soccer,2016-2017,0.55,Fall,2016
+Pacific Lutheran University,Men's Soccer,2017-2018,0.658,Fall,2017
+Pacific Lutheran University,Men's Soccer,2018-2019,0.667,Fall,2018
+Pacific Lutheran University,Men's Soccer,2019-2020,0.714,Fall,2019
+Pacific Lutheran University,Men's Soccer,2020-2021,0.714,Fall,2020
+Pacific Lutheran University,Men's Soccer,2021-2022,0.69,Fall,2021
+Pacific Lutheran University,Men's Soccer,2022-2023,0.818,Fall,2022
+Pacific Lutheran University,Men's Soccer,2023-2024,0.786,Fall,2023
+Pacific Lutheran University,Men's Soccer,2024-2025,0.738,Fall,2024
+Pacific Lutheran University,Men's Soccer,2025-2026,0.725,Fall,2025
+Pacific Lutheran University,Women's Soccer,2015-2016,0.8,Fall,2015
+Pacific Lutheran University,Women's Soccer,2016-2017,0.857,Fall,2016
+Pacific Lutheran University,Women's Soccer,2017-2018,0.818,Fall,2017
+Pacific Lutheran University,Women's Soccer,2018-2019,0.75,Fall,2018
+Pacific Lutheran University,Women's Soccer,2019-2020,0.81,Fall,2019
+Pacific Lutheran University,Women's Soccer,2020-2021,0.65,Fall,2020
+Pacific Lutheran University,Women's Soccer,2021-2022,0.857,Fall,2021
+Pacific Lutheran University,Women's Soccer,2022-2023,0.841,Fall,2022
+Pacific Lutheran University,Women's Soccer,2023-2024,0.738,Fall,2023
+Pacific Lutheran University,Women's Soccer,2024-2025,0.818,Fall,2024
+Pacific Lutheran University,Women's Soccer,2025-2026,0.75,Fall,2025
+University of Puget Sound,Softball,2015-2016,0.263,Spring,2016
+University of Puget Sound,Softball,2016-2017,0.333,Spring,2017
+University of Puget Sound,Softball,2017-2018,0.303,Spring,2018
+University of Puget Sound,Softball,2018-2019,0.103,Spring,2019
+University of Puget Sound,Softball,2019-2020,0.364,Spring,2020
+University of Puget Sound,Softball,2020-2021,0.312,Spring,2021
+University of Puget Sound,Softball,2021-2022,0.111,Spring,2022
+University of Puget Sound,Softball,2022-2023,0.294,Spring,2023
+University of Puget Sound,Softball,2023-2024,0.194,Spring,2024
+University of Puget Sound,Softball,2024-2025,0.237,Spring,2025
+University of Puget Sound,Softball,2025-2026,0.132,Spring,2026
+University of Puget Sound,Football,2015-2016,0.667,Fall,2015
+University of Puget Sound,Football,2016-2017,0.333,Fall,2016
+University of Puget Sound,Football,2017-2018,0.333,Fall,2017
+University of Puget Sound,Football,2018-2019,0.5,Fall,2018
+University of Puget Sound,Football,2019-2020,0.6,Fall,2019
+University of Puget Sound,Football,2020-2021,0.5,Fall,2020
+University of Puget Sound,Football,2021-2022,0.1,Fall,2021
+University of Puget Sound,Football,2022-2023,0.111,Fall,2022
+University of Puget Sound,Football,2023-2024,0.333,Fall,2023
+University of Puget Sound,Football,2024-2025,0.2,Fall,2024
+University of Puget Sound,Football,2025-2026,0.1,Fall,2025
+University of Puget Sound,Men's Basketball,2015-2016,0.5,Winter,2015-2016
+University of Puget Sound,Men's Basketball,2016-2017,0.48,Winter,2016-2017
+University of Puget Sound,Men's Basketball,2017-2018,0.72,Winter,2017-2018
+University of Puget Sound,Men's Basketball,2018-2019,0.462,Winter,2018-2019
+University of Puget Sound,Men's Basketball,2019-2020,0.48,Winter,2019-2020
+University of Puget Sound,Men's Basketball,2020-2021,0.231,Winter,2020-2021
+University of Puget Sound,Men's Basketball,2021-2022,0.36,Winter,2021-2022
+University of Puget Sound,Men's Basketball,2022-2023,0.692,Winter,2022-2023
+University of Puget Sound,Men's Basketball,2023-2024,0.5,Winter,2023-2024
+University of Puget Sound,Men's Basketball,2024-2025,0.52,Winter,2024-2025
+University of Puget Sound,Men's Basketball,2025-2026,0.654,Winter,2025-2026
+University of Puget Sound,Women's Basketball,2015-2016,0.704,Winter,2015-2016
+University of Puget Sound,Women's Basketball,2016-2017,0.897,Winter,2016-2017
+University of Puget Sound,Women's Basketball,2017-2018,0.48,Winter,2017-2018
+University of Puget Sound,Women's Basketball,2018-2019,0.76,Winter,2018-2019
+University of Puget Sound,Women's Basketball,2019-2020,0.5,Winter,2019-2020
+University of Puget Sound,Women's Basketball,2020-2021,0.455,Winter,2020-2021
+University of Puget Sound,Women's Basketball,2021-2022,0.8,Winter,2021-2022
+University of Puget Sound,Women's Basketball,2022-2023,0.808,Winter,2022-2023
+University of Puget Sound,Women's Basketball,2023-2024,0.69,Winter,2023-2024
+University of Puget Sound,Women's Basketball,2024-2025,0.423,Winter,2024-2025
+University of Puget Sound,Women's Basketball,2025-2026,0.769,Winter,2025-2026
+University of Puget Sound,Men's Baseball,2015-2016,0.4,Spring,2016
+University of Puget Sound,Men's Baseball,2016-2017,0.372,Spring,2017
+University of Puget Sound,Men's Baseball,2017-2018,0.427,Spring,2018
+University of Puget Sound,Men's Baseball,2018-2019,0.231,Spring,2019
+University of Puget Sound,Men's Baseball,2019-2020,0.312,Spring,2020
+University of Puget Sound,Men's Baseball,2020-2021,0.486,Spring,2021
+University of Puget Sound,Men's Baseball,2021-2022,0.541,Spring,2022
+University of Puget Sound,Men's Baseball,2022-2023,0.543,Spring,2023
+University of Puget Sound,Men's Baseball,2023-2024,0.45,Spring,2024
+University of Puget Sound,Men's Baseball,2024-2025,0.595,Spring,2025
+University of Puget Sound,Men's Baseball,2025-2026,0.575,Spring,2026
+University of Puget Sound,Women's Lacrosse,2015-2016,0.143,Spring,2016
+University of Puget Sound,Women's Lacrosse,2016-2017,0.385,Spring,2017
+University of Puget Sound,Women's Lacrosse,2017-2018,0.182,Spring,2018
+University of Puget Sound,Women's Lacrosse,2018-2019,0.533,Spring,2019
+University of Puget Sound,Women's Lacrosse,2019-2020,0.667,Spring,2020
+University of Puget Sound,Women's Lacrosse,2020-2021,0.364,Spring,2021
+University of Puget Sound,Women's Lacrosse,2021-2022,0.571,Spring,2022
+University of Puget Sound,Women's Lacrosse,2022-2023,0.357,Spring,2023
+University of Puget Sound,Women's Lacrosse,2023-2024,0.188,Spring,2024
+University of Puget Sound,Women's Lacrosse,2024-2025,0.25,Spring,2025
+University of Puget Sound,Women's Lacrosse,2025-2026,0.25,Spring,2026
+University of Puget Sound,Men's Soccer,2015-2016,0.579,Fall,2015
+University of Puget Sound,Men's Soccer,2016-2017,0.667,Fall,2016
+University of Puget Sound,Men's Soccer,2017-2018,0.618,Fall,2017
+University of Puget Sound,Men's Soccer,2018-2019,0.611,Fall,2018
+University of Puget Sound,Men's Soccer,2019-2020,0.553,Fall,2019
+University of Puget Sound,Men's Soccer,2020-2021,0.429,Fall,2020
+University of Puget Sound,Men's Soccer,2021-2022,0.528,Fall,2021
+University of Puget Sound,Men's Soccer,2022-2023,0.575,Fall,2022
+University of Puget Sound,Men's Soccer,2023-2024,0.583,Fall,2023
+University of Puget Sound,Men's Soccer,2024-2025,0.526,Fall,2024
+University of Puget Sound,Men's Soccer,2025-2026,0.5,Fall,2025
+University of Puget Sound,Women's Soccer,2015-2016,0.886,Fall,2015
+University of Puget Sound,Women's Soccer,2016-2017,0.725,Fall,2016
+University of Puget Sound,Women's Soccer,2017-2018,0.725,Fall,2017
+University of Puget Sound,Women's Soccer,2018-2019,0.667,Fall,2018
+University of Puget Sound,Women's Soccer,2019-2020,0.725,Fall,2019
+University of Puget Sound,Women's Soccer,2020-2021,0.636,Fall,2020
+University of Puget Sound,Women's Soccer,2021-2022,0.85,Fall,2021
+University of Puget Sound,Women's Soccer,2022-2023,0.786,Fall,2022
+University of Puget Sound,Women's Soccer,2023-2024,0.7,Fall,2023
+University of Puget Sound,Women's Soccer,2024-2025,0.625,Fall,2024
+University of Puget Sound,Women's Soccer,2025-2026,0.75,Fall,2025
+Whitman University,Softball,2015-2016,,Spring,2016
+Whitman University,Softball,2016-2017,,Spring,2017
+Whitman University,Softball,2017-2018,,Spring,2018
+Whitman University,Softball,2018-2019,,Spring,2019
+Whitman University,Softball,2019-2020,,Spring,2020
+Whitman University,Softball,2020-2021,,Spring,2021
+Whitman University,Softball,2021-2022,,Spring,2022
+Whitman University,Softball,2022-2023,,Spring,2023
+Whitman University,Softball,2023-2024,,Spring,2024
+Whitman University,Softball,2024-2025,,Spring,2025
+Whitman University,Softball,2025-2026,,Spring,2026
+Whitman University,Football,2015-2016,,Fall,2015
+Whitman University,Football,2016-2017,,Fall,2016
+Whitman University,Football,2017-2018,,Fall,2017
+Whitman University,Football,2018-2019,,Fall,2018
+Whitman University,Football,2019-2020,,Fall,2019
+Whitman University,Football,2020-2021,,Fall,2020
+Whitman University,Football,2021-2022,,Fall,2021
+Whitman University,Football,2022-2023,,Fall,2022
+Whitman University,Football,2023-2024,,Fall,2023
+Whitman University,Football,2024-2025,,Fall,2024
+Whitman University,Football,2025-2026,,Fall,2025
+Whitman University,Men's Basketball,2015-2016,0.828,Winter,2015-2016
+Whitman University,Men's Basketball,2016-2017,0.969,Winter,2016-2017
+Whitman University,Men's Basketball,2017-2018,0.935,Winter,2017-2018
+Whitman University,Men's Basketball,2018-2019,0.933,Winter,2018-2019
+Whitman University,Men's Basketball,2019-2020,0.714,Winter,2019-2020
+Whitman University,Men's Basketball,2020-2021,0.5,Winter,2020-2021
+Whitman University,Men's Basketball,2021-2022,0.462,Winter,2021-2022
+Whitman University,Men's Basketball,2022-2023,0.815,Winter,2022-2023
+Whitman University,Men's Basketball,2023-2024,0.741,Winter,2023-2024
+Whitman University,Men's Basketball,2024-2025,0.481,Winter,2024-2025
+Whitman University,Men's Basketball,2025-2026,0.4,Winter,2025-2026
+Whitman University,Women's Basketball,2015-2016,0.68,Winter,2015-2016
+Whitman University,Women's Basketball,2016-2017,0.839,Winter,2016-2017
+Whitman University,Women's Basketball,2017-2018,0.815,Winter,2017-2018
+Whitman University,Women's Basketball,2018-2019,0.741,Winter,2018-2019
+Whitman University,Women's Basketball,2019-2020,0.897,Winter,2019-2020
+Whitman University,Women's Basketball,2020-2021,0.818,Winter,2020-2021
+Whitman University,Women's Basketball,2021-2022,0.931,Winter,2021-2022
+Whitman University,Women's Basketball,2022-2023,0.786,Winter,2022-2023
+Whitman University,Women's Basketball,2023-2024,0.769,Winter,2023-2024
+Whitman University,Women's Basketball,2024-2025,0.931,Winter,2024-2025
+Whitman University,Women's Basketball,2025-2026,0.724,Winter,2025-2026
+Whitman University,Men's Baseball,2015-2016,0.342,Spring,2016
+Whitman University,Men's Baseball,2016-2017,0.459,Spring,2017
+Whitman University,Men's Baseball,2017-2018,0.474,Spring,2018
+Whitman University,Men's Baseball,2018-2019,0.571,Spring,2019
+Whitman University,Men's Baseball,2019-2020,0.235,Spring,2020
+Whitman University,Men's Baseball,2020-2021,0.5,Spring,2021
+Whitman University,Men's Baseball,2021-2022,0.385,Spring,2022
+Whitman University,Men's Baseball,2022-2023,0.558,Spring,2023
+Whitman University,Men's Baseball,2023-2024,0.605,Spring,2024
+Whitman University,Men's Baseball,2024-2025,0.525,Spring,2025
+Whitman University,Men's Baseball,2025-2026,0.362,Spring,2026
+Whitman University,Women's Lacrosse,2015-2016,0.286,Spring,2016
+Whitman University,Women's Lacrosse,2016-2017,0.6,Spring,2017
+Whitman University,Women's Lacrosse,2017-2018,0.545,Spring,2018
+Whitman University,Women's Lacrosse,2018-2019,0.562,Spring,2019
+Whitman University,Women's Lacrosse,2019-2020,0,Spring,2020
+Whitman University,Women's Lacrosse,2020-2021,,Spring,2021
+Whitman University,Women's Lacrosse,2021-2022,0.333,Spring,2022
+Whitman University,Women's Lacrosse,2022-2023,0.667,Spring,2023
+Whitman University,Women's Lacrosse,2023-2024,0.556,Spring,2024
+Whitman University,Women's Lacrosse,2024-2025,0.722,Spring,2025
+Whitman University,Women's Lacrosse,2025-2026,0.65,Spring,2026
+Whitman University,Men's Soccer,2015-2016,0.204,Fall,2015
+Whitman University,Men's Soccer,2016-2017,0.737,Fall,2016
+Whitman University,Men's Soccer,2017-2018,0.526,Fall,2017
+Whitman University,Men's Soccer,2018-2019,0.593,Fall,2018
+Whitman University,Men's Soccer,2019-2020,0.65,Fall,2019
+Whitman University,Men's Soccer,2020-2021,0.528,Fall,2020
+Whitman University,Men's Soccer,2021-2022,0.741,Fall,2021
+Whitman University,Men's Soccer,2022-2023,0.617,Fall,2022
+Whitman University,Men's Soccer,2023-2024,0.483,Fall,2023
+Whitman University,Men's Soccer,2024-2025,0.633,Fall,2024
+Whitman University,Men's Soccer,2025-2026,0.762,Fall,2025
+Whitman University,Women's Soccer,2015-2016,0.25,Fall,2015
+Whitman University,Women's Soccer,2016-2017,0.183,Fall,2016
+Whitman University,Women's Soccer,2017-2018,0.133,Fall,2017
+Whitman University,Women's Soccer,2018-2019,0.233,Fall,2018
+Whitman University,Women's Soccer,2019-2020,0.222,Fall,2019
+Whitman University,Women's Soccer,2020-2021,0,Fall,2020
+Whitman University,Women's Soccer,2021-2022,0.14,Fall,2021
+Whitman University,Women's Soccer,2022-2023,0.333,Fall,2022
+Whitman University,Women's Soccer,2023-2024,0.583,Fall,2023
+Whitman University,Women's Soccer,2024-2025,0.6,Fall,2024
+Whitman University,Women's Soccer,2025-2026,0.4,Fall,2025
+Linfield University,Softball,2015-2016,,Spring,2016
+Linfield University,Softball,2016-2017,0.762,Spring,2017
+Linfield University,Softball,2017-2018,0.796,Spring,2018
+Linfield University,Softball,2018-2019,0.823,Spring,2019
+Linfield University,Softball,2019-2020,0.857,Spring,2020
+Linfield University,Softball,2020-2021,0.809,Spring,2021
+Linfield University,Softball,2021-2022,0.809,Spring,2022
+Linfield University,Softball,2022-2023,0.885,Spring,2023
+Linfield University,Softball,2023-2024,0.926,Spring,2024
+Linfield University,Softball,2024-2025,0.865,Spring,2025
+Linfield University,Softball,2025-2026,0.843,Spring,2026
+Linfield University,Football,2015-2016,0.923,Fall,2015
+Linfield University,Football,2016-2017,0.818,Fall,2016
+Linfield University,Football,2017-2018,0.818,Fall,2017
+Linfield University,Football,2018-2019,0.778,Fall,2018
+Linfield University,Football,2019-2020,0.8,Fall,2019
+Linfield University,Football,2020-2021,,Fall,2020
+Linfield University,Football,2021-2022,0.917,Fall,2021
+Linfield University,Football,2022-2023,0.909,Fall,2022
+Linfield University,Football,2023-2024,0.889,Fall,2023
+Linfield University,Football,2024-2025,0.833,Fall,2024
+Linfield University,Football,2025-2026,0.778,Fall,2025
+Linfield University,Men's Basketball,2015-2016,0.44,Winter,2015-2016
+Linfield University,Men's Basketball,2016-2017,0.557,Winter,2016-2017
+Linfield University,Men's Basketball,2017-2018,64,Winter,2017-2018
+Linfield University,Men's Basketball,2018-2019,0.654,Winter,2018-2019
+Linfield University,Men's Basketball,2019-2020,0.769,Winter,2019-2020
+Linfield University,Men's Basketball,2020-2021,0.833,Winter,2020-2021
+Linfield University,Men's Basketball,2021-2022,0.72,Winter,2021-2022
+Linfield University,Men's Basketball,2022-2023,0.4,Winter,2022-2023
+Linfield University,Men's Basketball,2023-2024,0.32,Winter,2023-2024
+Linfield University,Men's Basketball,2024-2025,0.28,Winter,2024-2025
+Linfield University,Men's Basketball,2025-2026,0.417,Winter,2025-2026
+Linfield University,Women's Basketball,2015-2016,0.52,Winter,2015-2016
+Linfield University,Women's Basketball,2016-2017,,Winter,2016-2017
+Linfield University,Women's Basketball,2017-2018,0.36,Winter,2017-2018
+Linfield University,Women's Basketball,2018-2019,0.462,Winter,2018-2019
+Linfield University,Women's Basketball,2019-2020,0.48,Winter,2019-2020
+Linfield University,Women's Basketball,2020-2021,0.083,Winter,2020-2021
+Linfield University,Women's Basketball,2021-2022,0.042,Winter,2021-2022
+Linfield University,Women's Basketball,2022-2023,0.4,Winter,2022-2023
+Linfield University,Women's Basketball,2023-2024,0.44,Winter,2023-2024
+Linfield University,Women's Basketball,2024-2025,731,Winter,2024-2025
+Linfield University,Women's Basketball,2025-2026,0.846,Winter,2025-2026
+Linfield University,Men's Baseball,2015-2016,0.625,Spring,2016
+Linfield University,Men's Baseball,2016-2017,0.667,Spring,2017
+Linfield University,Men's Baseball,2017-2018,0.571,Spring,2018
+Linfield University,Men's Baseball,2018-2019,0.175,Spring,2019
+Linfield University,Men's Baseball,2019-2020,0.438,Spring,2020
+Linfield University,Men's Baseball,2020-2021,,Spring,2021
+Linfield University,Men's Baseball,2021-2022,0.438,Spring,2022
+Linfield University,Men's Baseball,2022-2023,0.351,Spring,2023
+Linfield University,Men's Baseball,2023-2024,0.487,Spring,2024
+Linfield University,Men's Baseball,2024-2025,0.571,Spring,2025
+Linfield University,Men's Baseball,2025-2026,0.571,Spring,2026
+Linfield University,Women's Lacrosse,2015-2016,,Spring,2016
+Linfield University,Women's Lacrosse,2016-2017,,Spring,2017
+Linfield University,Women's Lacrosse,2017-2018,,Spring,2018
+Linfield University,Women's Lacrosse,2018-2019,,Spring,2019
+Linfield University,Women's Lacrosse,2019-2020,,Spring,2020
+Linfield University,Women's Lacrosse,2020-2021,,Spring,2021
+Linfield University,Women's Lacrosse,2021-2022,,Spring,2022
+Linfield University,Women's Lacrosse,2022-2023,,Spring,2023
+Linfield University,Women's Lacrosse,2023-2024,,Spring,2024
+Linfield University,Women's Lacrosse,2024-2025,,Spring,2025
+Linfield University,Women's Lacrosse,2025-2026,,Spring,2026
+Linfield University,Men's Soccer,2015-2016,0.45,Fall,2015
+Linfield University,Men's Soccer,2016-2017,0.211,Fall,2016
+Linfield University,Men's Soccer,2017-2018,0.139,Fall,2017
+Linfield University,Men's Soccer,2018-2019,0.417,Fall,2018
+Linfield University,Men's Soccer,2019-2020,0.316,Fall,2019
+Linfield University,Men's Soccer,2020-2021,0.375,Fall,2020
+Linfield University,Men's Soccer,2021-2022,0.111,Fall,2021
+Linfield University,Men's Soccer,2022-2023,0.289,Fall,2022
+Linfield University,Men's Soccer,2023-2024,0.325,Fall,2023
+Linfield University,Men's Soccer,2024-2025,0.2,Fall,2024
+Linfield University,Men's Soccer,2025-2026,0.2,Fall,2025
+Linfield University,Women's Soccer,2015-2016,0.632,Fall,2015
+Linfield University,Women's Soccer,2016-2017,0.475,Fall,2016
+Linfield University,Women's Soccer,2017-2018,0.5,Fall,2017
+Linfield University,Women's Soccer,2018-2019,0.625,Fall,2018
+Linfield University,Women's Soccer,2019-2020,0.5,Fall,2019
+Linfield University,Women's Soccer,2020-2021,0.875,Fall,2020
+Linfield University,Women's Soccer,2021-2022,0.25,Fall,2021
+Linfield University,Women's Soccer,2022-2023,0.425,Fall,2022
+Linfield University,Women's Soccer,2023-2024,0.45,Fall,2023
+Linfield University,Women's Soccer,2024-2025,0.475,Fall,2024
+Linfield University,Women's Soccer,2025-2026,0.625,Fall,2025
+George Fox University,Softball,2015-2016,0.66,Spring,2016
+George Fox University,Softball,2016-2017,0.541,Spring,2017
+George Fox University,Softball,2017-2018,0.761,Spring,2018
+George Fox University,Softball,2018-2019,0.619,Spring,2019
+George Fox University,Softball,2019-2020,0.667,Spring,2020
+George Fox University,Softball,2020-2021,0.718,Spring,2021
+George Fox University,Softball,2021-2022,0.721,Spring,2022
+George Fox University,Softball,2022-2023,0.614,Spring,2023
+George Fox University,Softball,2023-2024,0.475,Spring,2024
+George Fox University,Softball,2024-2025,0.605,Spring,2025
+George Fox University,Softball,2025-2026,0.524,Spring,2026
+George Fox University,Football,2015-2016,0.4,Fall,2015
+George Fox University,Football,2016-2017,0.556,Fall,2016
+George Fox University,Football,2017-2018,0.7,Fall,2017
+George Fox University,Football,2018-2019,0.6,Fall,2018
+George Fox University,Football,2019-2020,0.5,Fall,2019
+George Fox University,Football,2020-2021,0.5,Fall,2020
+George Fox University,Football,2021-2022,0.667,Fall,2021
+George Fox University,Football,2022-2023,0.8,Fall,2022
+George Fox University,Football,2023-2024,0.4,Fall,2023
+George Fox University,Football,2024-2025,0.4,Fall,2024
+George Fox University,Football,2025-2026,0.4,Fall,2025
+George Fox University,Men's Basketball,2015-2016,0.28,Winter,2015-2016
+George Fox University,Men's Basketball,2016-2017,0.385,Winter,2016-2017
+George Fox University,Men's Basketball,2017-2018,0.32,Winter,2017-2018
+George Fox University,Men's Basketball,2018-2019,0.52,Winter,2018-2019
+George Fox University,Men's Basketball,2019-2020,0.32,Winter,2019-2020
+George Fox University,Men's Basketball,2020-2021,0.312,Winter,2020-2021
+George Fox University,Men's Basketball,2021-2022,0.44,Winter,2021-2022
+George Fox University,Men's Basketball,2022-2023,0.346,Winter,2022-2023
+George Fox University,Men's Basketball,2023-2024,0.56,Winter,2023-2024
+George Fox University,Men's Basketball,2024-2025,0.48,Winter,2024-2025
+George Fox University,Men's Basketball,2025-2026,0.16,Winter,2025-2026
+George Fox University,Women's Basketball,2015-2016,0.967,Winter,2015-2016
+George Fox University,Women's Basketball,2016-2017,0.778,Winter,2016-2017
+George Fox University,Women's Basketball,2017-2018,0.862,Winter,2017-2018
+George Fox University,Women's Basketball,2018-2019,0.862,Winter,2018-2019
+George Fox University,Women's Basketball,2019-2020,0.793,Winter,2019-2020
+George Fox University,Women's Basketball,2020-2021,0.714,Winter,2020-2021
+George Fox University,Women's Basketball,2021-2022,0.462,Winter,2021-2022
+George Fox University,Women's Basketball,2022-2023,0.44,Winter,2022-2023
+George Fox University,Women's Basketball,2023-2024,0.261,Winter,2023-2024
+George Fox University,Women's Basketball,2024-2025,0.741,Winter,2024-2025
+George Fox University,Women's Basketball,2025-2026,0.556,Winter,2025-2026
+George Fox University,Men's Baseball,2015-2016,0.512,Spring,2016
+George Fox University,Men's Baseball,2016-2017,0.474,Spring,2017
+George Fox University,Men's Baseball,2017-2018,0.568,Spring,2018
+George Fox University,Men's Baseball,2018-2019,0.575,Spring,2019
+George Fox University,Men's Baseball,2019-2020,0.733,Spring,2020
+George Fox University,Men's Baseball,2020-2021,0.487,Spring,2021
+George Fox University,Men's Baseball,2021-2022,0.488,Spring,2022
+George Fox University,Men's Baseball,2022-2023,0.417,Spring,2023
+George Fox University,Men's Baseball,2023-2024,0.55,Spring,2024
+George Fox University,Men's Baseball,2024-2025,0.3,Spring,2025
+George Fox University,Men's Baseball,2025-2026,0.4,Spring,2026
+George Fox University,Women's Lacrosse,2015-2016,0.643,Spring,2016
+George Fox University,Women's Lacrosse,2016-2017,0.857,Spring,2017
+George Fox University,Women's Lacrosse,2017-2018,0.846,Spring,2018
+George Fox University,Women's Lacrosse,2018-2019,0.824,Spring,2019
+George Fox University,Women's Lacrosse,2019-2020,0.667,Spring,2020
+George Fox University,Women's Lacrosse,2020-2021,0.929,Spring,2021
+George Fox University,Women's Lacrosse,2021-2022,0.944,Spring,2022
+George Fox University,Women's Lacrosse,2022-2023,0.895,Spring,2023
+George Fox University,Women's Lacrosse,2023-2024,0.789,Spring,2024
+George Fox University,Women's Lacrosse,2024-2025,0.737,Spring,2025
+George Fox University,Women's Lacrosse,2025-2026,0.778,Spring,2026
+George Fox University,Men's Soccer,2015-2016,0.375,Fall,2015
+George Fox University,Men's Soccer,2016-2017,0.132,Fall,2016
+George Fox University,Men's Soccer,2017-2018,0.275,Fall,2017
+George Fox University,Men's Soccer,2018-2019,0.222,Fall,2018
+George Fox University,Men's Soccer,2019-2020,0.325,Fall,2019
+George Fox University,Men's Soccer,2020-2021,0.375,Fall,2020
+George Fox University,Men's Soccer,2021-2022,0.333,Fall,2021
+George Fox University,Men's Soccer,2022-2023,0.35,Fall,2022
+George Fox University,Men's Soccer,2023-2024,0.35,Fall,2023
+George Fox University,Men's Soccer,2024-2025,0.725,Fall,2024
+George Fox University,Men's Soccer,2025-2026,0.4,Fall,2025
+George Fox University,Women's Soccer,2015-2016,0.3,Fall,2015
+George Fox University,Women's Soccer,2016-2017,0.225,Fall,2016
+George Fox University,Women's Soccer,2017-2018,0.474,Fall,2017
+George Fox University,Women's Soccer,2018-2019,0.444,Fall,2018
+George Fox University,Women's Soccer,2019-2020,0.342,Fall,2019
+George Fox University,Women's Soccer,2020-2021,0.75,Fall,2020
+George Fox University,Women's Soccer,2021-2022,0.65,Fall,2021
+George Fox University,Women's Soccer,2022-2023,0.667,Fall,2022
+George Fox University,Women's Soccer,2023-2024,0.425,Fall,2023
+George Fox University,Women's Soccer,2024-2025,0.375,Fall,2024
+George Fox University,Women's Soccer,2025-2026,0.184,Fall,2025
+Pacific University,Softball,2015-2016,0.607,Spring,2016
+Pacific University,Softball,2016-2017,0.289,Spring,2017
+Pacific University,Softball,2017-2018,0.564,Spring,2018
+Pacific University,Softball,2018-2019,0.561,Spring,2019
+Pacific University,Softball,2019-2020,0.267,Spring,2020
+Pacific University,Softball,2020-2021,0.472,Spring,2021
+Pacific University,Softball,2021-2022,0.263,Spring,2022
+Pacific University,Softball,2022-2023,0.194,Spring,2023
+Pacific University,Softball,2023-2024,0.225,Spring,2024
+Pacific University,Softball,2024-2025,0.235,Spring,2025
+Pacific University,Softball,2025-2026,0.421,Spring,2026
+Pacific University,Football,2015-2016,0.6,Fall,2015
+Pacific University,Football,2016-2017,0.4,Fall,2016
+Pacific University,Football,2017-2018,0.5,Fall,2017
+Pacific University,Football,2018-2019,0.5,Fall,2018
+Pacific University,Football,2019-2020,0.4,Fall,2019
+Pacific University,Football,2020-2021,,Fall,2020
+Pacific University,Football,2021-2022,0.667,Fall,2021
+Pacific University,Football,2022-2023,0.556,Fall,2022
+Pacific University,Football,2023-2024,0.222,Fall,2023
+Pacific University,Football,2024-2025,0.5,Fall,2024
+Pacific University,Football,2025-2026,0.3,Fall,2025
+Pacific University,Men's Basketball,2015-2016,0.48,Winter,2015-2016
+Pacific University,Men's Basketball,2016-2017,0.5,Winter,2016-2017
+Pacific University,Men's Basketball,2017-2018,0.48,Winter,2017-2018
+Pacific University,Men's Basketball,2018-2019,0.4,Winter,2018-2019
+Pacific University,Men's Basketball,2019-2020,0.28,Winter,2019-2020
+Pacific University,Men's Basketball,2020-2021,0.333,Winter,2020-2021
+Pacific University,Men's Basketball,2021-2022,0.44,Winter,2021-2022
+Pacific University,Men's Basketball,2022-2023,0.44,Winter,2022-2023
+Pacific University,Men's Basketball,2023-2024,0.577,Winter,2023-2024
+Pacific University,Men's Basketball,2024-2025,0.44,Winter,2024-2025
+Pacific University,Men's Basketball,2025-2026,0.4,Winter,2025-2026
+Pacific University,Women's Basketball,2015-2016,0.44,Winter,2015-2016
+Pacific University,Women's Basketball,2016-2017,0.32,Winter,2016-2017
+Pacific University,Women's Basketball,2017-2018,0.208,Winter,2017-2018
+Pacific University,Women's Basketball,2018-2019,0.32,Winter,2018-2019
+Pacific University,Women's Basketball,2019-2020,0.654,Winter,2019-2020
+Pacific University,Women's Basketball,2020-2021,0.556,Winter,2020-2021
+Pacific University,Women's Basketball,2021-2022,0.704,Winter,2021-2022
+Pacific University,Women's Basketball,2022-2023,0.704,Winter,2022-2023
+Pacific University,Women's Basketball,2023-2024,0.654,Winter,2023-2024
+Pacific University,Women's Basketball,2024-2025,0.44,Winter,2024-2025
+Pacific University,Women's Basketball,2025-2026,0.4,Winter,2025-2026
+Pacific University,Men's Baseball,2015-2016,0.581,Spring,2016
+Pacific University,Men's Baseball,2016-2017,0.395,Spring,2017
+Pacific University,Men's Baseball,2017-2018,0.4,Spring,2018
+Pacific University,Men's Baseball,2018-2019,0.581,Spring,2019
+Pacific University,Men's Baseball,2019-2020,0.562,Spring,2020
+Pacific University,Men's Baseball,2020-2021,0.694,Spring,2021
+Pacific University,Men's Baseball,2021-2022,0.609,Spring,2022
+Pacific University,Men's Baseball,2022-2023,0.625,Spring,2023
+Pacific University,Men's Baseball,2023-2024,0.61,Spring,2024
+Pacific University,Men's Baseball,2024-2025,0.487,Spring,2025
+Pacific University,Men's Baseball,2025-2026,0.425,Spring,2026
+Pacific University,Women's Lacrosse,2015-2016,0.714,Spring,2016
+Pacific University,Women's Lacrosse,2016-2017,0.538,Spring,2017
+Pacific University,Women's Lacrosse,2017-2018,0,Spring,2018
+Pacific University,Women's Lacrosse,2018-2019,0.143,Spring,2019
+Pacific University,Women's Lacrosse,2019-2020,0.25,Spring,2020
+Pacific University,Women's Lacrosse,2020-2021,0.167,Spring,2021
+Pacific University,Women's Lacrosse,2021-2022,0.123,Spring,2022
+Pacific University,Women's Lacrosse,2022-2023,0.294,Spring,2023
+Pacific University,Women's Lacrosse,2023-2024,0.125,Spring,2024
+Pacific University,Women's Lacrosse,2024-2025,0.25,Spring,2025
+Pacific University,Women's Lacrosse,2025-2026,0.5,Spring,2026
+Pacific University,Men's Soccer,2015-2016,0.395,Fall,2015
+Pacific University,Men's Soccer,2016-2017,0.605,Fall,2016
+Pacific University,Men's Soccer,2017-2018,0.472,Fall,2017
+Pacific University,Men's Soccer,2018-2019,0.278,Fall,2018
+Pacific University,Men's Soccer,2019-2020,0.236,Fall,2019
+Pacific University,Men's Soccer,2020-2021,0.25,Fall,2020
+Pacific University,Men's Soccer,2021-2022,0.368,Fall,2021
+Pacific University,Men's Soccer,2022-2023,0.237,Fall,2022
+Pacific University,Men's Soccer,2023-2024,0.4,Fall,2023
+Pacific University,Men's Soccer,2024-2025,0.525,Fall,2024
+Pacific University,Men's Soccer,2025-2026,0.342,Fall,2025
+Pacific University,Women's Soccer,2015-2016,0.25,Fall,2015
+Pacific University,Women's Soccer,2016-2017,0.425,Fall,2016
+Pacific University,Women's Soccer,2017-2018,0.15,Fall,2017
+Pacific University,Women's Soccer,2018-2019,0.125,Fall,2018
+Pacific University,Women's Soccer,2019-2020,0.211,Fall,2019
+Pacific University,Women's Soccer,2020-2021,0.188,Fall,2020
+Pacific University,Women's Soccer,2021-2022,0.342,Fall,2021
+Pacific University,Women's Soccer,2022-2023,0.395,Fall,2022
+Pacific University,Women's Soccer,2023-2024,0.263,Fall,2023
+Pacific University,Women's Soccer,2024-2025,0.225,Fall,2024
+Pacific University,Women's Soccer,2025-2026,0.421,Fall,2025
