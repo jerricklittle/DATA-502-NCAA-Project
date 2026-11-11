@@ -690,7 +690,7 @@ write_csv(coach_ds, "../clean_data/coach_ds.csv")
 
 ```{r}
 # filter for d3 instLevel
-d3_instLevel = instLevel_all %>%
+d3_instLevel = final_instLevel %>%
   filter(classification_name %in% c("NCAA Division III with football", "NCAA Division III without football", "NCAA Division III")) %>%
   mutate( # linfield appears under many names
     institution_name = case_when(
@@ -712,7 +712,7 @@ d3_schools = d3_instLevel %>% pull(unitid)
 
 
 # select d3 schools from sports_ds
-d3_sports = sports_ds %>%
+d3_sports = adjusted_sports %>%
   filter(unitid %in% d3_schools) %>%
   mutate( # linfield appears under many names
     institution_name = case_when(
