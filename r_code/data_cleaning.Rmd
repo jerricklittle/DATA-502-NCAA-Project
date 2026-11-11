@@ -164,9 +164,56 @@ instLevel_all = bind_rows(
   arrange(year, institution_name)
   
 instLevel_all
+```
 
-# save data to clean folder
-write_csv(instLevel_all, "../clean_data/instLevel_ds.csv")
+## Add adjusted money columns
+
+Based on HEPI index, adjust money data so it can be compared across years
+
+```{r}
+hepi = read_excel("../raw_data/hepi.xlsx", col_names = T, skip = 1)
+
+# add manual values for 2023-2025
+add_hepi = tibble(
+  year = c("2023", "2024", "2025"),
+  hepi = c(396.2, 409.7, 424.6)
+)
+
+# rename value column, grab year from school year, remove na, add manual data
+hepi = hepi %>%
+  rename("hepi" = `Higher Education Price Index\\2\\`) %>%
+  mutate(
+    year = case_when(
+      str_starts(`School year`, "19") ~ paste0("19", substr(`School year`, 6, 7)),
+      str_starts(`School year`, "20") ~ paste0("20", substr(`School year`, 6, 7))
+    ),
+    hepi = na_if(hepi, "---"),
+    hepi = as.numeric(hepi)
+  ) %>%
+  select(year, hepi) %>%
+  na.omit() %>%
+  bind_rows(add_hepi)
+
+# make sure year column in numeric
+hepi$year = as.numeric(hepi$year)
+
+# target base year (converting everything to 2025 dollars)
+target_year = 2025
+base_hepi = hepi$hepi[hepi$year == target_year]
+
+# add to instLevel data
+adjusted_instLevel = instLevel_all %>%
+  left_join(hepi, by = "year") %>%
+  mutate(
+    # Formula: Nominal * (Base CPI / Year CPI)
+    real_grnd_expense = GRND_TOTAL_EXPENSE * (base_hepi / hepi),
+    real_opexp = IL_TOTAL_OPEXP_INCLCOED * (base_hepi / hepi),
+    real_opexp_athlete = ((IL_SUM_OPEXPPERPART_WOMEN + IL_SUM_OPEXPPERPART_MEN)/2) * (base_hepi / hepi),
+    real_recruit_exp = RECRUITEXP_TOTAL * (base_hepi / hepi) # might not include coed recruiting...
+    # can add salary adjustments if needed
+  )
+
+adjusted_instLevel
 ```
 
 
@@ -459,9 +506,53 @@ sports_ds = gender_long %>%
   arrange(year, institution_name, sport, athlete_gender)
 
 sports_ds
+```
+
+## Add adjusted money columns
+
+Based on HEPI index, adjust money data so it can be compared across years
+
+```{r}
+# join and calculate real/adjusted values
+adjusted_sports = sports_ds %>%
+  left_join(hepi, by = "year") %>%
+  mutate(
+    # Formula: Nominal * (Base CPI / Year CPI)
+    real_expense = expense * (base_hepi / hepi),
+    real_opexp = op_exp * (base_hepi / hepi),
+    real_opexp_athlete = op_exp_per_athlete * (base_hepi / hepi)
+  )
+
+adjusted_sports
 
 # save data to clean folder
-write_csv(sports_ds, "../clean_data/sports_ds.csv")
+write_csv(adjusted_sports, "../clean_data/sports_ds.csv")
+```
+
+
+## Add nsports column to instLevel data
+```{r}
+# summarize number of sports for each school and year from sport-level data
+nsport_ds = adjusted_sports %>%
+  group_by(year, institution_name) %>%
+  summarize(
+    nsports = n_distinct(sport)
+  )
+
+# join with instLevel data from above
+final_instLevel = adjusted_instLevel %>%
+  left_join(
+    nsport_ds,
+    by = c("year", "institution_name")
+  )
+
+final_instLevel
+
+
+# save data to clean folder
+write_csv(final_instLevel, "../clean_data/instLevel_ds.csv")
+
+
 ```
 
 
@@ -653,6 +744,297 @@ d3_coach
 write_csv(d3_coach, "../clean_data/d3_coach_ds.csv")
 ```
 
+# Create NWC datasets
+
+## Add whole institution total expense data
+
+Use Propublica's API to get total expense data for NWC schools
+
+```{r}
+library(httr)
+library(jsonlite)
+
+# specify nwc schools
+nwc_schools = c(
+  "George Fox University",
+  "Lewis & Clark College",
+  "Linfield University",
+  "Pacific Lutheran University",
+  "Pacific University",
+  "University of Puget Sound",
+  "Whitman College",
+  "Whitworth University",
+  "Willamette University"
+)
+
+# attach eins with each nwc school
+school_eins = tibble(
+  school = nwc_schools,
+  ein = c("930386839", "930386858", "930391586", "910565571", "930386892", "910564961", "910567740", "910473310", "930386972")
+)
+
+# function to get that school's total expense data from propublica
+get_school_expenses = function(school, ein) {
+
+  url = paste0(
+    "https://projects.propublica.org/nonprofits/api/v2/organizations/",
+    ein,
+    ".json"
+  )
+
+  response = GET(url)
+  stop_for_status(response)
+
+  data = fromJSON(
+    content(response, as = "text", encoding = "UTF-8")
+  )
+
+  filings = data$filings_with_data
+
+  if (is.null(filings) || nrow(filings) == 0) {
+    return(tibble(
+      school = school,
+      tax_prd = integer(),
+      tax_prd_yr = integer(),
+      formtype = integer(),
+      total_expenses = numeric()
+    ))
+  }
+
+  filings %>%
+    transmute(
+      school = school,
+      tax_prd,
+      tax_prd_yr,
+      formtype,
+      total_expenses = totfuncexpns
+    )
+}
+
+
+# create ds with each nwc school's expenses
+nwc_expenses = pmap_dfr(
+  school_eins,
+  get_school_expenses
+)
+
+# filter for just total expenses
+nwc_expenses = nwc_expenses %>%
+  arrange(desc(tax_prd), school) %>%
+  filter(formtype == 0) %>%
+  select(school, tax_prd_yr, total_expenses)
+
+
+# standardize school names
+nwc_expenses = nwc_expenses %>%
+  mutate(
+    school = case_when(
+      grepl("Whitman College", school, ignore.case = TRUE) ~
+        "Whitman College",
+      grepl("Willamette University", school, ignore.case = TRUE) ~
+        "Willamette University",
+      grepl("George Fox", school, ignore.case = TRUE) ~
+        "George Fox University",
+      grepl("Lewis & Clark", school, ignore.case = TRUE) ~
+        "Lewis & Clark College",
+      grepl("Linfield", school, ignore.case = TRUE) ~
+        "Linfield University",
+      grepl("Pacific Lutheran", school, ignore.case = TRUE) ~
+        "Pacific Lutheran University",
+      grepl("Pacific University", school, ignore.case = TRUE) ~
+        "Pacific University",
+      grepl("Puget Sound", school, ignore.case = TRUE) ~
+        "University of Puget Sound",
+      grepl("Whitworth", school, ignore.case = TRUE) ~
+        "Whitworth University",
+      TRUE ~ school
+    )
+  )
+
+
+# additional years for each school not on Prorepublica API call
+wm = tibble(
+  year = c(2025, 2024),
+  exp = c(181884409, 170171725)
+)
+
+ww = tibble(
+  year = c(2025, 2024),
+  exp = c(150881223, 147365414)
+)
+
+wil = tibble(
+  year = c(2025, 2024),
+  exp = c(197287493, 190546447)
+)
+
+ups = tibble(
+  year = c(2025, 2024),
+  exp = c(175947358, 166535068)
+)
+
+lc = tibble(
+  year = c(2025, 2024),
+  exp = c(243920241, 235484369)
+)
+
+gfu = tibble(
+  year = c(2025, 2024),
+  exp = c(162804538, 149295263)
+)
+
+pac = tibble(
+  year = c(2025, 2024),
+  exp = c(184907618, 179553109)
+)
+
+plu = tibble(
+  year = c(2025, 2024),
+  exp = c(163733122, 168552957)
+)
+
+lin = tibble(
+  year = c(2025, 2024),
+  exp = c(114718470, 109617269)
+)
+
+
+# bind all the manually typed expenses into one ds
+manual_expenses = bind_rows(
+  wm  %>% mutate(school = "Willamette University"),
+  ww  %>% mutate(school = "Whitworth University"),
+  wil %>% mutate(school = "Whitman College"),
+  ups %>% mutate(school = "University of Puget Sound"),
+  lc  %>% mutate(school = "Lewis & Clark College"),
+  gfu %>% mutate(school = "George Fox University"),
+  pac %>% mutate(school = "Pacific University"),
+  plu %>% mutate(school = "Pacific Lutheran University"),
+  lin %>% mutate(school = "Linfield University")
+) %>%
+  select(school, tax_prd_yr = year, total_expenses = exp)
+
+# attach manual expenses to API expenses
+nwc_bigger = bind_rows(
+  nwc_expenses %>%
+    anti_join(
+      manual_expenses,
+      by = c("school", "tax_prd_yr")
+    ) %>%
+    select(school, tax_prd_yr, total_expenses),
+  manual_expenses
+) %>%
+  arrange(school, tax_prd_yr)
+
+# grab nwc schools from instLevel EADA data
+d3_nwc = d3_instLevel %>%
+  filter(institution_name %in% nwc_schools) %>%
+  left_join(
+    nwc_bigger,
+    by = c(
+      "institution_name" = "school",
+      "year" = "tax_prd_yr"
+    )
+  )
+
+# wu edited tax years in 2021 so there are two entries, need to combine them
+wu_2021 = d3_nwc %>%
+  filter(institution_name == "Willamette University", year == 2021) %>%
+  summarize(exp = sum(total_expenses)) %>%
+  pull(exp)
+
+# put the correct expense amount for wu 2021 in
+nwc_instLevel_exp = d3_nwc %>%
+  filter(total_expenses != 6252286) %>%
+  mutate(
+    whole_total_exp = case_when(
+      (institution_name == "Willamette University") & (year == 2021) ~ wu_2021, # should be 141617351
+      .default = total_expenses
+    ),
+    perc_exp = GRND_TOTAL_EXPENSE/total_expenses
+  ) %>%
+  select(-total_expenses) %>%
+  arrange(year, institution_name)
+
+nwc_instLevel_exp
+```
+
+## Add winning percentage data for inst-level
+
+```{r}
+win_pct_ds = read_csv("../raw_data/win_pct.csv")
+
+# make years, sports names, inst match original ds and fix typos
+win_pct_clean = win_pct_ds %>%
+  mutate(
+    year = as.numeric(paste0("20", substr(Year, start = 8, stop = 9))),
+    sport = case_when(
+      Sport == "Softball" ~ "Women's Softball",
+      Sport == "Football" ~ "Men's Football",
+      .default = Sport
+    ),
+    win_pct = `Win Pct`,
+    institution_name = School
+  ) %>%
+  select(-Sport, -Year, -`Year Played`, -`Win Pct`, -School) %>%
+  mutate(
+    win_pct = case_when(
+      win_pct >= 1000 ~ win_pct / 10000,
+      win_pct >= 100 ~ win_pct / 1000,
+      win_pct >= 10 ~ win_pct / 100,
+      win_pct >= 1 ~ win_pct / 10,
+      .default = win_pct
+    )
+  )
+
+# summarize inst-level win percentage
+instLevel_win_pct = win_pct_clean %>%
+  group_by(institution_name, year) %>%
+  summarize(
+    all_win_pct = mean(win_pct, na.rm = T)
+  )
+
+# add win percentage data to instLevel ds
+nwc_instLevel = nwc_instLevel_exp %>%
+  left_join(
+    instLevel_win_pct,
+    by = c("year", "institution_name")
+  )
+
+nwc_instLevel
+
+# save data to clean folder
+write_csv(nwc_instLevel, "../clean_data/nwc_instLevel_ds.csv")
+```
+
+
+## Add winning percentage data for sport-level
+
+```{r}
+nwc_sports = d3_sports %>%
+  filter(institution_name %in% nwc_schools) %>%
+  left_join(
+    win_pct_clean,
+    by = c("year", "sport", "institution_name")
+  )
+
+nwc_sports
+
+# save to clean folder
+write_csv(nwc_sports, "../clean_data/nwc_sports_ds.csv")
+```
+
+
+## Create coach-level NWC data
+
+```{r}
+nwc_coach = d3_coach %>%
+  filter(institution_name %in% nwc_schools)
+
+nwc_coach
+
+# save data to clean folder
+write_csv(nwc_coach, "../clean_data/nwc_coach_ds.csv")
+```
 
 
 
