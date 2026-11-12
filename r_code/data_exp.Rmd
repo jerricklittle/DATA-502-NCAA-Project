@@ -24,7 +24,9 @@ d3_instLevel = read_csv("../clean_data/d3_instLevel_ds.csv")
 d3_sports = read_csv("../clean_data/d3_sports_ds.csv")
 d3_coach = read_csv("../clean_data/d3_coach_ds.csv")
 
-
+nwc_instLevel = read_csv("../clean_data/nwc_instLevel_ds.csv")
+nwc_sports = read_csv("../clean_data/nwc_sports_ds.csv")
+nwc_coach = read_csv("../clean_data/nwc_coach_ds.csv")
 nwc = c( # NWC teams with the exception of Willamette
   "Linfield University", "George Fox University", "Whitworth University", 
   "Whitman College", "Pacific University", "University of Puget Sound", 
@@ -734,6 +736,38 @@ expense_breakdown %>%
     breaks = seq(2000, 2025, by = 1)
   ) +
   theme_light()
+```
+
+#How much do students represent total student body?
+
+```{r}
+nwc_instLevel %>%
+  group_by(institution_name, year) %>%
+  summarise(proportion =(UNDUP_CT_PARTIC_MEN + UNDUP_CT_PARTIC_WOMEN) / EFTotalCount)
+
+```
+
+#Win pct by spending by sport
+```{r}
+nwc_sports %>%
+  filter(!is.na(win_pct),
+         year == 2025) %>%
+  ggplot(aes(x = win_pct, y = real_expense, color = institution_name))+
+  geom_point(size = 4, alpha = .8)+
+  facet_wrap(~sport, scales = "free_y")+
+  scale_y_continuous(labels = scales::dollar)+
+  scale_color_manual(values = nwc_colors)
+```
+#Spending per athlete against win pct
+```{r}
+nwc_sports %>%
+  filter(!is.na(win_pct),
+         year == 2023) %>%
+  ggplot(aes(x = win_pct, y = real_opexp_athlete, color = institution_name))+
+  geom_point(size = 4, alpha = .8)+
+  facet_wrap(~sport, scales = "free_y")+
+  scale_y_continuous(labels = scales::dollar)+
+  scale_color_manual(values = nwc_colors)
 ```
 
 
