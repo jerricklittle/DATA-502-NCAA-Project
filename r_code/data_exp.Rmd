@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, message = F, warning = F}
 library(tidyverse)
+library(naniar)
 
 d3_instLevel = read_csv("../clean_data/d3_instLevel_ds.csv")
 d3_sports = read_csv("../clean_data/d3_sports_ds.csv")
@@ -41,6 +42,7 @@ nwc_colors <- c(
   "Whitworth University"       = "#CE1126",
   "Willamette University"      = "#E6A91C"
 )
+
 ```
 
 # EDA plots
@@ -540,7 +542,7 @@ d3_instLevel %>%
   mutate(undup_all = UNDUP_CT_PARTIC_MEN + UNDUP_CT_PARTIC_WOMEN,
          exp_per_athlete = IL_TOTAL_EXPENSE_ALL / undup_all) %>%
   group_by(institution_name) %>%
-  ggplot(aes(y = IL_TOTAL_EXPENSE_ALL, x = exp_per_athlete, color = institution_name))+
+  ggplot(aes(y = real_grnd_expense, x = exp_per_athlete, color = institution_name))+
   geom_point(size = 3) +
   scale_color_manual(values = nwc_colors)+
   facet_wrap(~year)+
