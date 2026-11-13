@@ -1,0 +1,1120 @@
+sport,year,institution_name,season,win_clean
+Men's Football,2000,Whitworth University,Fall,0.5
+Men's Football,2001,Whitworth University,Fall,0.6666666666666666
+Men's Baseball,2002,Willamette University,Spring,0
+Men's Football,2002,Whitworth University,Fall,0.7777777777777778
+Men's Soccer,2002,Whitworth University,Fall,0.7368421052631579
+Women's Soccer,2002,Whitworth University,Fall,0.4117647058823529
+Women's Softball,2002,Willamette University,Spring,0
+Men's Baseball,2003,Willamette University,Spring,0
+Men's Basketball,2003,Willamette University,Winter,0
+Men's Football,2003,Willamette University,Fall,0.6
+Men's Football,2003,Whitworth University,Fall,0.7
+Men's Soccer,2003,Willamette University,Fall,0
+Men's Soccer,2003,Whitworth University,Fall,NA
+Women's Soccer,2003,Whitworth University,Fall,0.35294117647058826
+Women's Softball,2003,Willamette University,Spring,0
+Women's Volleyball,2003,Whitworth University,Fall,0.8888888888888888
+Men's Baseball,2004,Willamette University,Spring,1
+Men's Basketball,2004,Willamette University,Winter,0
+Men's Football,2004,Whitworth University,Fall,0.4
+Men's Football,2004,Willamette University,Fall,0.7
+Men's Soccer,2004,Willamette University,Fall,0
+Men's Soccer,2004,Whitworth University,Fall,0.7058823529411765
+Women's Soccer,2004,Whitworth University,Fall,0.7368421052631579
+Women's Softball,2004,Willamette University,Spring,0
+Women's Volleyball,2004,Whitworth University,Fall,0.35714285714285715
+Men's Baseball,2005,Willamette University,Spring,0
+Men's Basketball,2005,Willamette University,Winter,0
+Men's Football,2005,Willamette University,Fall,0.636
+Men's Football,2005,Whitworth University,Fall,0.7777777777777778
+Men's Soccer,2005,Willamette University,Fall,0
+Men's Soccer,2005,Whitworth University,Fall,0.8421052631578947
+Women's Soccer,2005,Whitworth University,Fall,0.7222222222222222
+Women's Softball,2005,Willamette University,Spring,0
+Women's Volleyball,2005,Whitworth University,Fall,0.75
+Men's Baseball,2006,Willamette University,Spring,0
+Men's Basketball,2006,Willamette University,Winter,0
+Men's Football,2006,Willamette University,Fall,0.556
+Men's Football,2006,Whitworth University,Fall,0.625
+Men's Soccer,2006,Willamette University,Fall,0
+Men's Soccer,2006,Whitworth University,Fall,0.9047619047619048
+Women's Soccer,2006,Whitworth University,Fall,0.5
+Women's Softball,2006,Willamette University,Spring,0.5
+Women's Volleyball,2006,Whitworth University,Fall,0.8461538461538461
+Men's Baseball,2007,Willamette University,Spring,0.462
+Men's Basketball,2007,Willamette University,Winter,0.4
+Men's Football,2007,Willamette University,Fall,0.222
+Men's Football,2007,Whitworth University,Fall,0.9166666666666666
+Men's Soccer,2007,Willamette University,Fall,0.079
+Men's Soccer,2007,Whitworth University,Fall,0.6666666666666666
+Women's Basketball,2007,George Fox University,Winter,0.7692307692307693
+Women's Soccer,2007,Whitworth University,Fall,0.7058823529411765
+Women's Soccer,2007,Willamette University,Fall,0.833
+Women's Softball,2007,Willamette University,Spring,0.541
+Women's Volleyball,2007,Whitworth University,Fall,0.25925925925925924
+Men's Baseball,2008,Willamette University,Spring,0.5
+Men's Basketball,2008,George Fox University,Winter,0.36
+Men's Basketball,2008,Willamette University,Winter,0.423
+Men's Football,2008,Willamette University,Fall,0.4
+Men's Football,2008,Whitworth University,Fall,0.8
+Men's Soccer,2008,Willamette University,Fall,0.158
+Men's Soccer,2008,Whitworth University,Fall,0.7894736842105263
+Women's Basketball,2008,Willamette University,Winter,0.2
+Women's Basketball,2008,George Fox University,Winter,0.8333333333333334
+Women's Soccer,2008,Willamette University,Fall,0.474
+Women's Soccer,2008,Whitworth University,Fall,0.8571428571428571
+Women's Softball,2008,Willamette University,Spring,0.694
+Women's Volleyball,2008,George Fox University,Fall,0.391304347826087
+Women's Volleyball,2008,Whitworth University,Fall,0.44
+Women's Volleyball,2008,Whitman College,Fall,0.5416666666666666
+Men's Baseball,2009,Willamette University,Spring,0.553
+Men's Basketball,2009,Willamette University,Winter,0.522
+Men's Football,2009,Whitworth University,Fall,0.6666666666666666
+Men's Football,2009,Willamette University,Fall,0.917
+Men's Soccer,2009,Willamette University,Fall,0.194
+Men's Soccer,2009,Whitworth University,Fall,0.875
+Women's Basketball,2009,Willamette University,Winter,0.182
+Women's Basketball,2009,George Fox University,Winter,1
+Women's Soccer,2009,Willamette University,Fall,0.6
+Women's Soccer,2009,Whitworth University,Fall,0.7894736842105263
+Women's Softball,2009,Willamette University,Spring,0.829
+Women's Volleyball,2009,Willamette University,Fall,0.231
+Women's Volleyball,2009,George Fox University,Fall,0.5
+Women's Volleyball,2009,Whitworth University,Fall,0.5
+Men's Baseball,2010,Willamette University,Spring,0.421
+Men's Basketball,2010,Willamette University,Winter,0.36
+Men's Basketball,2010,George Fox University,Winter,0.48148148148148145
+Men's Football,2010,Whitworth University,Fall,0.5
+Men's Football,2010,Willamette University,Fall,0.8
+Men's Soccer,2010,George Fox University,Fall,0.2631578947368421
+Men's Soccer,2010,Willamette University,Fall,0.316
+Men's Soccer,2010,Whitworth University,Fall,0.8421052631578947
+Women's Basketball,2010,Willamette University,Winter,0.16
+Women's Basketball,2010,George Fox University,Winter,0.8709677419354839
+Women's Soccer,2010,George Fox University,Fall,0.3684210526315789
+Women's Soccer,2010,Willamette University,Fall,0.5
+Women's Soccer,2010,Whitworth University,Fall,0.85
+Women's Softball,2010,George Fox University,Spring,0.325
+Women's Softball,2010,Willamette University,Spring,0.7
+Women's Volleyball,2010,Whitworth University,Fall,0.37037037037037035
+Women's Volleyball,2010,Willamette University,Fall,0.458
+Women's Volleyball,2010,George Fox University,Fall,0.625
+Men's Baseball,2011,University of Puget Sound,Spring,0.5
+Men's Baseball,2011,Willamette University,Spring,0.563
+Men's Baseball,2011,George Fox University,Spring,0.6666666666666666
+Men's Basketball,2011,Willamette University,Winter,0.28
+Men's Basketball,2011,George Fox University,Winter,0.32
+Men's Basketball,2011,University of Puget Sound,Winter,0.4
+Men's Basketball,2011,Whitworth University,Winter,NA
+Men's Football,2011,Whitworth University,Fall,0.5
+Men's Football,2011,Willamette University,Fall,0.7
+Men's Soccer,2011,George Fox University,Fall,0
+Men's Soccer,2011,Willamette University,Fall,0.237
+Men's Soccer,2011,Whitworth University,Fall,0.6
+Women's Basketball,2011,Willamette University,Winter,0.13
+Women's Basketball,2011,Whitworth University,Winter,0.44
+Women's Basketball,2011,University of Puget Sound,Winter,0.6923076923076923
+Women's Basketball,2011,George Fox University,Winter,0.8387096774193549
+Women's Soccer,2011,George Fox University,Fall,0.3125
+Women's Soccer,2011,Willamette University,Fall,0.4
+Women's Soccer,2011,Whitworth University,Fall,0.7368421052631579
+Women's Softball,2011,University of Puget Sound,Spring,0.2894736842105263
+Women's Softball,2011,George Fox University,Spring,0.3
+Women's Softball,2011,Willamette University,Spring,0.5
+Women's Volleyball,2011,Whitman College,Fall,0.25925925925925924
+Women's Volleyball,2011,George Fox University,Fall,0.34615384615384615
+Women's Volleyball,2011,Willamette University,Fall,0.385
+Women's Volleyball,2011,Whitworth University,Fall,0.72
+Men's Baseball,2012,University of Puget Sound,Spring,0.2631578947368421
+Men's Baseball,2012,Willamette University,Spring,0.378
+Men's Baseball,2012,George Fox University,Spring,0.5
+Men's Basketball,2012,Willamette University,Winter,0.2
+Men's Basketball,2012,George Fox University,Winter,0.44
+Men's Basketball,2012,Lewis and Clark College,Winter,0.5384615384615384
+Men's Basketball,2012,University of Puget Sound,Winter,0.7407407407407407
+Men's Basketball,2012,Whitworth University,Winter,0.8666666666666667
+Men's Football,2012,University of Puget Sound,Fall,0
+Men's Football,2012,Willamette University,Fall,0.4
+Men's Football,2012,Whitworth University,Fall,0.4
+Men's Soccer,2012,George Fox University,Fall,0.11764705882352941
+Men's Soccer,2012,Willamette University,Fall,0.412
+Men's Soccer,2012,University of Puget Sound,Fall,0.6470588235294118
+Men's Soccer,2012,Whitworth University,Fall,0.8235294117647058
+Women's Basketball,2012,Willamette University,Winter,0.04
+Women's Basketball,2012,Whitworth University,Winter,0.44
+Women's Basketball,2012,University of Puget Sound,Winter,0.5
+Women's Basketball,2012,Lewis and Clark College,Winter,0.8620689655172413
+Women's Basketball,2012,George Fox University,Winter,0.9696969696969697
+Women's Soccer,2012,George Fox University,Fall,0.14285714285714285
+Women's Soccer,2012,Whitworth University,Fall,0.5714285714285714
+Women's Soccer,2012,Willamette University,Fall,0.575
+Women's Soccer,2012,University of Puget Sound,Fall,0.8235294117647058
+Women's Softball,2012,University of Puget Sound,Spring,0.08823529411764706
+Women's Softball,2012,George Fox University,Spring,0.47619047619047616
+Women's Softball,2012,Willamette University,Spring,0.583
+Women's Volleyball,2012,Willamette University,Fall,0.32
+Women's Volleyball,2012,George Fox University,Fall,0.4
+Women's Volleyball,2012,Whitman College,Fall,0.5
+Women's Volleyball,2012,Whitworth University,Fall,0.7307692307692307
+Women's Volleyball,2012,University of Puget Sound,Fall,0.75
+Men's Baseball,2013,Lewis and Clark College,Spring,0.225
+Men's Baseball,2013,Whitworth University,Spring,0.358974358974359
+Men's Baseball,2013,Whitman College,Spring,0.42105263157894735
+Men's Baseball,2013,Pacific University,Spring,0.425
+Men's Baseball,2013,University of Puget Sound,Spring,0.425
+Men's Baseball,2013,Willamette University,Spring,0.5
+Men's Baseball,2013,Pacific Lutheran University,Spring,0.55
+Men's Baseball,2013,George Fox University,Spring,0.6842105263157895
+Men's Basketball,2013,Willamette University,Winter,0.28
+Men's Basketball,2013,University of Puget Sound,Winter,0.36
+Men's Basketball,2013,George Fox University,Winter,0.5769230769230769
+Men's Basketball,2013,Lewis and Clark College,Winter,0.6153846153846154
+Men's Basketball,2013,Whitman College,Winter,0.7037037037037037
+Men's Basketball,2013,Whitworth University,Winter,0.8666666666666667
+Men's Football,2013,University of Puget Sound,Fall,0
+Men's Football,2013,Lewis and Clark College,Fall,0.4444444444444444
+Men's Football,2013,Pacific Lutheran University,Fall,0.7
+Men's Football,2013,Willamette University,Fall,0.8
+Men's Soccer,2013,George Fox University,Fall,0.1111111111111111
+Men's Soccer,2013,Whitman College,Fall,0.5
+Men's Soccer,2013,Willamette University,Fall,0.579
+Men's Soccer,2013,Pacific Lutheran University,Fall,0.5882352941176471
+Men's Soccer,2013,University of Puget Sound,Fall,0.8
+Men's Soccer,2013,Whitworth University,Fall,0.8125
+Women's Basketball,2013,Willamette University,Winter,0.08
+Women's Basketball,2013,University of Puget Sound,Winter,0.56
+Women's Basketball,2013,George Fox University,Winter,0.7307692307692307
+Women's Basketball,2013,Whitworth University,Winter,0.75
+Women's Basketball,2013,Whitman College,Winter,0.7931034482758621
+Women's Basketball,2013,Lewis and Clark College,Winter,0.8620689655172413
+Women's Soccer,2013,George Fox University,Fall,0.16666666666666666
+Women's Soccer,2013,Willamette University,Fall,0.3
+Women's Soccer,2013,Whitman College,Fall,0.3333333333333333
+Women's Soccer,2013,Lewis and Clark College,Fall,0.4375
+Women's Soccer,2013,Whitworth University,Fall,0.5555555555555556
+Women's Soccer,2013,University of Puget Sound,Fall,0.7368421052631579
+Women's Softball,2013,University of Puget Sound,Spring,0.05128205128205128
+Women's Softball,2013,Willamette University,Spring,0.368
+Women's Softball,2013,Lewis and Clark College,Spring,0.42105263157894735
+Women's Softball,2013,George Fox University,Spring,0.45
+Women's Volleyball,2013,Lewis and Clark College,Fall,0.24
+Women's Volleyball,2013,Willamette University,Fall,0.391
+Women's Volleyball,2013,George Fox University,Fall,0.391304347826087
+Women's Volleyball,2013,Whitworth University,Fall,0.43478260869565216
+Women's Volleyball,2013,Whitman College,Fall,0.4782608695652174
+Women's Volleyball,2013,University of Puget Sound,Fall,0.7857142857142857
+Men's Baseball,2014,Lewis and Clark College,Spring,0.2631578947368421
+Men's Baseball,2014,Pacific University,Spring,0.34210526315789475
+Men's Baseball,2014,Whitworth University,Spring,0.37142857142857144
+Men's Baseball,2014,University of Puget Sound,Spring,0.4722222222222222
+Men's Baseball,2014,Whitman College,Spring,0.5263157894736842
+Men's Baseball,2014,Willamette University,Spring,0.564
+Men's Baseball,2014,Pacific Lutheran University,Spring,0.6410256410256411
+Men's Baseball,2014,George Fox University,Spring,0.7
+Men's Basketball,2014,Willamette University,Winter,0.12
+Men's Basketball,2014,University of Puget Sound,Winter,0.5555555555555556
+Men's Basketball,2014,Whitman College,Winter,0.6153846153846154
+Men's Basketball,2014,George Fox University,Winter,0.64
+Men's Basketball,2014,Lewis and Clark College,Winter,0.6538461538461539
+Men's Basketball,2014,Whitworth University,Winter,0.7931034482758621
+Men's Football,2014,Lewis and Clark College,Fall,0.1111111111111111
+Men's Football,2014,University of Puget Sound,Fall,0.1111111111111111
+Men's Football,2014,Whitworth University,Fall,0.4
+Men's Football,2014,Willamette University,Fall,0.778
+Men's Football,2014,Pacific Lutheran University,Fall,0.8
+Men's Soccer,2014,George Fox University,Fall,0.05
+Men's Soccer,2014,Whitman College,Fall,0.5
+Men's Soccer,2014,Willamette University,Fall,0.605
+Men's Soccer,2014,University of Puget Sound,Fall,0.7142857142857143
+Men's Soccer,2014,Pacific Lutheran University,Fall,0.7647058823529411
+Men's Soccer,2014,Whitworth University,Fall,0.8
+Women's Basketball,2014,Willamette University,Winter,0.16
+Women's Basketball,2014,University of Puget Sound,Winter,0.6153846153846154
+Women's Basketball,2014,Whitworth University,Winter,0.7241379310344828
+Women's Basketball,2014,George Fox University,Winter,0.8148148148148148
+Women's Basketball,2014,Whitman College,Winter,0.9393939393939394
+Women's Basketball,2014,Lewis and Clark College,Winter,NA
+Women's Lacrosse,2014,George Fox University,Spring,0.5
+Women's Soccer,2014,George Fox University,Fall,0.16666666666666666
+Women's Soccer,2014,Willamette University,Fall,0.325
+Women's Soccer,2014,Whitworth University,Fall,0.5
+Women's Soccer,2014,Lewis and Clark College,Fall,0.5263157894736842
+Women's Soccer,2014,Whitman College,Fall,0.55
+Women's Soccer,2014,University of Puget Sound,Fall,0.85
+Women's Softball,2014,University of Puget Sound,Spring,0.08823529411764706
+Women's Softball,2014,Lewis and Clark College,Spring,0.32432432432432434
+Women's Softball,2014,Willamette University,Spring,0.45
+Women's Softball,2014,George Fox University,Spring,0.6
+Women's Softball,2014,Whitworth University,Spring,0.627906976744186
+Women's Softball,2014,Pacific University,Spring,0.6842105263157895
+Women's Volleyball,2014,Whitman College,Fall,0.2413793103448276
+Women's Volleyball,2014,Lewis and Clark College,Fall,0.2727272727272727
+Women's Volleyball,2014,Willamette University,Fall,0.48
+Women's Volleyball,2014,George Fox University,Fall,0.5
+Women's Volleyball,2014,Whitworth University,Fall,0.5357142857142857
+Women's Volleyball,2014,University of Puget Sound,Fall,0.68
+Men's Baseball,2015,Whitman College,Spring,0.17647058823529413
+Men's Baseball,2015,Lewis and Clark College,Spring,0.2
+Men's Baseball,2015,George Fox University,Spring,0.40476190476190477
+Men's Baseball,2015,University of Puget Sound,Spring,0.48717948717948717
+Men's Baseball,2015,Pacific University,Spring,0.525
+Men's Baseball,2015,Willamette University,Spring,0.538
+Men's Baseball,2015,Whitworth University,Spring,0.6511627906976745
+Men's Baseball,2015,Pacific Lutheran University,Spring,0.6956521739130435
+Men's Basketball,2015,George Fox University,Winter,0.2
+Men's Basketball,2015,Willamette University,Winter,0.385
+Men's Basketball,2015,Pacific University,Winter,0.48
+Men's Basketball,2015,University of Puget Sound,Winter,0.5
+Men's Basketball,2015,Lewis and Clark College,Winter,0.5925925925925926
+Men's Basketball,2015,Whitman College,Winter,0.7692307692307693
+Men's Basketball,2015,Whitworth University,Winter,0.8620689655172413
+Men's Football,2015,Lewis and Clark College,Fall,0
+Men's Football,2015,George Fox University,Fall,0.1111111111111111
+Men's Football,2015,University of Puget Sound,Fall,0.4444444444444444
+Men's Football,2015,Willamette University,Fall,0.556
+Men's Football,2015,Whitworth University,Fall,0.6
+Men's Football,2015,Pacific Lutheran University,Fall,0.7777777777777778
+Men's Soccer,2015,George Fox University,Fall,0.1111111111111111
+Men's Soccer,2015,Pacific Lutheran University,Fall,0.5
+Men's Soccer,2015,Whitman College,Fall,0.5
+Men's Soccer,2015,Willamette University,Fall,0.7
+Men's Soccer,2015,University of Puget Sound,Fall,0.7222222222222222
+Men's Soccer,2015,Whitworth University,Fall,0.8947368421052632
+Women's Basketball,2015,Willamette University,Winter,0.28
+Women's Basketball,2015,Lewis and Clark College,Winter,0.32
+Women's Basketball,2015,Pacific University,Winter,0.36
+Women's Basketball,2015,Whitman College,Winter,0.6153846153846154
+Women's Basketball,2015,Whitworth University,Winter,0.8076923076923077
+Women's Basketball,2015,University of Puget Sound,Winter,0.8275862068965517
+Women's Basketball,2015,George Fox University,Winter,0.9696969696969697
+Women's Lacrosse,2015,Willamette University,Spring,0
+Women's Lacrosse,2015,George Fox University,Spring,0.6875
+Women's Soccer,2015,George Fox University,Fall,0.17647058823529413
+Women's Soccer,2015,Willamette University,Fall,0.25
+Women's Soccer,2015,Whitworth University,Fall,0.42105263157894735
+Women's Soccer,2015,Lewis and Clark College,Fall,0.5294117647058824
+Women's Soccer,2015,Whitman College,Fall,0.5625
+Women's Soccer,2015,University of Puget Sound,Fall,0.8
+Women's Softball,2015,University of Puget Sound,Spring,0.1
+Women's Softball,2015,Lewis and Clark College,Spring,0.23076923076923078
+Women's Softball,2015,Willamette University,Spring,0.421
+Women's Softball,2015,Pacific University,Spring,0.6590909090909091
+Women's Softball,2015,George Fox University,Spring,0.7045454545454546
+Women's Softball,2015,Whitworth University,Spring,0.7209302325581395
+Women's Volleyball,2015,George Fox University,Fall,0.15384615384615385
+Women's Volleyball,2015,Lewis and Clark College,Fall,0.44
+Women's Volleyball,2015,Whitman College,Fall,0.44
+Women's Volleyball,2015,Willamette University,Fall,0.48
+Women's Volleyball,2015,University of Puget Sound,Fall,0.48
+Women's Volleyball,2015,Whitworth University,Fall,0.7777777777777778
+Men's Baseball,2016,Lewis and Clark College,Spring,0.3
+Men's Baseball,2016,Whitman College,Spring,0.34210526315789475
+Men's Baseball,2016,University of Puget Sound,Spring,0.4
+Men's Baseball,2016,George Fox University,Spring,0.5121951219512195
+Men's Baseball,2016,Pacific University,Spring,0.5813953488372093
+Men's Baseball,2016,Pacific Lutheran University,Spring,0.6041666666666666
+Men's Baseball,2016,Whitworth University,Spring,0.6976744186046512
+Men's Basketball,2016,George Fox University,Winter,0.28
+Men's Basketball,2016,Willamette University,Winter,0.32
+Men's Basketball,2016,Lewis and Clark College,Winter,0.4166666666666667
+Men's Basketball,2016,Pacific University,Winter,0.48
+Men's Basketball,2016,University of Puget Sound,Winter,0.5
+Men's Basketball,2016,Whitman College,Winter,0.8275862068965517
+Men's Basketball,2016,Whitworth University,Winter,0.9285714285714286
+Men's Football,2016,Lewis and Clark College,Fall,0
+Men's Football,2016,Willamette University,Fall,0.222
+Men's Football,2016,Pacific Lutheran University,Fall,0.2222222222222222
+Men's Football,2016,George Fox University,Fall,0.4
+Men's Football,2016,Pacific University,Fall,0.6
+Men's Football,2016,University of Puget Sound,Fall,0.6666666666666666
+Men's Football,2016,Whitworth University,Fall,0.8181818181818182
+Men's Soccer,2016,Whitman College,Fall,0.1875
+Men's Soccer,2016,George Fox University,Fall,0.35294117647058826
+Men's Soccer,2016,Willamette University,Fall,0.368
+Men's Soccer,2016,Pacific University,Fall,0.3888888888888889
+Men's Soccer,2016,Pacific Lutheran University,Fall,0.75
+Men's Soccer,2016,Whitworth University,Fall,0.8888888888888888
+Men's Soccer,2016,University of Puget Sound,Fall,NA
+Women's Basketball,2016,Lewis and Clark College,Winter,0.12
+Women's Basketball,2016,Pacific University,Winter,0.44
+Women's Basketball,2016,Willamette University,Winter,0.48
+Women's Basketball,2016,Whitworth University,Winter,0.5769230769230769
+Women's Basketball,2016,Whitman College,Winter,0.68
+Women's Basketball,2016,University of Puget Sound,Winter,0.7037037037037037
+Women's Basketball,2016,George Fox University,Winter,0.9666666666666667
+Women's Lacrosse,2016,George Fox University,Spring,0.6428571428571429
+Women's Soccer,2016,Whitman College,Fall,0.21428571428571427
+Women's Soccer,2016,Pacific University,Fall,0.2222222222222222
+Women's Soccer,2016,George Fox University,Fall,0.2777777777777778
+Women's Soccer,2016,Whitworth University,Fall,0.35294117647058826
+Women's Soccer,2016,Willamette University,Fall,0.5
+Women's Soccer,2016,Lewis and Clark College,Fall,0.5789473684210527
+Women's Soccer,2016,Pacific Lutheran University,Fall,0.8333333333333334
+Women's Soccer,2016,University of Puget Sound,Fall,1
+Women's Softball,2016,University of Puget Sound,Spring,0.2631578947368421
+Women's Softball,2016,Willamette University,Spring,0.424
+Women's Softball,2016,Lewis and Clark College,Spring,0.425
+Women's Softball,2016,Pacific University,Spring,0.6097560975609756
+Women's Softball,2016,Whitworth University,Spring,0.6590909090909091
+Women's Softball,2016,George Fox University,Spring,0.6595744680851063
+Women's Volleyball,2016,Whitman College,Fall,0.2727272727272727
+Women's Volleyball,2016,George Fox University,Fall,0.3333333333333333
+Women's Volleyball,2016,University of Puget Sound,Fall,0.375
+Women's Volleyball,2016,Pacific University,Fall,0.4166666666666667
+Women's Volleyball,2016,Lewis and Clark College,Fall,0.43478260869565216
+Women's Volleyball,2016,Willamette University,Fall,0.625
+Women's Volleyball,2016,Whitworth University,Fall,0.7037037037037037
+Men's Baseball,2017,Lewis and Clark College,Spring,0.18421052631578946
+Men's Baseball,2017,University of Puget Sound,Spring,0.3684210526315789
+Men's Baseball,2017,Pacific University,Spring,0.39473684210526316
+Men's Baseball,2017,Whitman College,Spring,0.4594594594594595
+Men's Baseball,2017,George Fox University,Spring,0.47368421052631576
+Men's Baseball,2017,Whitworth University,Spring,0.5853658536585366
+Men's Baseball,2017,Pacific Lutheran University,Spring,0.6410256410256411
+Men's Baseball,2017,Willamette University,Spring,0.667
+Men's Basketball,2017,Willamette University,Winter,0.16
+Men's Basketball,2017,Lewis and Clark College,Winter,0.36
+Men's Basketball,2017,George Fox University,Winter,0.38461538461538464
+Men's Basketball,2017,University of Puget Sound,Winter,0.48
+Men's Basketball,2017,Pacific University,Winter,0.5
+Men's Basketball,2017,Whitworth University,Winter,0.8214285714285714
+Men's Basketball,2017,Whitman College,Winter,0.96875
+Men's Football,2017,Lewis and Clark College,Fall,0
+Men's Football,2017,Willamette University,Fall,0.3
+Men's Football,2017,University of Puget Sound,Fall,0.3333333333333333
+Men's Football,2017,Pacific University,Fall,0.4
+Men's Football,2017,George Fox University,Fall,0.5555555555555556
+Men's Football,2017,Pacific Lutheran University,Fall,0.5555555555555556
+Men's Football,2017,Whitworth University,Fall,0.8
+Men's Soccer,2017,George Fox University,Fall,0.0625
+Men's Soccer,2017,Willamette University,Fall,0.5
+Men's Soccer,2017,Whitman College,Fall,0.5333333333333333
+Men's Soccer,2017,Pacific Lutheran University,Fall,0.5555555555555556
+Men's Soccer,2017,Pacific University,Fall,0.625
+Men's Soccer,2017,University of Puget Sound,Fall,0.6875
+Men's Soccer,2017,Whitworth University,Fall,0.75
+Women's Basketball,2017,Pacific University,Winter,0.32
+Women's Basketball,2017,Whitworth University,Winter,0.4
+Women's Basketball,2017,Willamette University,Winter,0.48
+Women's Basketball,2017,Lewis and Clark College,Winter,0.6153846153846154
+Women's Basketball,2017,George Fox University,Winter,0.7777777777777778
+Women's Basketball,2017,Whitman College,Winter,0.8387096774193549
+Women's Basketball,2017,University of Puget Sound,Winter,0.896551724137931
+Women's Lacrosse,2017,George Fox University,Spring,0.8571428571428571
+Women's Soccer,2017,Whitman College,Fall,0.16666666666666666
+Women's Soccer,2017,George Fox University,Fall,0.17647058823529413
+Women's Soccer,2017,Lewis and Clark College,Fall,0.3333333333333333
+Women's Soccer,2017,Pacific University,Fall,0.4117647058823529
+Women's Soccer,2017,Whitworth University,Fall,0.5
+Women's Soccer,2017,Willamette University,Fall,0.525
+Women's Soccer,2017,University of Puget Sound,Fall,0.7647058823529411
+Women's Soccer,2017,Pacific Lutheran University,Fall,0.9411764705882353
+Women's Softball,2017,Pacific University,Spring,0.2894736842105263
+Women's Softball,2017,Lewis and Clark College,Spring,0.3125
+Women's Softball,2017,University of Puget Sound,Spring,0.3333333333333333
+Women's Softball,2017,Willamette University,Spring,0.412
+Women's Softball,2017,George Fox University,Spring,0.5405405405405406
+Women's Softball,2017,Pacific Lutheran University,Spring,0.5897435897435898
+Women's Softball,2017,Whitworth University,Spring,0.7708333333333334
+Women's Volleyball,2017,George Fox University,Fall,0.16666666666666666
+Women's Volleyball,2017,Lewis and Clark College,Fall,0.21739130434782608
+Women's Volleyball,2017,Willamette University,Fall,0.333
+Women's Volleyball,2017,Whitman College,Fall,0.4583333333333333
+Women's Volleyball,2017,Pacific University,Fall,0.5384615384615384
+Women's Volleyball,2017,University of Puget Sound,Fall,0.625
+Women's Volleyball,2017,Whitworth University,Fall,0.7777777777777778
+Men's Baseball,2018,Lewis and Clark College,Spring,0.23076923076923078
+Men's Baseball,2018,Pacific University,Spring,0.4
+Men's Baseball,2018,University of Puget Sound,Spring,0.425
+Men's Baseball,2018,Whitworth University,Spring,0.4594594594594595
+Men's Baseball,2018,Whitman College,Spring,0.47368421052631576
+Men's Baseball,2018,George Fox University,Spring,0.5681818181818182
+Men's Baseball,2018,Linfield University,Spring,0.5714285714285714
+Men's Baseball,2018,Pacific Lutheran University,Spring,0.5952380952380952
+Men's Baseball,2018,Willamette University,Spring,0.62
+Men's Basketball,2018,Pacific Lutheran University,Winter,0.16666666666666666
+Men's Basketball,2018,George Fox University,Winter,0.32
+Men's Basketball,2018,Lewis and Clark College,Winter,0.32
+Men's Basketball,2018,Willamette University,Winter,0.44
+Men's Basketball,2018,Pacific University,Winter,0.48
+Men's Basketball,2018,Linfield University,Winter,0.64
+Men's Basketball,2018,University of Puget Sound,Winter,0.72
+Men's Basketball,2018,Whitworth University,Winter,0.8571428571428571
+Men's Basketball,2018,Whitman College,Winter,0.9354838709677419
+Men's Football,2018,Willamette University,Fall,0
+Men's Football,2018,Lewis and Clark College,Fall,0.2222222222222222
+Men's Football,2018,University of Puget Sound,Fall,0.3333333333333333
+Men's Football,2018,Pacific University,Fall,0.5
+Men's Football,2018,Pacific Lutheran University,Fall,0.5
+Men's Football,2018,George Fox University,Fall,0.7
+Men's Football,2018,Whitworth University,Fall,0.8
+Men's Football,2018,Linfield University,Fall,0.8181818181818182
+Men's Soccer,2018,Linfield University,Fall,0.11764705882352941
+Men's Soccer,2018,George Fox University,Fall,0.2631578947368421
+Men's Soccer,2018,Pacific University,Fall,0.47058823529411764
+Men's Soccer,2018,Whitworth University,Fall,0.5555555555555556
+Men's Soccer,2018,Whitman College,Fall,0.5625
+Men's Soccer,2018,Willamette University,Fall,0.579
+Men's Soccer,2018,University of Puget Sound,Fall,0.625
+Men's Soccer,2018,Pacific Lutheran University,Fall,0.6875
+Women's Basketball,2018,Pacific Lutheran University,Winter,0.2
+Women's Basketball,2018,Pacific University,Winter,0.20833333333333334
+Women's Basketball,2018,Linfield University,Winter,0.36
+Women's Basketball,2018,Whitworth University,Winter,0.4
+Women's Basketball,2018,University of Puget Sound,Winter,0.48
+Women's Basketball,2018,Lewis and Clark College,Winter,0.5384615384615384
+Women's Basketball,2018,Willamette University,Winter,0.63
+Women's Basketball,2018,Whitman College,Winter,0.8148148148148148
+Women's Basketball,2018,George Fox University,Winter,0.8620689655172413
+Women's Lacrosse,2018,Willamette University,Spring,0
+Women's Lacrosse,2018,George Fox University,Spring,0.8461538461538461
+Women's Soccer,2018,Pacific University,Fall,0.0625
+Women's Soccer,2018,Whitman College,Fall,0.1111111111111111
+Women's Soccer,2018,Lewis and Clark College,Fall,0.17647058823529413
+Women's Soccer,2018,George Fox University,Fall,0.47058823529411764
+Women's Soccer,2018,Linfield University,Fall,0.5
+Women's Soccer,2018,Whitworth University,Fall,0.6666666666666666
+Women's Soccer,2018,Willamette University,Fall,0.725
+Women's Soccer,2018,University of Puget Sound,Fall,0.7647058823529411
+Women's Soccer,2018,Pacific Lutheran University,Fall,0.85
+Women's Softball,2018,Willamette University,Spring,0.171
+Women's Softball,2018,Lewis and Clark College,Spring,0.25
+Women's Softball,2018,University of Puget Sound,Spring,0.2972972972972973
+Women's Softball,2018,Pacific Lutheran University,Spring,0.39473684210526316
+Women's Softball,2018,Pacific University,Spring,0.5641025641025641
+Women's Softball,2018,Whitworth University,Spring,0.5714285714285714
+Women's Softball,2018,George Fox University,Spring,0.7608695652173914
+Women's Softball,2018,Linfield University,Spring,0.7959183673469388
+Women's Volleyball,2018,Lewis and Clark College,Fall,0.08695652173913043
+Women's Volleyball,2018,Willamette University,Fall,0.333
+Women's Volleyball,2018,Whitman College,Fall,0.42857142857142855
+Women's Volleyball,2018,George Fox University,Fall,0.45
+Women's Volleyball,2018,Linfield University,Fall,0.4782608695652174
+Women's Volleyball,2018,University of Puget Sound,Fall,0.4782608695652174
+Women's Volleyball,2018,Whitworth University,Fall,0.6
+Women's Volleyball,2018,Pacific University,Fall,0.7083333333333334
+Women's Volleyball,2018,Pacific Lutheran University,Fall,0.8076923076923077
+Men's Baseball,2019,Linfield University,Spring,0.175
+Men's Baseball,2019,University of Puget Sound,Spring,0.23076923076923078
+Men's Baseball,2019,Lewis and Clark College,Spring,0.2702702702702703
+Men's Baseball,2019,Willamette University,Spring,0.543
+Men's Baseball,2019,Pacific Lutheran University,Spring,0.5714285714285714
+Men's Baseball,2019,Whitman College,Spring,0.5714285714285714
+Men's Baseball,2019,George Fox University,Spring,0.575
+Men's Baseball,2019,Pacific University,Spring,0.5813953488372093
+Men's Baseball,2019,Whitworth University,Spring,0.6428571428571429
+Men's Basketball,2019,Lewis and Clark College,Winter,0.32
+Men's Basketball,2019,Pacific Lutheran University,Winter,0.3333333333333333
+Men's Basketball,2019,Willamette University,Winter,0.36
+Men's Basketball,2019,Pacific University,Winter,0.4
+Men's Basketball,2019,University of Puget Sound,Winter,0.46153846153846156
+Men's Basketball,2019,George Fox University,Winter,0.52
+Men's Basketball,2019,Linfield University,Winter,0.6538461538461539
+Men's Basketball,2019,Whitworth University,Winter,0.7777777777777778
+Men's Basketball,2019,Whitman College,Winter,0.9333333333333333
+Men's Football,2019,Willamette University,Fall,0.111
+Men's Football,2019,Lewis and Clark College,Fall,0.2222222222222222
+Men's Football,2019,Pacific Lutheran University,Fall,0.4444444444444444
+Men's Football,2019,Pacific University,Fall,0.5
+Men's Football,2019,University of Puget Sound,Fall,0.5
+Men's Football,2019,George Fox University,Fall,0.6
+Men's Football,2019,Linfield University,Fall,0.7777777777777778
+Men's Football,2019,Whitworth University,Fall,0.9090909090909091
+Men's Soccer,2019,George Fox University,Fall,0.14285714285714285
+Men's Soccer,2019,Pacific University,Fall,0.21428571428571427
+Men's Soccer,2019,Whitworth University,Fall,0.3125
+Men's Soccer,2019,Linfield University,Fall,0.4
+Men's Soccer,2019,Whitman College,Fall,0.625
+Men's Soccer,2019,University of Puget Sound,Fall,0.6428571428571429
+Men's Soccer,2019,Willamette University,Fall,0.684
+Men's Soccer,2019,Pacific Lutheran University,Fall,0.6842105263157895
+Women's Basketball,2019,Lewis and Clark College,Winter,0.08
+Women's Basketball,2019,Pacific University,Winter,0.32
+Women's Basketball,2019,Linfield University,Winter,0.46153846153846156
+Women's Basketball,2019,Whitworth University,Winter,0.52
+Women's Basketball,2019,Pacific Lutheran University,Winter,0.5833333333333334
+Women's Basketball,2019,Whitman College,Winter,0.7407407407407407
+Women's Basketball,2019,University of Puget Sound,Winter,0.76
+Women's Basketball,2019,George Fox University,Winter,0.8620689655172413
+Women's Basketball,2019,Willamette University,Winter,NA
+Women's Lacrosse,2019,Willamette University,Spring,0.375
+Women's Lacrosse,2019,George Fox University,Spring,0.8235294117647058
+Women's Soccer,2019,Pacific University,Fall,0.10526315789473684
+Women's Soccer,2019,Lewis and Clark College,Fall,0.2222222222222222
+Women's Soccer,2019,Whitman College,Fall,0.2222222222222222
+Women's Soccer,2019,George Fox University,Fall,0.4375
+Women's Soccer,2019,Linfield University,Fall,0.6666666666666666
+Women's Soccer,2019,University of Puget Sound,Fall,0.6842105263157895
+Women's Soccer,2019,Willamette University,Fall,0.7
+Women's Soccer,2019,Whitworth University,Fall,0.7058823529411765
+Women's Soccer,2019,Pacific Lutheran University,Fall,0.8125
+Women's Softball,2019,University of Puget Sound,Spring,0.10256410256410256
+Women's Softball,2019,Willamette University,Spring,0.179
+Women's Softball,2019,Lewis and Clark College,Spring,0.3157894736842105
+Women's Softball,2019,Pacific University,Spring,0.5609756097560976
+Women's Softball,2019,Pacific Lutheran University,Spring,0.5853658536585366
+Women's Softball,2019,George Fox University,Spring,0.6190476190476191
+Women's Softball,2019,Whitworth University,Spring,0.7380952380952381
+Women's Softball,2019,Linfield University,Spring,0.8297872340425532
+Women's Volleyball,2019,Linfield University,Fall,0.25
+Women's Volleyball,2019,Willamette University,Fall,0.4
+Women's Volleyball,2019,Whitman College,Fall,0.4166666666666667
+Women's Volleyball,2019,George Fox University,Fall,0.4583333333333333
+Women's Volleyball,2019,University of Puget Sound,Fall,0.5
+Women's Volleyball,2019,Lewis and Clark College,Fall,0.5652173913043478
+Women's Volleyball,2019,Pacific University,Fall,0.6923076923076923
+Women's Volleyball,2019,Whitworth University,Fall,0.7037037037037037
+Women's Volleyball,2019,Pacific Lutheran University,Fall,0.84
+Men's Baseball,2020,Whitman College,Spring,0.23529411764705882
+Men's Baseball,2020,Lewis and Clark College,Spring,0.3125
+Men's Baseball,2020,University of Puget Sound,Spring,0.3125
+Men's Baseball,2020,Linfield University,Spring,0.4375
+Men's Baseball,2020,Pacific Lutheran University,Spring,0.46153846153846156
+Men's Baseball,2020,Willamette University,Spring,0.5
+Men's Baseball,2020,Pacific University,Spring,0.5625
+Men's Baseball,2020,Whitworth University,Spring,0.6875
+Men's Baseball,2020,George Fox University,Spring,0.7333333333333333
+Men's Basketball,2020,Willamette University,Winter,0.04
+Men's Basketball,2020,Pacific University,Winter,0.28
+Men's Basketball,2020,George Fox University,Winter,0.32
+Men's Basketball,2020,Lewis and Clark College,Winter,0.44
+Men's Basketball,2020,University of Puget Sound,Winter,0.48
+Men's Basketball,2020,Pacific Lutheran University,Winter,0.5384615384615384
+Men's Basketball,2020,Whitman College,Winter,0.7142857142857143
+Men's Basketball,2020,Linfield University,Winter,0.7692307692307693
+Men's Basketball,2020,Whitworth University,Winter,0.7931034482758621
+Men's Football,2020,Willamette University,Fall,0.111
+Men's Football,2020,Pacific Lutheran University,Fall,0.2222222222222222
+Men's Football,2020,Pacific University,Fall,0.4
+Men's Football,2020,Lewis and Clark College,Fall,0.4444444444444444
+Men's Football,2020,George Fox University,Fall,0.5
+Men's Football,2020,University of Puget Sound,Fall,0.6
+Men's Football,2020,Whitworth University,Fall,0.6666666666666666
+Men's Football,2020,Linfield University,Fall,0.8
+Men's Soccer,2020,Pacific University,Fall,0.2
+Men's Soccer,2020,George Fox University,Fall,0.29411764705882354
+Men's Soccer,2020,Linfield University,Fall,0.29411764705882354
+Men's Soccer,2020,Whitworth University,Fall,0.5263157894736842
+Men's Soccer,2020,University of Puget Sound,Fall,0.5625
+Men's Soccer,2020,Whitman College,Fall,0.65
+Men's Soccer,2020,Willamette University,Fall,0.684
+Men's Soccer,2020,Pacific Lutheran University,Fall,0.7368421052631579
+Women's Basketball,2020,Lewis and Clark College,Winter,0.125
+Women's Basketball,2020,Pacific Lutheran University,Winter,0.44
+Women's Basketball,2020,Linfield University,Winter,0.48
+Women's Basketball,2020,University of Puget Sound,Winter,0.5
+Women's Basketball,2020,Willamette University,Winter,0.52
+Women's Basketball,2020,Whitworth University,Winter,0.56
+Women's Basketball,2020,Pacific University,Winter,0.6538461538461539
+Women's Basketball,2020,George Fox University,Winter,0.7931034482758621
+Women's Basketball,2020,Whitman College,Winter,0.896551724137931
+Women's Lacrosse,2020,George Fox University,Spring,0.6666666666666666
+Women's Lacrosse,2020,Willamette University,Spring,NA
+Women's Soccer,2020,Pacific University,Fall,0.17647058823529413
+Women's Soccer,2020,Whitman College,Fall,0.2222222222222222
+Women's Soccer,2020,George Fox University,Fall,0.2857142857142857
+Women's Soccer,2020,Whitworth University,Fall,0.3333333333333333
+Women's Soccer,2020,Linfield University,Fall,0.5
+Women's Soccer,2020,Lewis and Clark College,Fall,0.5294117647058824
+Women's Soccer,2020,Willamette University,Fall,0.6
+Women's Soccer,2020,University of Puget Sound,Fall,0.7647058823529411
+Women's Soccer,2020,Pacific Lutheran University,Fall,0.8421052631578947
+Women's Softball,2020,Pacific University,Spring,0.26666666666666666
+Women's Softball,2020,Lewis and Clark College,Spring,0.3
+Women's Softball,2020,Willamette University,Spring,0.308
+Women's Softball,2020,Pacific Lutheran University,Spring,0.3333333333333333
+Women's Softball,2020,Whitworth University,Spring,0.35714285714285715
+Women's Softball,2020,University of Puget Sound,Spring,0.36363636363636365
+Women's Softball,2020,George Fox University,Spring,0.6666666666666666
+Women's Softball,2020,Linfield University,Spring,0.8571428571428571
+Women's Volleyball,2020,Whitman College,Fall,0.13636363636363635
+Women's Volleyball,2020,Linfield University,Fall,0.17857142857142858
+Women's Volleyball,2020,Willamette University,Fall,0.36
+Women's Volleyball,2020,Lewis and Clark College,Fall,0.4166666666666667
+Women's Volleyball,2020,George Fox University,Fall,0.52
+Women's Volleyball,2020,University of Puget Sound,Fall,0.5357142857142857
+Women's Volleyball,2020,Pacific Lutheran University,Fall,0.6071428571428571
+Women's Volleyball,2020,Pacific University,Fall,0.6538461538461539
+Women's Volleyball,2020,Whitworth University,Fall,0.7407407407407407
+Men's Baseball,2021,Linfield University,Spring,0.2631578947368421
+Men's Baseball,2021,Lewis and Clark College,Spring,0.28125
+Men's Baseball,2021,Whitworth University,Spring,0.3902439024390244
+Men's Baseball,2021,University of Puget Sound,Spring,0.4864864864864865
+Men's Baseball,2021,George Fox University,Spring,0.48717948717948717
+Men's Baseball,2021,Whitman College,Spring,0.5
+Men's Baseball,2021,Pacific Lutheran University,Spring,0.6046511627906976
+Men's Baseball,2021,Willamette University,Spring,0.667
+Men's Baseball,2021,Pacific University,Spring,0.6938775510204082
+Men's Basketball,2021,Willamette University,Winter,0
+Men's Basketball,2021,University of Puget Sound,Winter,0.23076923076923078
+Men's Basketball,2021,George Fox University,Winter,0.3125
+Men's Basketball,2021,Pacific University,Winter,0.3333333333333333
+Men's Basketball,2021,Whitman College,Winter,0.5
+Men's Basketball,2021,Pacific Lutheran University,Winter,0.7
+Men's Basketball,2021,Whitworth University,Winter,0.7058823529411765
+Men's Basketball,2021,Linfield University,Winter,0.8333333333333334
+Men's Football,2021,Willamette University,Fall,0
+Men's Football,2021,Pacific Lutheran University,Fall,0
+Men's Football,2021,George Fox University,Fall,0.5
+Men's Football,2021,Pacific University,Fall,0.5
+Men's Football,2021,University of Puget Sound,Fall,0.5
+Men's Football,2021,Whitworth University,Fall,1
+Men's Soccer,2021,Whitworth University,Fall,0.3
+Men's Soccer,2021,George Fox University,Fall,0.375
+Men's Soccer,2021,Linfield University,Fall,0.375
+Men's Soccer,2021,University of Puget Sound,Fall,0.4166666666666667
+Men's Soccer,2021,Whitman College,Fall,0.5454545454545454
+Men's Soccer,2021,Pacific Lutheran University,Fall,0.7142857142857143
+Men's Soccer,2021,Willamette University,Fall,1
+Men's Soccer,2021,Pacific University,Fall,NA
+Women's Basketball,2021,Willamette University,Winter,0
+Women's Basketball,2021,Linfield University,Winter,0.08333333333333333
+Women's Basketball,2021,Pacific Lutheran University,Winter,0.2727272727272727
+Women's Basketball,2021,University of Puget Sound,Winter,0.45454545454545453
+Women's Basketball,2021,Whitworth University,Winter,0.5
+Women's Basketball,2021,George Fox University,Winter,0.7142857142857143
+Women's Basketball,2021,Whitman College,Winter,0.8181818181818182
+Women's Basketball,2021,Pacific University,Winter,NA
+Women's Lacrosse,2021,Willamette University,Spring,0.727
+Women's Lacrosse,2021,George Fox University,Spring,0.9285714285714286
+Women's Soccer,2021,Whitman College,Fall,0
+Women's Soccer,2021,Lewis and Clark College,Fall,0.2857142857142857
+Women's Soccer,2021,Willamette University,Fall,0.375
+Women's Soccer,2021,Whitworth University,Fall,0.5
+Women's Soccer,2021,University of Puget Sound,Fall,0.6363636363636364
+Women's Soccer,2021,Pacific Lutheran University,Fall,0.6666666666666666
+Women's Soccer,2021,George Fox University,Fall,0.75
+Women's Soccer,2021,Linfield University,Fall,0.875
+Women's Soccer,2021,Pacific University,Fall,NA
+Women's Softball,2021,Willamette University,Spring,0.118
+Women's Softball,2021,University of Puget Sound,Spring,0.3125
+Women's Softball,2021,Whitworth University,Spring,0.39473684210526316
+Women's Softball,2021,Pacific Lutheran University,Spring,0.4166666666666667
+Women's Softball,2021,Pacific University,Spring,0.4722222222222222
+Women's Softball,2021,Lewis and Clark College,Spring,0.53125
+Women's Softball,2021,George Fox University,Spring,0.717948717948718
+Women's Softball,2021,Linfield University,Spring,0.8085106382978723
+Women's Volleyball,2021,Linfield University,Fall,0
+Women's Volleyball,2021,Whitman College,Fall,0.08333333333333333
+Women's Volleyball,2021,University of Puget Sound,Fall,0.4166666666666667
+Women's Volleyball,2021,Willamette University,Fall,0.5
+Women's Volleyball,2021,George Fox University,Fall,0.5555555555555556
+Women's Volleyball,2021,Lewis and Clark College,Fall,0.625
+Women's Volleyball,2021,Pacific Lutheran University,Fall,0.6666666666666666
+Women's Volleyball,2021,Whitworth University,Fall,0.8333333333333334
+Women's Volleyball,2021,Pacific University,Fall,NA
+Men's Baseball,2022,Whitworth University,Spring,0.2631578947368421
+Men's Baseball,2022,Whitman College,Spring,0.38461538461538464
+Men's Baseball,2022,George Fox University,Spring,0.4878048780487805
+Men's Baseball,2022,Linfield University,Spring,0.5
+Men's Baseball,2022,Willamette University,Spring,0.528
+Men's Baseball,2022,Lewis and Clark College,Spring,0.5405405405405406
+Men's Baseball,2022,University of Puget Sound,Spring,0.5405405405405406
+Men's Baseball,2022,Pacific Lutheran University,Spring,0.55
+Men's Baseball,2022,Pacific University,Spring,0.6086956521739131
+Men's Basketball,2022,Willamette University,Winter,0.25
+Men's Basketball,2022,University of Puget Sound,Winter,0.36
+Men's Basketball,2022,Lewis and Clark College,Winter,0.4166666666666667
+Men's Basketball,2022,George Fox University,Winter,0.44
+Men's Basketball,2022,Pacific University,Winter,0.44
+Men's Basketball,2022,Whitman College,Winter,0.46153846153846156
+Men's Basketball,2022,Pacific Lutheran University,Winter,0.6923076923076923
+Men's Basketball,2022,Linfield University,Winter,0.72
+Men's Basketball,2022,Whitworth University,Winter,0.8148148148148148
+Men's Football,2022,Willamette University,Fall,0.1
+Men's Football,2022,University of Puget Sound,Fall,0.1
+Men's Football,2022,Lewis and Clark College,Fall,0.3333333333333333
+Men's Football,2022,Pacific Lutheran University,Fall,0.4444444444444444
+Men's Football,2022,George Fox University,Fall,0.6666666666666666
+Men's Football,2022,Pacific University,Fall,0.6666666666666666
+Men's Football,2022,Whitworth University,Fall,0.7
+Men's Football,2022,Linfield University,Fall,0.9166666666666666
+Men's Soccer,2022,Linfield University,Fall,0.0625
+Men's Soccer,2022,George Fox University,Fall,0.3333333333333333
+Men's Soccer,2022,Pacific University,Fall,0.35294117647058826
+Men's Soccer,2022,Whitworth University,Fall,0.5
+Men's Soccer,2022,University of Puget Sound,Fall,0.5333333333333333
+Men's Soccer,2022,Pacific Lutheran University,Fall,0.7
+Men's Soccer,2022,Willamette University,Fall,0.735
+Men's Soccer,2022,Whitman College,Fall,0.7647058823529411
+Women's Basketball,2022,Linfield University,Winter,0.041666666666666664
+Women's Basketball,2022,Pacific Lutheran University,Winter,0.30434782608695654
+Women's Basketball,2022,Whitworth University,Winter,0.4
+Women's Basketball,2022,Lewis and Clark College,Winter,0.44
+Women's Basketball,2022,George Fox University,Winter,0.46153846153846156
+Women's Basketball,2022,Willamette University,Winter,0.48
+Women's Basketball,2022,Pacific University,Winter,0.7037037037037037
+Women's Basketball,2022,University of Puget Sound,Winter,0.8
+Women's Basketball,2022,Whitman College,Winter,0.9310344827586207
+Women's Lacrosse,2022,Willamette University,Spring,0.706
+Women's Lacrosse,2022,George Fox University,Spring,0.9444444444444444
+Women's Soccer,2022,Whitman College,Fall,0.11764705882352941
+Women's Soccer,2022,Linfield University,Fall,0.2222222222222222
+Women's Soccer,2022,Willamette University,Fall,0.25
+Women's Soccer,2022,Pacific University,Fall,0.3333333333333333
+Women's Soccer,2022,Lewis and Clark College,Fall,0.6470588235294118
+Women's Soccer,2022,Whitworth University,Fall,0.6470588235294118
+Women's Soccer,2022,George Fox University,Fall,0.6666666666666666
+Women's Soccer,2022,Pacific Lutheran University,Fall,0.8571428571428571
+Women's Soccer,2022,University of Puget Sound,Fall,0.8888888888888888
+Women's Softball,2022,University of Puget Sound,Spring,0.1111111111111111
+Women's Softball,2022,Willamette University,Spring,0.237
+Women's Softball,2022,Pacific University,Spring,0.2631578947368421
+Women's Softball,2022,Lewis and Clark College,Spring,0.42105263157894735
+Women's Softball,2022,Whitworth University,Spring,0.5952380952380952
+Women's Softball,2022,Pacific Lutheran University,Spring,0.6818181818181818
+Women's Softball,2022,George Fox University,Spring,0.7209302325581395
+Women's Softball,2022,Linfield University,Spring,0.8085106382978723
+Women's Volleyball,2022,Linfield University,Fall,0.22727272727272727
+Women's Volleyball,2022,Whitman College,Fall,0.24
+Women's Volleyball,2022,Lewis and Clark College,Fall,0.3684210526315789
+Women's Volleyball,2022,Pacific University,Fall,0.4
+Women's Volleyball,2022,Willamette University,Fall,0.429
+Women's Volleyball,2022,George Fox University,Fall,0.5714285714285714
+Women's Volleyball,2022,University of Puget Sound,Fall,0.64
+Women's Volleyball,2022,Pacific Lutheran University,Fall,0.64
+Women's Volleyball,2022,Whitworth University,Fall,0.875
+Men's Baseball,2023,Whitworth University,Spring,0.2894736842105263
+Men's Baseball,2023,Linfield University,Spring,0.35135135135135137
+Men's Baseball,2023,George Fox University,Spring,0.4166666666666667
+Men's Baseball,2023,Pacific Lutheran University,Spring,0.4722222222222222
+Men's Baseball,2023,University of Puget Sound,Spring,0.5428571428571428
+Men's Baseball,2023,Whitman College,Spring,0.5581395348837209
+Men's Baseball,2023,Pacific University,Spring,0.625
+Men's Baseball,2023,Willamette University,Spring,0.641
+Men's Baseball,2023,Lewis and Clark College,Spring,0.6888888888888889
+Men's Basketball,2023,Willamette University,Winter,0.208
+Men's Basketball,2023,George Fox University,Winter,0.34615384615384615
+Men's Basketball,2023,Linfield University,Winter,0.4
+Men's Basketball,2023,Pacific University,Winter,0.44
+Men's Basketball,2023,Lewis and Clark College,Winter,0.52
+Men's Basketball,2023,Pacific Lutheran University,Winter,0.52
+Men's Basketball,2023,Whitworth University,Winter,0.6428571428571429
+Men's Basketball,2023,University of Puget Sound,Winter,0.6923076923076923
+Men's Basketball,2023,Whitman College,Winter,0.8148148148148148
+Men's Football,2023,University of Puget Sound,Fall,0.1111111111111111
+Men's Football,2023,Willamette University,Fall,0.2
+Men's Football,2023,Lewis and Clark College,Fall,0.4444444444444444
+Men's Football,2023,Pacific University,Fall,0.5555555555555556
+Men's Football,2023,Pacific Lutheran University,Fall,0.6
+Men's Football,2023,Whitworth University,Fall,0.6
+Men's Football,2023,George Fox University,Fall,0.8
+Men's Football,2023,Linfield University,Fall,0.9090909090909091
+Men's Soccer,2023,Lewis and Clark College,Fall,0
+Men's Soccer,2023,Pacific University,Fall,0.14285714285714285
+Men's Soccer,2023,Linfield University,Fall,0.2777777777777778
+Men's Soccer,2023,George Fox University,Fall,0.3125
+Men's Soccer,2023,Whitworth University,Fall,0.47058823529411764
+Men's Soccer,2023,University of Puget Sound,Fall,0.6
+Men's Soccer,2023,Whitman College,Fall,0.631578947368421
+Men's Soccer,2023,Willamette University,Fall,0.775
+Men's Soccer,2023,Pacific Lutheran University,Fall,0.8181818181818182
+Women's Basketball,2023,Lewis and Clark College,Winter,0.08
+Women's Basketball,2023,Pacific Lutheran University,Winter,0.08
+Women's Basketball,2023,Linfield University,Winter,0.4
+Women's Basketball,2023,Whitworth University,Winter,0.4
+Women's Basketball,2023,George Fox University,Winter,0.44
+Women's Basketball,2023,Willamette University,Winter,0.538
+Women's Basketball,2023,Pacific University,Winter,0.7037037037037037
+Women's Basketball,2023,Whitman College,Winter,0.7857142857142857
+Women's Basketball,2023,University of Puget Sound,Winter,0.8076923076923077
+Women's Lacrosse,2023,Willamette University,Spring,0.722
+Women's Lacrosse,2023,George Fox University,Spring,0.8947368421052632
+Women's Soccer,2023,Whitman College,Fall,0.3333333333333333
+Women's Soccer,2023,Pacific University,Fall,0.35714285714285715
+Women's Soccer,2023,Lewis and Clark College,Fall,0.36363636363636365
+Women's Soccer,2023,Willamette University,Fall,0.368
+Women's Soccer,2023,Linfield University,Fall,0.38461538461538464
+Women's Soccer,2023,Whitworth University,Fall,0.42857142857142855
+Women's Soccer,2023,George Fox University,Fall,0.7142857142857143
+Women's Soccer,2023,University of Puget Sound,Fall,0.8
+Women's Soccer,2023,Pacific Lutheran University,Fall,0.8947368421052632
+Women's Softball,2023,Pacific University,Spring,0.19444444444444445
+Women's Softball,2023,University of Puget Sound,Spring,0.29411764705882354
+Women's Softball,2023,Willamette University,Spring,0.421
+Women's Softball,2023,Lewis and Clark College,Spring,0.5
+Women's Softball,2023,Whitworth University,Spring,0.5476190476190477
+Women's Softball,2023,George Fox University,Spring,0.6136363636363636
+Women's Softball,2023,Pacific Lutheran University,Spring,0.627906976744186
+Women's Softball,2023,Linfield University,Spring,0.8846153846153846
+Women's Volleyball,2023,Lewis and Clark College,Fall,0.09523809523809523
+Women's Volleyball,2023,Linfield University,Fall,0.34782608695652173
+Women's Volleyball,2023,Whitman College,Fall,0.4166666666666667
+Women's Volleyball,2023,Willamette University,Fall,0.5
+Women's Volleyball,2023,George Fox University,Fall,0.5217391304347826
+Women's Volleyball,2023,University of Puget Sound,Fall,0.56
+Women's Volleyball,2023,Pacific University,Fall,0.5652173913043478
+Women's Volleyball,2023,Pacific Lutheran University,Fall,0.625
+Women's Volleyball,2023,Whitworth University,Fall,0.7083333333333334
+Men's Baseball,2024,Pacific Lutheran University,Spring,0.358974358974359
+Men's Baseball,2024,Lewis and Clark College,Spring,0.4358974358974359
+Men's Baseball,2024,University of Puget Sound,Spring,0.45
+Men's Baseball,2024,Linfield University,Spring,0.48717948717948717
+Men's Baseball,2024,George Fox University,Spring,0.55
+Men's Baseball,2024,Whitman College,Spring,0.6046511627906976
+Men's Baseball,2024,Pacific University,Spring,0.6097560975609756
+Men's Baseball,2024,Willamette University,Spring,0.644
+Men's Baseball,2024,Whitworth University,Spring,0.6666666666666666
+Men's Basketball,2024,Lewis and Clark College,Winter,0.24
+Men's Basketball,2024,Linfield University,Winter,0.32
+Men's Basketball,2024,University of Puget Sound,Winter,0.5
+Men's Basketball,2024,George Fox University,Winter,0.56
+Men's Basketball,2024,Pacific Lutheran University,Winter,0.56
+Men's Basketball,2024,Pacific University,Winter,0.5769230769230769
+Men's Basketball,2024,Willamette University,Winter,0.583
+Men's Basketball,2024,Whitworth University,Winter,0.6896551724137931
+Men's Basketball,2024,Whitman College,Winter,0.7407407407407407
+Men's Football,2024,Willamette University,Fall,0.1
+Men's Football,2024,Pacific University,Fall,0.2222222222222222
+Men's Football,2024,University of Puget Sound,Fall,0.3333333333333333
+Men's Football,2024,George Fox University,Fall,0.4
+Men's Football,2024,Lewis and Clark College,Fall,0.5
+Men's Football,2024,Pacific Lutheran University,Fall,0.5
+Men's Football,2024,Linfield University,Fall,0.8888888888888888
+Men's Football,2024,Whitworth University,Fall,0.9090909090909091
+Men's Soccer,2024,Lewis and Clark College,Fall,0
+Men's Soccer,2024,Linfield University,Fall,0.29411764705882354
+Men's Soccer,2024,George Fox University,Fall,0.3125
+Men's Soccer,2024,Pacific University,Fall,0.35714285714285715
+Men's Soccer,2024,Willamette University,Fall,0.425
+Men's Soccer,2024,Whitman College,Fall,0.5333333333333333
+Men's Soccer,2024,University of Puget Sound,Fall,0.6153846153846154
+Men's Soccer,2024,Whitworth University,Fall,0.75
+Men's Soccer,2024,Pacific Lutheran University,Fall,0.875
+Women's Basketball,2024,Lewis and Clark College,Winter,0.16666666666666666
+Women's Basketball,2024,George Fox University,Winter,0.2608695652173913
+Women's Basketball,2024,Whitworth University,Winter,0.36
+Women's Basketball,2024,Linfield University,Winter,0.44
+Women's Basketball,2024,Pacific Lutheran University,Winter,0.44
+Women's Basketball,2024,Willamette University,Winter,0.63
+Women's Basketball,2024,Pacific University,Winter,0.6538461538461539
+Women's Basketball,2024,University of Puget Sound,Winter,0.6896551724137931
+Women's Basketball,2024,Whitman College,Winter,0.7692307692307693
+Women's Lacrosse,2024,Willamette University,Spring,0.778
+Women's Lacrosse,2024,George Fox University,Spring,0.7894736842105263
+Women's Soccer,2024,Willamette University,Fall,0.225
+Women's Soccer,2024,Pacific University,Fall,0.23529411764705882
+Women's Soccer,2024,Lewis and Clark College,Fall,0.3125
+Women's Soccer,2024,George Fox University,Fall,0.4
+Women's Soccer,2024,Linfield University,Fall,0.42857142857142855
+Women's Soccer,2024,Whitworth University,Fall,0.6
+Women's Soccer,2024,Whitman College,Fall,0.6666666666666666
+Women's Soccer,2024,University of Puget Sound,Fall,0.7222222222222222
+Women's Soccer,2024,Pacific Lutheran University,Fall,0.75
+Women's Softball,2024,University of Puget Sound,Spring,0.19444444444444445
+Women's Softball,2024,Pacific University,Spring,0.225
+Women's Softball,2024,Whitworth University,Spring,0.375
+Women's Softball,2024,Willamette University,Spring,0.425
+Women's Softball,2024,George Fox University,Spring,0.475
+Women's Softball,2024,Pacific Lutheran University,Spring,0.5581395348837209
+Women's Softball,2024,Lewis and Clark College,Spring,0.6363636363636364
+Women's Softball,2024,Linfield University,Spring,0.9259259259259259
+Women's Volleyball,2024,Lewis and Clark College,Fall,0.2916666666666667
+Women's Volleyball,2024,Whitman College,Fall,0.30434782608695654
+Women's Volleyball,2024,Linfield University,Fall,0.34782608695652173
+Women's Volleyball,2024,Pacific University,Fall,0.36
+Women's Volleyball,2024,Willamette University,Fall,0.583
+Women's Volleyball,2024,University of Puget Sound,Fall,0.5833333333333334
+Women's Volleyball,2024,Whitworth University,Fall,0.6
+Women's Volleyball,2024,George Fox University,Fall,0.64
+Women's Volleyball,2024,Pacific Lutheran University,Fall,0.7142857142857143
+Men's Baseball,2025,George Fox University,Spring,0.3
+Men's Baseball,2025,Willamette University,Spring,0.405
+Men's Baseball,2025,Pacific Lutheran University,Spring,0.4358974358974359
+Men's Baseball,2025,Pacific University,Spring,0.48717948717948717
+Men's Baseball,2025,Lewis and Clark College,Spring,0.5128205128205128
+Men's Baseball,2025,Whitman College,Spring,0.525
+Men's Baseball,2025,Linfield University,Spring,0.5714285714285714
+Men's Baseball,2025,University of Puget Sound,Spring,0.5952380952380952
+Men's Baseball,2025,Whitworth University,Spring,0.6170212765957447
+Men's Basketball,2025,Linfield University,Winter,0.28
+Men's Basketball,2025,Willamette University,Winter,0.375
+Men's Basketball,2025,Pacific University,Winter,0.44
+Men's Basketball,2025,George Fox University,Winter,0.48
+Men's Basketball,2025,Whitman College,Winter,0.48148148148148145
+Men's Basketball,2025,University of Puget Sound,Winter,0.52
+Men's Basketball,2025,Lewis and Clark College,Winter,0.5357142857142857
+Men's Basketball,2025,Pacific Lutheran University,Winter,0.5384615384615384
+Men's Basketball,2025,Whitworth University,Winter,0.8461538461538461
+Men's Football,2025,Willamette University,Fall,0.2
+Men's Football,2025,University of Puget Sound,Fall,0.2
+Men's Football,2025,George Fox University,Fall,0.4
+Men's Football,2025,Lewis and Clark College,Fall,0.5
+Men's Football,2025,Pacific University,Fall,0.5
+Men's Football,2025,Pacific Lutheran University,Fall,0.7
+Men's Football,2025,Linfield University,Fall,0.8333333333333334
+Men's Football,2025,Whitworth University,Fall,0.8333333333333334
+Men's Soccer,2025,Lewis and Clark College,Fall,0
+Men's Soccer,2025,Linfield University,Fall,0.16666666666666666
+Men's Soccer,2025,Willamette University,Fall,0.45
+Men's Soccer,2025,Pacific University,Fall,0.5294117647058824
+Men's Soccer,2025,University of Puget Sound,Fall,0.5454545454545454
+Men's Soccer,2025,Whitworth University,Fall,0.5882352941176471
+Men's Soccer,2025,Whitman College,Fall,0.6666666666666666
+Men's Soccer,2025,George Fox University,Fall,0.7368421052631579
+Men's Soccer,2025,Pacific Lutheran University,Fall,0.8125
+Women's Basketball,2025,Lewis and Clark College,Winter,0.24
+Women's Basketball,2025,Willamette University,Winter,0.32
+Women's Basketball,2025,Pacific Lutheran University,Winter,0.32
+Women's Basketball,2025,Whitworth University,Winter,0.32
+Women's Basketball,2025,University of Puget Sound,Winter,0.4230769230769231
+Women's Basketball,2025,Pacific University,Winter,0.44
+Women's Basketball,2025,Linfield University,Winter,0.7307692307692307
+Women's Basketball,2025,George Fox University,Winter,0.7407407407407407
+Women's Basketball,2025,Whitman College,Winter,0.9310344827586207
+Women's Lacrosse,2025,Pacific Lutheran University,Spring,0.06666666666666667
+Women's Lacrosse,2025,Willamette University,Spring,0.563
+Women's Lacrosse,2025,George Fox University,Spring,0.7368421052631579
+Women's Soccer,2025,Pacific University,Fall,0.13333333333333333
+Women's Soccer,2025,Lewis and Clark College,Fall,0.25
+Women's Soccer,2025,George Fox University,Fall,0.35294117647058826
+Women's Soccer,2025,Linfield University,Fall,0.46153846153846156
+Women's Soccer,2025,Willamette University,Fall,0.475
+Women's Soccer,2025,Whitman College,Fall,0.6470588235294118
+Women's Soccer,2025,Whitworth University,Fall,0.6470588235294118
+Women's Soccer,2025,University of Puget Sound,Fall,0.6923076923076923
+Women's Soccer,2025,Pacific Lutheran University,Fall,0.8888888888888888
+Women's Softball,2025,Whitworth University,Spring,0.15789473684210525
+Women's Softball,2025,Pacific University,Spring,0.23529411764705882
+Women's Softball,2025,University of Puget Sound,Spring,0.23684210526315788
+Women's Softball,2025,Willamette University,Spring,0.526
+Women's Softball,2025,George Fox University,Spring,0.6046511627906976
+Women's Softball,2025,Pacific Lutheran University,Spring,0.6428571428571429
+Women's Softball,2025,Lewis and Clark College,Spring,0.7111111111111111
+Women's Softball,2025,Linfield University,Spring,0.8653846153846154
+Women's Volleyball,2025,Lewis and Clark College,Fall,0
+Women's Volleyball,2025,Whitman College,Fall,0.2608695652173913
+Women's Volleyball,2025,Willamette University,Fall,0.292
+Women's Volleyball,2025,Linfield University,Fall,0.30434782608695654
+Women's Volleyball,2025,Pacific University,Fall,0.4166666666666667
+Women's Volleyball,2025,George Fox University,Fall,0.5384615384615384
+Women's Volleyball,2025,University of Puget Sound,Fall,0.64
+Women's Volleyball,2025,Pacific Lutheran University,Fall,0.7037037037037037
+Women's Volleyball,2025,Whitworth University,Fall,0.896551724137931
+Men's Baseball,2026,Willamette University,Spring,0.237
+Men's Baseball,2026,Whitman College,Spring,0.358974358974359
+Men's Baseball,2026,Pacific Lutheran University,Spring,0.3684210526315789
+Men's Baseball,2026,George Fox University,Spring,0.4
+Men's Baseball,2026,Pacific University,Spring,0.425
+Men's Baseball,2026,Lewis and Clark College,Spring,0.5365853658536586
+Men's Baseball,2026,Linfield University,Spring,0.5714285714285714
+Men's Baseball,2026,University of Puget Sound,Spring,0.575
+Men's Baseball,2026,Whitworth University,Spring,0.6595744680851063
+Men's Basketball,2026,George Fox University,Winter,0.16
+Men's Basketball,2026,Pacific University,Winter,0.4
+Men's Basketball,2026,Whitman College,Winter,0.4
+Men's Basketball,2026,Linfield University,Winter,0.4166666666666667
+Men's Basketball,2026,Pacific Lutheran University,Winter,0.44
+Men's Basketball,2026,Lewis and Clark College,Winter,0.5
+Men's Basketball,2026,Willamette University,Winter,0.593
+Men's Basketball,2026,University of Puget Sound,Winter,0.6538461538461539
+Men's Basketball,2026,Whitworth University,Winter,0.7857142857142857
+Men's Football,2026,Willamette University,Fall,0.1
+Men's Football,2026,University of Puget Sound,Fall,0.1
+Men's Football,2026,Pacific University,Fall,0.3
+Men's Football,2026,George Fox University,Fall,0.4
+Men's Football,2026,Lewis and Clark College,Fall,0.6
+Men's Football,2026,Pacific Lutheran University,Fall,0.6
+Men's Football,2026,Whitworth University,Fall,0.7272727272727273
+Men's Football,2026,Linfield University,Fall,0.7777777777777778
+Men's Soccer,2026,Lewis and Clark College,Fall,0
+Men's Soccer,2026,Linfield University,Fall,0.125
+Men's Soccer,2026,Pacific University,Fall,0.2857142857142857
+Men's Soccer,2026,George Fox University,Fall,0.35714285714285715
+Men's Soccer,2026,University of Puget Sound,Fall,0.5
+Men's Soccer,2026,Willamette University,Fall,0.525
+Men's Soccer,2026,Whitworth University,Fall,0.5833333333333334
+Men's Soccer,2026,Pacific Lutheran University,Fall,0.7647058823529411
+Men's Soccer,2026,Whitman College,Fall,0.9333333333333333
+Women's Basketball,2026,Pacific Lutheran University,Winter,0.12
+Women's Basketball,2026,Whitworth University,Winter,0.2
+Women's Basketball,2026,Lewis and Clark College,Winter,0.24
+Women's Basketball,2026,Willamette University,Winter,0.4
+Women's Basketball,2026,Pacific University,Winter,0.4
+Women's Basketball,2026,George Fox University,Winter,0.5555555555555556
+Women's Basketball,2026,Whitman College,Winter,0.7241379310344828
+Women's Basketball,2026,University of Puget Sound,Winter,0.7692307692307693
+Women's Basketball,2026,Linfield University,Winter,0.8461538461538461
+Women's Lacrosse,2026,Pacific Lutheran University,Spring,0.1875
+Women's Lacrosse,2026,Willamette University,Spring,0.444
+Women's Lacrosse,2026,George Fox University,Spring,0.7777777777777778
+Women's Soccer,2026,George Fox University,Fall,0
+Women's Soccer,2026,Lewis and Clark College,Fall,0.21428571428571427
+Women's Soccer,2026,Whitworth University,Fall,0.2727272727272727
+Women's Soccer,2026,Pacific University,Fall,0.36363636363636365
+Women's Soccer,2026,Willamette University,Fall,0.395
+Women's Soccer,2026,Whitman College,Fall,0.45454545454545453
+Women's Soccer,2026,Linfield University,Fall,0.6666666666666666
+Women's Soccer,2026,University of Puget Sound,Fall,0.8235294117647058
+Women's Soccer,2026,Pacific Lutheran University,Fall,0.8571428571428571
+Women's Softball,2026,University of Puget Sound,Spring,0.13157894736842105
+Women's Softball,2026,Willamette University,Spring,0.225
+Women's Softball,2026,Whitworth University,Spring,0.28205128205128205
+Women's Softball,2026,Pacific University,Spring,0.42105263157894735
+Women's Softball,2026,George Fox University,Spring,0.5238095238095238
+Women's Softball,2026,Lewis and Clark College,Spring,0.627906976744186
+Women's Softball,2026,Pacific Lutheran University,Spring,0.7446808510638298
+Women's Softball,2026,Linfield University,Spring,0.8431372549019608
+Women's Volleyball,2026,Lewis and Clark College,Fall,0
+Women's Volleyball,2026,Pacific University,Fall,0.23809523809523808
+Women's Volleyball,2026,George Fox University,Fall,0.3181818181818182
+Women's Volleyball,2026,Linfield University,Fall,0.42857142857142855
+Women's Volleyball,2026,Whitman College,Fall,0.43478260869565216
+Women's Volleyball,2026,Willamette University,Fall,0.5
+Women's Volleyball,2026,Pacific Lutheran University,Fall,0.6153846153846154
+Women's Volleyball,2026,University of Puget Sound,Fall,0.6923076923076923
+Women's Volleyball,2026,Whitworth University,Fall,0.75
+Men's Baseball,2027,Willamette University,Spring,0
+Men's Basketball,2027,Willamette University,Winter,0
+Men's Basketball,2027,Whitman College,Winter,0
+Men's Basketball,2027,Whitworth University,Winter,0
+Men's Basketball,2027,University of Puget Sound,Winter,0.3333333333333333
+Men's Basketball,2027,Lewis and Clark College,Winter,0.5
+Men's Basketball,2027,George Fox University,Winter,0.6666666666666666
+Men's Basketball,2027,Linfield University,Winter,1
+Men's Basketball,2027,Pacific Lutheran University,Winter,1
+Men's Football,2027,Willamette University,Fall,0.111
+Men's Football,2027,Pacific University,Fall,0.2222222222222222
+Men's Football,2027,University of Puget Sound,Fall,0.25
+Men's Football,2027,Pacific Lutheran University,Fall,0.3333333333333333
+Men's Football,2027,Whitworth University,Fall,0.625
+Men's Football,2027,George Fox University,Fall,0.6666666666666666
+Men's Football,2027,Lewis and Clark College,Fall,0.7777777777777778
+Men's Football,2027,Linfield University,Fall,0.875
+Men's Soccer,2027,Lewis and Clark College,Fall,0.1111111111111111
+Men's Soccer,2027,Whitworth University,Fall,0.23529411764705882
+Men's Soccer,2027,George Fox University,Fall,0.2857142857142857
+Men's Soccer,2027,Pacific University,Fall,0.3
+Men's Soccer,2027,Linfield University,Fall,0.4666666666666667
+Men's Soccer,2027,Willamette University,Fall,0.583
+Men's Soccer,2027,University of Puget Sound,Fall,0.7
+Men's Soccer,2027,Pacific Lutheran University,Fall,0.8
+Men's Soccer,2027,Whitman College,Fall,0.8235294117647058
+Women's Basketball,2027,Willamette University,Winter,0
+Women's Basketball,2027,Lewis and Clark College,Winter,0
+Women's Basketball,2027,Pacific University,Winter,0.3333333333333333
+Women's Basketball,2027,Pacific Lutheran University,Winter,0.5
+Women's Basketball,2027,George Fox University,Winter,0.6666666666666666
+Women's Basketball,2027,Linfield University,Winter,1
+Women's Basketball,2027,University of Puget Sound,Winter,1
+Women's Lacrosse,2027,Willamette University,Spring,0
+Women's Soccer,2027,George Fox University,Fall,0.13333333333333333
+Women's Soccer,2027,Whitworth University,Fall,0.3125
+Women's Soccer,2027,Lewis and Clark College,Fall,0.3333333333333333
+Women's Soccer,2027,Pacific University,Fall,0.3333333333333333
+Women's Soccer,2027,Willamette University,Fall,0.472
+Women's Soccer,2027,Linfield University,Fall,0.6111111111111112
+Women's Soccer,2027,Pacific Lutheran University,Fall,0.6875
+Women's Soccer,2027,Whitman College,Fall,0.6875
+Women's Soccer,2027,University of Puget Sound,Fall,1
+Women's Softball,2027,Willamette University,Spring,0
+Women's Volleyball,2027,Pacific University,Fall,0.08695652173913043
+Women's Volleyball,2027,Lewis and Clark College,Fall,0.17391304347826086
+Women's Volleyball,2027,George Fox University,Fall,0.34782608695652173
+Women's Volleyball,2027,Linfield University,Fall,0.43478260869565216
+Women's Volleyball,2027,Willamette University,Fall,0.5
+Women's Volleyball,2027,Whitman College,Fall,0.5
+Women's Volleyball,2027,University of Puget Sound,Fall,0.7083333333333334
+Women's Volleyball,2027,Pacific Lutheran University,Fall,0.76
+Women's Volleyball,2027,Whitworth University,Fall,0.8260869565217391

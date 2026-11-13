@@ -209,7 +209,13 @@ adjusted_instLevel = instLevel_all %>%
     real_grnd_expense = GRND_TOTAL_EXPENSE * (base_hepi / hepi),
     real_opexp = IL_TOTAL_OPEXP_INCLCOED * (base_hepi / hepi),
     real_opexp_athlete = ((IL_SUM_OPEXPPERPART_WOMEN + IL_SUM_OPEXPPERPART_MEN)/2) * (base_hepi / hepi),
-    real_recruit_exp = RECRUITEXP_TOTAL * (base_hepi / hepi) # might not include coed recruiting...
+    real_recruit_exp = RECRUITEXP_TOTAL * (base_hepi / hepi), # might not include coed recruiting...
+    real_salary_hdc_men = HDCOACH_SALARY_MEN * (base_hepi / hepi),
+    real_salary_hdc_women = HDCOACH_SALARY_WOMEN * (base_hepi / hepi),
+    real_salary_hdc_coed = HDCOACH_SALARY_COED * (base_hepi / hepi),
+    real_salary_asc_men = ASCOACH_SALARY_MEN * (base_hepi / hepi),
+    real_salary_asc_women = ASCOACH_SALARY_WOMEN * (base_hepi / hepi),
+    real_salary_asc_coed = ASCOACH_SALARY_COED * (base_hepi / hepi)
     # can add salary adjustments if needed
   )
 
@@ -691,7 +697,7 @@ write_csv(coach_ds, "../clean_data/coach_ds.csv")
 ```{r}
 # filter for d3 instLevel
 d3_instLevel = final_instLevel %>%
-  filter(classification_name %in% c("NCAA Division III with football", "NCAA Division III without football", "NCAA Division III")) %>%
+  filter(classification_name %in% c("NCAA Division III with football", "NCAA Division III without football", "NCAA Division III", "NCAA Division III (with football)", "NCAA Division III (without football)")) %>%
   mutate( # linfield appears under many names
     institution_name = case_when(
       str_starts(institution_name, "Linfield") ~ "Linfield University",
@@ -961,29 +967,12 @@ nwc_instLevel_exp
 ## Add winning percentage data for inst-level
 
 ```{r}
-win_pct_ds = read_csv("../raw_data/win_pct.csv")
+win_pct_ds = read_csv("../raw_data/add_win_pct.csv")
 
-# make years, sports names, inst match original ds and fix typos
+# rename so it matches and is more clear
 win_pct_clean = win_pct_ds %>%
   mutate(
-    year = as.numeric(paste0("20", substr(Year, start = 8, stop = 9))),
-    sport = case_when(
-      Sport == "Softball" ~ "Women's Softball",
-      Sport == "Football" ~ "Men's Football",
-      .default = Sport
-    ),
-    win_pct = `Win Pct`,
-    institution_name = School
-  ) %>%
-  select(-Sport, -Year, -`Year Played`, -`Win Pct`, -School) %>%
-  mutate(
-    win_pct = case_when(
-      win_pct >= 1000 ~ win_pct / 10000,
-      win_pct >= 100 ~ win_pct / 1000,
-      win_pct >= 10 ~ win_pct / 100,
-      win_pct >= 1 ~ win_pct / 10,
-      .default = win_pct
-    )
+    win_pct = win_clean
   )
 
 # summarize inst-level win percentage
