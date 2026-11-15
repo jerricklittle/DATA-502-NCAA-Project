@@ -422,6 +422,66 @@ year,unitid,institution_name,sport,athlete_gender,coach_role,coach_gender,team_a
 2005,237057,Whitman College,"Track and Field, X-Country",Women,Head,Male,Full-time,Full-time,1
 2005,237057,Whitman College,Volleyball,Women,Head,Male,Full-time,Full-time,1
 2005,237057,Whitman College,Volleyball,Women,Assistant,Female,Part-time,Part-time,1
+2005,237066,Whitworth University,All Track Combined,Men,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Full-time,2
+2005,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Full-time,3
+2005,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,4
+2005,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,5
+2005,237066,Whitworth University,All Track Combined,Men,Assistant,Female,Part-time,Full-time,1
+2005,237066,Whitworth University,All Track Combined,Men,Assistant,Female,Part-time,Part-time,2
+2005,237066,Whitworth University,All Track Combined,Women,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Full-time,2
+2005,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Full-time,3
+2005,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,4
+2005,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,5
+2005,237066,Whitworth University,All Track Combined,Women,Assistant,Female,Part-time,Full-time,1
+2005,237066,Whitworth University,All Track Combined,Women,Assistant,Female,Part-time,Part-time,2
+2005,237066,Whitworth University,Baseball,Men,Head,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,3
+2005,237066,Whitworth University,Basketball,Men,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Basketball,Men,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Basketball,Men,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Basketball,Women,Head,Female,Part-time,Full-time,1
+2005,237066,Whitworth University,Basketball,Women,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Football,Men,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,2
+2005,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,3
+2005,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,4
+2005,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,5
+2005,237066,Whitworth University,Golf,Men,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Golf,Men,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Golf,Men,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Golf,Women,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Golf,Women,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Golf,Women,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Golf,Women,Assistant,Female,Part-time,Part-time,1
+2005,237066,Whitworth University,Soccer,Men,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Soccer,Men,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Soccer,Men,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Soccer,Women,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Soccer,Women,Assistant,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Soccer,Women,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Softball,Women,Head,Female,Part-time,Part-time,1
+2005,237066,Whitworth University,Softball,Women,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Swimming,Men,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Swimming,Men,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Swimming,Men,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Swimming,Men,Assistant,Female,Part-time,Part-time,1
+2005,237066,Whitworth University,Swimming,Women,Head,Male,Part-time,Full-time,1
+2005,237066,Whitworth University,Swimming,Women,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Swimming,Women,Assistant,Male,Part-time,Part-time,2
+2005,237066,Whitworth University,Swimming,Women,Assistant,Female,Part-time,Part-time,1
+2005,237066,Whitworth University,Tennis,Men,Head,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Tennis,Women,Head,Female,Part-time,Full-time,1
+2005,237066,Whitworth University,Volleyball,Women,Head,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Volleyball,Women,Assistant,Male,Part-time,Part-time,1
+2005,237066,Whitworth University,Volleyball,Women,Assistant,Female,Part-time,Part-time,1
+2005,237066,Whitworth University,Volleyball,Women,Assistant,Female,Part-time,Part-time,2
 2005,210401,Willamette University,All Track Combined,Men,Head,Male,Part-time,Full-time,1
 2005,210401,Willamette University,All Track Combined,Men,Assistant,Male,Part-time,Full-time,1
 2005,210401,Willamette University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,2
@@ -920,6 +980,64 @@ year,unitid,institution_name,sport,athlete_gender,coach_role,coach_gender,team_a
 2006,237057,Whitman College,"Track and Field, X-Country",Women,Head,Male,Full-time,Full-time,1
 2006,237057,Whitman College,Volleyball,Women,Head,Male,Full-time,Full-time,1
 2006,237057,Whitman College,Volleyball,Women,Assistant,Female,Full-time,Full-time,1
+2006,237066,Whitworth University,All Track Combined,Men,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Full-time,2
+2006,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,3
+2006,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,4
+2006,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,5
+2006,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,6
+2006,237066,Whitworth University,All Track Combined,Women,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Full-time,2
+2006,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,3
+2006,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,4
+2006,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,5
+2006,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,6
+2006,237066,Whitworth University,Baseball,Men,Head,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,2
+2006,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,3
+2006,237066,Whitworth University,Basketball,Men,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Basketball,Men,Assistant,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Basketball,Men,Assistant,Male,Part-time,Part-time,2
+2006,237066,Whitworth University,Basketball,Women,Head,Female,Part-time,Full-time,1
+2006,237066,Whitworth University,Basketball,Women,Assistant,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Basketball,Women,Assistant,Female,Part-time,Part-time,1
+2006,237066,Whitworth University,Football,Men,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,2
+2006,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,3
+2006,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,4
+2006,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,5
+2006,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,6
+2006,237066,Whitworth University,Golf,Men,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Golf,Women,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Golf,Women,Assistant,Female,Part-time,Part-time,1
+2006,237066,Whitworth University,Soccer,Men,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Soccer,Men,Assistant,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Soccer,Men,Assistant,Male,Part-time,Part-time,2
+2006,237066,Whitworth University,Soccer,Women,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Soccer,Women,Assistant,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Soccer,Women,Assistant,Male,Part-time,Part-time,2
+2006,237066,Whitworth University,Softball,Women,Head,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Softball,Women,Assistant,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Softball,Women,Assistant,Male,Part-time,Part-time,2
+2006,237066,Whitworth University,Softball,Women,Assistant,Female,Part-time,Part-time,1
+2006,237066,Whitworth University,Swimming,Men,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Swimming,Men,Assistant,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Swimming,Men,Assistant,Male,Part-time,Part-time,2
+2006,237066,Whitworth University,Swimming,Men,Assistant,Female,Part-time,Part-time,1
+2006,237066,Whitworth University,Swimming,Women,Head,Male,Part-time,Full-time,1
+2006,237066,Whitworth University,Swimming,Women,Assistant,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Swimming,Women,Assistant,Male,Part-time,Part-time,2
+2006,237066,Whitworth University,Swimming,Women,Assistant,Female,Part-time,Part-time,1
+2006,237066,Whitworth University,Tennis,Men,Head,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Tennis,Women,Head,Female,Part-time,Full-time,1
+2006,237066,Whitworth University,Volleyball,Women,Head,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Volleyball,Women,Assistant,Male,Part-time,Part-time,1
+2006,237066,Whitworth University,Volleyball,Women,Assistant,Female,Part-time,Part-time,1
+2006,237066,Whitworth University,Volleyball,Women,Assistant,Female,Part-time,Part-time,2
 2006,210401,Willamette University,Baseball,Men,Head,Male,Part-time,Full-time,1
 2006,210401,Willamette University,Baseball,Men,Assistant,Male,Part-time,Part-time,1
 2006,210401,Willamette University,Basketball,Men,Head,Male,Part-time,Full-time,1
@@ -1413,6 +1531,63 @@ year,unitid,institution_name,sport,athlete_gender,coach_role,coach_gender,team_a
 2007,237057,Whitman College,"Track and Field, X-Country",Women,Head,Male,Full-time,Full-time,1
 2007,237057,Whitman College,Volleyball,Women,Head,Male,Full-time,Full-time,1
 2007,237057,Whitman College,Volleyball,Women,Assistant,Female,Full-time,Full-time,1
+2007,237066,Whitworth University,All Track Combined,Men,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,3
+2007,237066,Whitworth University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,4
+2007,237066,Whitworth University,All Track Combined,Men,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,All Track Combined,Men,Assistant,Female,Part-time,Part-time,2
+2007,237066,Whitworth University,All Track Combined,Women,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,3
+2007,237066,Whitworth University,All Track Combined,Women,Assistant,Male,Part-time,Part-time,4
+2007,237066,Whitworth University,All Track Combined,Women,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,All Track Combined,Women,Assistant,Female,Part-time,Part-time,2
+2007,237066,Whitworth University,Baseball,Men,Head,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,Baseball,Men,Assistant,Male,Part-time,Part-time,3
+2007,237066,Whitworth University,Basketball,Men,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Basketball,Men,Assistant,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Basketball,Men,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,Basketball,Women,Head,Female,Part-time,Full-time,1
+2007,237066,Whitworth University,Basketball,Women,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,Football,Men,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,2
+2007,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Full-time,3
+2007,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,4
+2007,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,5
+2007,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,6
+2007,237066,Whitworth University,Football,Men,Assistant,Male,Part-time,Part-time,7
+2007,237066,Whitworth University,Golf,Men,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Golf,Women,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Golf,Women,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,Soccer,Men,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Soccer,Men,Assistant,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,Soccer,Women,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Soccer,Women,Assistant,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Soccer,Women,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,Softball,Women,Head,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,Softball,Women,Assistant,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,Softball,Women,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,Softball,Women,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,Swimming,Men,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Swimming,Men,Assistant,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Swimming,Men,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,Swimming,Men,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,Swimming,Women,Head,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Swimming,Women,Assistant,Male,Part-time,Full-time,1
+2007,237066,Whitworth University,Swimming,Women,Assistant,Male,Part-time,Part-time,2
+2007,237066,Whitworth University,Swimming,Women,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,Tennis,Men,Head,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,Tennis,Women,Head,Female,Part-time,Full-time,1
+2007,237066,Whitworth University,Volleyball,Women,Head,Male,Part-time,Part-time,1
+2007,237066,Whitworth University,Volleyball,Women,Assistant,Female,Part-time,Part-time,1
+2007,237066,Whitworth University,Volleyball,Women,Assistant,Female,Part-time,Part-time,2
+2007,237066,Whitworth University,Volleyball,Women,Assistant,Female,Part-time,Part-time,3
 2007,210401,Willamette University,All Track Combined,Men,Head,Male,Full-time,Full-time,1
 2007,210401,Willamette University,All Track Combined,Men,Assistant,Male,Full-time,Full-time,1
 2007,210401,Willamette University,All Track Combined,Men,Assistant,Male,Part-time,Part-time,2
