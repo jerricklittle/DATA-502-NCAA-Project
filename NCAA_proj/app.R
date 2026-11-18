@@ -23,7 +23,8 @@ keep_sports <- c(
   "Men's Soccer", "Women's Soccer",
   "Men's Baseball", "Women's Softball",
   "Women's Lacrosse",
-  "Men's Basketball", "Women's Basketball"
+  "Men's Basketball", "Women's Basketball",
+  "Women's Volleyball"
 )
 d3_sports  <- d3_sports  %>% filter(sport %in% keep_sports)
 nwc_sports <- nwc_sports %>% filter(sport %in% keep_sports)
@@ -57,11 +58,11 @@ school_labels <- c(
 
 # ---- Willamette theme ---------------------------------------------------
 # Change these two values to re-tint the whole dashboard.
-wu_maroon <- "#7A1F2B"   # primary burgundy
-wu_gold   <- "#E6A91C"   # accent (matches the Willamette color in nwc_colors)
+wu_maroon <- "#7A1F2B"
+wu_gold   <- "#E6A91C"  
 wu_maroon_dark <- "#5C1720"
 
-# Logo: the Bearcat mark lives at www/Bearcat.png (Shiny serves the www folder).
+# Logo
 logo_src <- "Bearcat.png"
 
 wu_css <- sprintf("
@@ -211,7 +212,7 @@ server <- function(input, output, session) {
         institution_name == wu    ~ "Willamette University",
         .default = "Division III"
       ))
-    validate(need(nrow(ds) > 0, "No data for this sport and year."))
+    shiny::validate(need(nrow(ds) > 0, "No data for this sport and year."))
     
     colorpal <- c("Willamette University" = wu_maroon,
                   "Northwest Conference"  = "blue",
