@@ -219,7 +219,7 @@ server <- function(input, output, session) {
       ungroup() %>%
       filter(institution_name == wu) %>%
       mutate(difference = percentage - nwc_median,
-             category = recode(category,
+             category = dplyr::recode(category,
                                operating = "Operating expenses", recruiting = "Recruiting",
                                hc_salaries = "Head coach salaries",
                                ac_salaries = "Assistant coach salaries",
