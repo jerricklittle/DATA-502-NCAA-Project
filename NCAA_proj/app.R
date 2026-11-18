@@ -142,12 +142,9 @@ ui <- dashboardPage(
     width = 260,
     sidebarMenu(
       id = "tabs",
-      menuItem("Spending vs. Athletes",    tabName = "p1", icon = icon("chart-line")),
-      menuItem("Spending Over Time",       tabName = "p2", icon = icon("clock")),
-      menuItem("School Comparison",        tabName = "p3", icon = icon("school")),
-      menuItem("Head Coach Salaries",      tabName = "p4", icon = icon("user-tie")),
-      menuItem("Budget Mix",               tabName = "p5", icon = icon("chart-pie")),
-      menuItem("Spending vs. Win %",       tabName = "p6", icon = icon("trophy"))
+      menuItem("Spending Over Time",       tabName = "p1", icon = icon("clock")),
+      menuItem("Budget Mix",               tabName = "p2", icon = icon("chart-pie")),
+      menuItem("Spending vs. Win %",       tabName = "p3", icon = icon("trophy"))
     ),
     div(style = "padding: 15px; font-size: 11px; color: #b8c7ce;",
         "Maroon = Willamette. Grey / blue = other Northwest Conference (NWC) schools.")
@@ -158,43 +155,25 @@ ui <- dashboardPage(
       # Plot 1 -----------------------------------------------------------
       tabItem("p1",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
-                  selectInput("p1_sport", "Sport", sports_all, selected = default_sport),
-                  selectInput("p1_year", "Year", years_all, selected = default_year)),
+                  selectInput("p1_sport", "Sport", sports_all, selected = default_sport)),
               box(width = 9, plotOutput("p1_plot", height = "520px"))
       ),
       # Plot 2 -----------------------------------------------------------
       tabItem("p2",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
-                  selectInput("p2_sport", "Sport", sports_all, selected = default_sport)),
-              box(width = 9, plotOutput("p2_plot", height = "520px"))
+                  selectInput("p2_year", "Year", years_bd, selected = years_bd[1])),
+              box(width = 9, plotOutput("p2_plot", height = "480px"))
       ),
-      # Plot 3 -----------------------------------------------------------
+      # Plot 3 ----------------------------------------------------------
       tabItem("p3",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
-                  checkboxGroupInput("p3_years", "Years", choices = years_recent,
-                                     selected = years_recent)),
-              box(width = 9, plotOutput("p3_plot", height = "620px"))
-      ),
-      # Plot 4 -----------------------------------------------------------
-      tabItem("p4",
-              box(width = 12, plotOutput("p4_plot", height = "520px"))
-      ),
-      # Plot 5 -----------------------------------------------------------
-      tabItem("p5",
-              box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
-                  selectInput("p5_year", "Year", years_bd, selected = years_bd[1])),
-              box(width = 9, plotOutput("p5_plot", height = "480px"))
-      ),
-      # Win pct ----------------------------------------------------------
-      tabItem("p6",
-              box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
-                  selectInput("p6_year", "Year", years_nwc, selected = years_nwc[1]),
-                  radioButtons("p6_metric", "Spending measure",
+                  selectInput("p3_year", "Year", years_nwc, selected = years_nwc[1]),
+                  radioButtons("p3_metric", "Spending measure",
                                choices = c("Total expenses" = "real_expense",
                                            "Operating expense per athlete" = "real_opexp_athlete")),
-                  selectizeInput("p6_sports", "Sports", choices = sports_nwc,
+                  selectizeInput("p3_sports", "Sports", choices = sports_nwc,
                                  selected = sports_nwc, multiple = TRUE)),
-              box(width = 9, plotOutput("p6_plot", height = "auto"))
+              box(width = 9, plotOutput("p3_plot", height = "auto"))
       )
     )
   )
@@ -203,47 +182,11 @@ ui <- dashboardPage(
 # ---- Server -------------------------------------------------------------
 server <- function(input, output, session) {
   
-  # Plot 1: operating expenses vs number of athletes
+  # Plot 1: operating expense per athlete by year
   output$p1_plot <- renderPlot({
-    ds <- d3_sports %>%
-      filter(sport == input$p1_sport, year == as.numeric(input$p1_year)) %>%
-      mutate(color = case_when(
-        institution_name %in% nwc ~ "Northwest Conference",
-        institution_name == wu    ~ "Willamette University",
-        .default = "Division III"
-      ))
-    shiny::validate(need(nrow(ds) > 0, "No data for this sport and year."))
-    
-    colorpal <- c("Willamette University" = wu_maroon,
-                  "Northwest Conference"  = "blue",
-                  "Division III"          = "black")
-    solid  <- ds %>% filter(institution_name %in% nwc | institution_name == wu)
-    others <- ds %>% filter(!(institution_name %in% nwc), institution_name != wu)
-    
-    ggplot(others, aes(x = n_athletes, y = op_exp, color = color)) +
-      geom_point(alpha = .1) +
-      geom_point(data = solid, size = 2) +
-      geom_text(data = solid, aes(label = institution_name), hjust = -.1, size = 3) +
-      geom_abline(intercept = 0,
-                  slope = median(ds$op_exp, na.rm = TRUE) / median(ds$n_athletes, na.rm = TRUE),
-                  color = "black", linetype = "dashed") +
-      scale_color_manual(values = colorpal) +
-      scale_x_continuous(limits = c(0, max(ds$n_athletes, na.rm = TRUE) * 1.05), expand = c(0, 0)) +
-      scale_y_continuous(labels = function(x) paste0(x / 1000, "k"),
-                         limits = c(0, max(ds$op_exp, na.rm = TRUE) * 1.05), expand = c(0, 0)) +
-      theme_bw(base_size = 14) +
-      theme(plot.caption.position = "plot") +
-      labs(title = paste0("Willamette ", input$p1_sport, " vs. Other Schools in ", input$p1_year),
-           subtitle = "Dashed line represents median operating expense per athlete",
-           caption = caption_txt,
-           x = "Number of Athletes", y = "Operating Expenses ($)", color = "Institution")
-  })
-  
-  # Plot 2: operating expense per athlete by year
-  output$p2_plot <- renderPlot({
-    pts <- d3_sports %>% filter(sport == input$p2_sport, institution_name %in% nwc)
-    wu_pts <- d3_sports %>% filter(sport == input$p2_sport, institution_name == wu)
-    validate(need(nrow(pts) > 0, "No data for this sport."))
+    pts <- d3_sports %>% filter(sport == input$p1_sport, institution_name %in% nwc)
+    wu_pts <- d3_sports %>% filter(sport == input$p1_sport, institution_name == wu)
+    shiny::validate(need(nrow(pts) > 0, "No data for this sport."))
     
     ggplot(pts, aes(x = year, y = op_exp_per_athlete)) +
       geom_point(alpha = .4, aes(color = "Other NWC Schools")) +
@@ -262,53 +205,9 @@ server <- function(input, output, session) {
            color = "Institution", caption = caption_txt)
   })
   
-  # Plot 3: per-athlete spending by school (boxplots, all sports)
-  output$p3_plot <- renderPlot({
-    req(input$p3_years)
-    d <- d3_sports %>%
-      filter(institution_name %in% nwc | institution_name == wu,
-             year %in% as.numeric(input$p3_years))
-    validate(need(nrow(d) > 0, "No data for the selected years."))
-    
-    ggplot(d, aes(x = fct_reorder(institution_name, op_exp_per_athlete, .fun = median, na.rm = TRUE),
-                  y = op_exp_per_athlete)) +
-      geom_point(aes(color = institution_name == wu, group = institution_name),
-                 alpha = .2, position = "jitter") +
-      geom_boxplot(aes(color = institution_name == wu, group = institution_name), alpha = 0) +
-      facet_wrap(~year) +
-      theme_light(base_size = 14) +
-      theme(plot.caption.position = "plot",
-            axis.text.x = element_text(angle = 45, hjust = 1)) +
-      scale_x_discrete(labels = school_labels) +
-      scale_color_manual(values = c("TRUE" = wu_maroon, "FALSE" = "gray70"), guide = "none") +
-      labs(x = "School", y = "Operating Expense per Athlete ($)",
-           title = "Operating Expense per Athlete by NWC School",
-           subtitle = "Each dot is a sport; boxes summarize all sports for the school",
-           caption = caption_txt)
-  })
-  
-  # Plot 4: head coach salary vs year
-  output$p4_plot <- renderPlot({
-    d3_instLevel %>%
-      mutate(HC_sal = HDCOACH_SAL_FTE_MEN + HDCOACH_SAL_FTE_WOMN) %>%
-      filter(institution_name %in% nwc | institution_name == wu) %>%
-      ggplot(aes(x = year, y = HC_sal)) +
-      geom_line(linewidth = 1, alpha = .6,
-                aes(color = institution_name == wu, group = institution_name)) +
-      scale_x_continuous(breaks = c(2016, 2018, 2020, 2022, 2024)) +
-      scale_color_manual(values = c("TRUE" = wu_maroon, "FALSE" = "gray70"),
-                         labels = c("TRUE" = "Willamette", "FALSE" = "Other NWC")) +
-      theme_bw(base_size = 14) +
-      theme(plot.caption.position = "plot") +
-      labs(title = "Head Coach Salaries Across the NWC",
-           subtitle = "Total NWC head coach salaries by year",
-           y = "Average Head Coach Salaries ($)", x = "Year",
-           color = "School", caption = caption_txt)
-  })
-  
-  # Plot 5: percent difference from NWC median by expense category
-  output$p5_plot <- renderPlot({
-    yr <- as.numeric(input$p5_year)
+  # Plot 2: percent difference from NWC median by expense category
+  output$p2_plot <- renderPlot({
+    yr <- as.numeric(input$p2_year)
     d <- expense_breakdown %>%
       filter(year == yr) %>%
       mutate(across(c(operating, recruiting, hc_salaries, ac_salaries, other),
@@ -325,7 +224,7 @@ server <- function(input, output, session) {
                                hc_salaries = "Head coach salaries",
                                ac_salaries = "Assistant coach salaries",
                                other = "Other expenses"))
-    validate(need(nrow(d) > 0, "No Willamette data for this year."))
+    shiny::validate(need(nrow(d) > 0, "No Willamette data for this year."))
     
     ggplot(d, aes(x = difference, y = reorder(category, difference), fill = difference > 0)) +
       geom_col() +
@@ -340,25 +239,25 @@ server <- function(input, output, session) {
            caption = caption_txt)
   })
   
-  # Win pct vs spending (NWC only)
-  output$p6_plot <- renderPlot({
-    req(input$p6_sports)
+  # Plot 3: Win pct vs spending (NWC only)
+  output$p3_plot <- renderPlot({
+    req(input$p3_sports)
     d <- nwc_sports %>%
-      filter(!is.na(win_pct), year == as.numeric(input$p6_year),
-             sport %in% input$p6_sports)
-    validate(need(nrow(d) > 0, "No data for this selection."))
+      filter(!is.na(win_pct), year == as.numeric(input$p3_year),
+             sport %in% input$p3_sports)
+    shiny::validate(need(nrow(d) > 0, "No data for this selection."))
     
-    ggplot(d, aes(x = win_pct, y = .data[[input$p6_metric]], color = institution_name)) +
+    ggplot(d, aes(x = win_pct, y = .data[[input$p3_metric]], color = institution_name)) +
       geom_point(size = 4, alpha = .8) +
       facet_wrap(~sport, scales = "free_y") +
       scale_y_continuous(labels = scales::dollar) +
       scale_color_manual(values = nwc_colors) +
       theme_light(base_size = 14) +
       labs(x = "Win percentage",
-           y = if (input$p6_metric == "real_expense") "Total expenses (real $)"
+           y = if (input$p3_metric == "real_expense") "Total expenses (real $)"
            else "Operating expense per athlete (real $)",
            color = "Institution",
-           title = paste0("Spending vs. Winning, ", input$p6_year))
+           title = paste0("Spending vs. Winning, ", input$p3_year))
   }, height = function() {
     n <- max(1, length(input$p6_sports))
     max(420, ceiling(n / 3) * 300)
