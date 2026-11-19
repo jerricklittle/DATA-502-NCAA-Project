@@ -294,7 +294,7 @@ server <- function(input, output, session) {
       animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = FALSE) %>%
       animation_slider(currentvalue = list(prefix = "Year: ", font = list(color = wu_maroon))) %>%
       animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom") %>%
-      config(displayModeBar = FALSE)
+      plotly::config(displayModeBar = FALSE)
   })
 }
 
