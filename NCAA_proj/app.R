@@ -5,7 +5,7 @@
 #   app.R
 #   www/Bearcat.png
 #   clean_data/
-#     d3_instLevel_ds.csv, d3_sports_ds.csv, nwc_sports_ds.csv
+#     d3_instLevel_ds.csv, d3_sports_ds.csv, nwc_sports_ds.csv, nwc_instLevel_ds.csv
 
 library(shiny)
 library(shinydashboard)
@@ -18,7 +18,7 @@ DATA_DIR <- if (dir.exists("clean_data")) "clean_data" else "../clean_data"
 d3_instLevel <- read_csv(file.path(DATA_DIR, "d3_instLevel_ds.csv"), show_col_types = FALSE)
 d3_sports    <- read_csv(file.path(DATA_DIR, "d3_sports_ds.csv"),    show_col_types = FALSE)
 nwc_sports   <- read_csv(file.path(DATA_DIR, "nwc_sports_ds.csv"),   show_col_types = FALSE)
-nwc_instLevel = read_csv(file.path(DATA_DIR, "nwc_instLevel_ds.csv"), show_col_types = F)
+nwc_instLevel <- read_csv(file.path(DATA_DIR, "nwc_instLevel_ds.csv"), show_col_types = FALSE)
 
 # Sports shown in the dashboard (names must match the `sport` column)
 keep_sports <- c(
@@ -30,7 +30,6 @@ keep_sports <- c(
   "Women's Volleyball"
 )
 nwc_sports <- nwc_sports %>% filter(sport %in% keep_sports)
-#nwc_instLevel = nwc_instLevel
 
 wu <- "Willamette University"
 nwc <- c( # NWC teams with the exception of Willamette
@@ -60,9 +59,9 @@ school_labels <- c(
 )
 
 # ---- Willamette theme ---------------------------------------------------
-# Change these two values to re-tint the whole dashboard.
-wu_maroon <- "#7A1F2B"
-wu_gold   <- "#E6A91C"  
+# Change these values to re-tint the whole dashboard.
+wu_maroon      <- "#7A1F2B"
+wu_gold        <- "#E6A91C"
 wu_maroon_dark <- "#5C1720"
 
 # Logo
@@ -112,17 +111,14 @@ expense_breakdown <- nwc_instLevel %>%
   )
 
 # Input choices
-sports_all  <- sort(unique(d3_sports$sport))
-years_all   <- sort(unique(d3_sports$year), decreasing = TRUE)
-years_recent <- sort(unique(d3_sports$year[d3_sports$year >= 2020]))
-sports_nwc  <- sort(unique(nwc_sports$sport[!is.na(nwc_sports$win_pct)]))
-# Years shown on the animated win % plot
+sports_all <- sort(unique(d3_sports$sport))
+sports_nwc <- sort(unique(nwc_sports$sport[!is.na(nwc_sports$win_pct)]))
+
+# Years shown on the animated plots
 YEAR_MIN <- 2015
 YEAR_MAX <- 2025
-years_bd    <- sort(unique(expense_breakdown$year), decreasing = TRUE)
 
 default_sport <- if ("Men's Football" %in% sports_all) "Men's Football" else sports_all[1]
-default_year  <- if (2025 %in% years_all) 2025 else years_all[1]
 
 # Small helper for a written takeaway box. Not currently used in the UI; to show
 # one, add e.g. takeaway("Your text here") after a tab's plot box.
@@ -161,11 +157,9 @@ ui <- dashboardPage(
       ),
       # Plot 2 -----------------------------------------------------------
       tabItem("p2",
-              box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
-                  selectInput("p2_year", "Year", years_bd, selected = years_bd[1])),
-              box(width = 9, plotOutput("p2_plot", height = "480px"))
+              box(width = 12, plotlyOutput("p2_plot", height = "520px"))
       ),
-      # Plot 3 ----------------------------------------------------------
+      # Plot 3 -----------------------------------------------------------
       tabItem("p3",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
                   radioButtons("p3_metric", "Spending measure",
@@ -206,47 +200,61 @@ server <- function(input, output, session) {
            color = "Institution", caption = caption_txt)
   })
   
-  # Plot 2: percent difference from NWC median by expense category
-  output$p2_plot <- renderPlot({
-    yr <- as.numeric(input$p2_year)
+  # Plot 2: Willamette's budget mix vs NWC median (dollars), animated by year
+  output$p2_plot <- renderPlotly({
     d <- expense_breakdown %>%
-      filter(year == yr) %>%
-      mutate(across(c(operating, recruiting, hc_salaries, ac_salaries, other),
-                    ~ .x)) %>%
-      select(institution_name, operating, recruiting, hc_salaries, ac_salaries, other) %>%
-      pivot_longer(-institution_name, names_to = "category", values_to = "amount") %>%
-      group_by(category) %>%
+      filter(year >= YEAR_MIN, year <= YEAR_MAX) %>%
+      select(year, institution_name, operating, recruiting, hc_salaries, ac_salaries, other) %>%
+      pivot_longer(c(operating, recruiting, hc_salaries, ac_salaries, other),
+                   names_to = "category", values_to = "amount") %>%
+      group_by(year, category) %>%
       mutate(nwc_median = median(amount[institution_name %in% nwc], na.rm = TRUE)) %>%
       ungroup() %>%
       filter(institution_name == wu) %>%
       mutate(difference = amount - nwc_median,
-             min_d = min(difference, na.rm = T),
-             max_d = max(difference, na.rm = T),
              category = dplyr::recode(category,
                                       operating = "Operating expenses", recruiting = "Recruiting",
                                       hc_salaries = "Head coach salaries",
                                       ac_salaries = "Assistant coach salaries",
-                                      other = "Other expenses"))
-    shiny::validate(need(nrow(d) > 0, "No Willamette data for this year."))
+                                      other = "Other expenses"),
+             bar_color = if_else(difference > 0, wu_gold, wu_maroon),
+             hover = paste0("<b>", category, "</b><br>",
+                            "Year: ", year, "<br>",
+                            "Willamette: ", scales::dollar(amount), "<br>",
+                            "NWC median: ", scales::dollar(nwc_median), "<br>",
+                            "Difference: ", scales::dollar(difference))) %>%
+      filter(!is.na(difference)) %>%
+      # fixed category order so bars don't reshuffle while animating
+      mutate(category = fct_reorder(category, difference, .fun = mean, na.rm = TRUE)) %>%
+      arrange(year, category)
+    shiny::validate(need(nrow(d) > 0, "No Willamette data for these years."))
     
-    ggplot(d, aes(x = difference, y = reorder(category, difference), fill = difference > 0)) +
-      geom_col() +
-      geom_vline(xintercept = 0, linetype = "dashed") +
-      scale_x_continuous(
-        breaks = \(x) seq(
-          from = floor(x[1] / 10000) * 10000,
-          to   = ceiling(x[2] / 10000) * 10000,
-          by   = 100000
-        ),
-        labels = \(x) paste0("$", x/1000, "k")
-      ) +
-      scale_fill_manual(values = c("TRUE" = wu_gold, "FALSE" = wu_maroon)) +
-      theme_light(base_size = 14) +
-      theme(legend.position = "none", plot.caption.position = "plot") +
-      labs(title = paste0("Willamette's Budget Mix vs. NWC Median, ", yr),
-           subtitle = "Share of total athletics expenses, difference in dollars",
-           x = "Difference ($)", y = "Expense Category",
-           caption = caption_txt)
+    rng <- range(c(0, d$difference))
+    pad <- 0.08 * diff(rng)
+    
+    plot_ly(
+      d,
+      x = ~difference, y = ~category,
+      frame = ~year,
+      ids = ~category,
+      type = "bar", orientation = "h",
+      marker = list(color = ~bar_color),
+      text = ~hover, hoverinfo = "text"
+    ) %>%
+      layout(
+        title = list(text = paste0("Willamette's Budget Mix vs. NWC Median",
+                                   "<br><sup>Difference in dollars from the NWC median</sup>")),
+        xaxis = list(title = "Difference ($)", tickformat = "$,.0f",
+                     range = c(rng[1] - pad, rng[2] + pad), zeroline = FALSE),
+        yaxis = list(title = "", automargin = TRUE),
+        showlegend = FALSE,
+        shapes = list(list(type = "line", x0 = 0, x1 = 0, y0 = 0, y1 = 1, yref = "paper",
+                           line = list(dash = "dash", color = "black", width = 1)))
+      ) %>%
+      animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = FALSE) %>%
+      animation_slider(currentvalue = list(prefix = "Year: ", font = list(color = wu_maroon))) %>%
+      animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom") %>%
+      config(displayModeBar = FALSE)
   })
   
   # Plot 3: Win pct vs spending, animated by year (NWC schools + Willamette)
