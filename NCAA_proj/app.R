@@ -29,7 +29,7 @@ keep_sports <- c(
   "Men's Basketball", "Women's Basketball",
   "Women's Volleyball"
 )
-nwc_sports <- nwc_sports %>% filter(sport %in% keep_sports)
+win_pct_sports <- nwc_sports %>% filter(sport %in% keep_sports)
 
 wu <- "Willamette University"
 nwc <- c( # NWC teams with the exception of Willamette
@@ -110,9 +110,9 @@ expense_breakdown <- nwc_instLevel %>%
     other = real_grnd_expense - operating - recruiting - hc_salaries - ac_salaries
   )
 
-# Input choices
-sports_all <- sort(unique(d3_sports$sport))
-sports_nwc <- sort(unique(nwc_sports$sport[!is.na(nwc_sports$win_pct)]))
+sport_counts <- table(nwc_sports$sport[nwc_sports$institution_name == "Willamette University"])
+sports_all <- sort(names(sport_counts[sport_counts >= 3]))
+sports_nwc <- sort(unique(win_pct_sports$sport[!is.na(win_pct_sports$win_pct)]))
 
 # Years shown on the animated plots
 YEAR_MIN <- 2015
@@ -163,7 +163,7 @@ ui <- dashboardPage(
       tabItem("p3",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
                   radioButtons("p3_metric", "Spending measure",
-                               choices = c("Total expenses" = "real_expense",
+                               choices = c("Total expense per athlete" = "real_exp_athlete",
                                            "Operating expense per athlete" = "real_opexp_athlete")),
                   selectInput("p3_sport", "Sport", sports_nwc,
                               selected = if (default_sport %in% sports_nwc) default_sport else sports_nwc[1]),
@@ -177,13 +177,13 @@ ui <- dashboardPage(
 # ---- Server -------------------------------------------------------------
 server <- function(input, output, session) {
   
-  # Plot 1: operating expense per athlete by year
+  # Plot 1: expense per athlete by year
   output$p1_plot <- renderPlot({
-    pts <- d3_sports %>% filter(sport == input$p1_sport, institution_name %in% nwc)
-    wu_pts <- d3_sports %>% filter(sport == input$p1_sport, institution_name == wu)
+    pts <- nwc_sports %>% filter(sport == input$p1_sport, institution_name %in% nwc)
+    wu_pts <- nwc_sports %>% filter(sport == input$p1_sport, institution_name == wu)
     shiny::validate(need(nrow(pts) > 0, "No data for this sport."))
     
-    ggplot(pts, aes(x = year, y = op_exp_per_athlete)) +
+    ggplot(pts, aes(x = year, y = real_expense/n_athletes)) +
       geom_point(alpha = .4, aes(color = "Other NWC Schools")) +
       geom_smooth(se = FALSE, alpha = .5, aes(color = "Other NWC Schools"),
                   method = "loess", formula = y ~ x) +
@@ -194,9 +194,9 @@ server <- function(input, output, session) {
       theme(plot.caption.position = "plot") +
       scale_color_manual(values = c("Willamette University" = wu_maroon,
                                     "Other NWC Schools" = "grey70")) +
-      labs(title = paste0("Operating Expense per Athlete: ", input$p1_sport),
+      labs(title = paste0("Total Expense per Athlete: ", input$p1_sport),
            subtitle = "Willamette compared with other Northwest Conference schools",
-           x = "Year", y = "Operating Expense per Athlete ($)",
+           x = "Year", y = "Total Expense per Athlete ($)",
            color = "Institution", caption = caption_txt)
   })
   
@@ -260,15 +260,16 @@ server <- function(input, output, session) {
   # Plot 3: Win pct vs spending, animated by year (NWC schools + Willamette)
   output$p3_plot <- renderPlotly({
     req(input$p3_sport)
-    metric_label <- if (input$p3_metric == "real_expense") "Total expenses (real $)"
+    metric_label <- if (input$p3_metric == "real_exp_athlete") "Total expense per athlete (real $)"
     else "Operating expense per athlete (real $)"
     
-    d <- nwc_sports %>%
+    d <- win_pct_sports %>%
       filter(!is.na(win_pct),
              year >= YEAR_MIN, year <= YEAR_MAX,
              sport == input$p3_sport,
              institution_name %in% c(nwc, wu)) %>%
-      mutate(spend = .data[[input$p3_metric]],
+      mutate(real_exp_athlete = real_expense/n_athletes,
+             spend = .data[[input$p3_metric]],
              group = factor(if_else(institution_name == wu,
                                     "Willamette University", "Other NWC Schools"),
                             levels = c("Other NWC Schools", "Willamette University")),
