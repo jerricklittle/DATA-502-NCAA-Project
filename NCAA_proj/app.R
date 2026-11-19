@@ -16,6 +16,7 @@ DATA_DIR <- if (dir.exists("clean_data")) "clean_data" else "../clean_data"
 d3_instLevel <- read_csv(file.path(DATA_DIR, "d3_instLevel_ds.csv"), show_col_types = FALSE)
 d3_sports    <- read_csv(file.path(DATA_DIR, "d3_sports_ds.csv"),    show_col_types = FALSE)
 nwc_sports   <- read_csv(file.path(DATA_DIR, "nwc_sports_ds.csv"),   show_col_types = FALSE)
+nwc_instLevel = read_csv(file.path(DATA_DIR, "nwc_instLevel_ds.csv"), show_col_types = F)
 
 # Sports shown in the dashboard (names must match the `sport` column)
 keep_sports <- c(
@@ -26,8 +27,8 @@ keep_sports <- c(
   "Men's Basketball", "Women's Basketball",
   "Women's Volleyball"
 )
-d3_sports  <- d3_sports  %>% filter(sport %in% keep_sports)
 nwc_sports <- nwc_sports %>% filter(sport %in% keep_sports)
+#nwc_instLevel = nwc_instLevel
 
 wu <- "Willamette University"
 nwc <- c( # NWC teams with the exception of Willamette
@@ -93,23 +94,19 @@ caption_txt <- paste0(
 )
 
 # Budget breakdown used on the "Budget Mix" tab (computed once)
-expense_breakdown <- d3_instLevel %>%
-  filter(institution_name %in% nwc | institution_name == wu) %>%
+expense_breakdown <- nwc_instLevel %>%
   mutate(
     hc_salaries =
-      coalesce(HDCOACH_SALARY_MEN * NUM_HDCOACH_MEN, 0) +
-      coalesce(HDCOACH_SALARY_WOMEN * NUM_HDCOACH_WOMEN, 0) +
-      coalesce(HDCOACH_SALARY_COED * NUM_HDCOACH_COED, 0),
+      coalesce(real_salary_hdc_men * NUM_HDCOACH_MEN, 0) +
+      coalesce(real_salary_hdc_women * NUM_HDCOACH_WOMEN, 0) +
+      coalesce(real_salary_hdc_coed * NUM_HDCOACH_COED, 0),
     ac_salaries =
-      coalesce(ASCOACH_SALARY_MEN * NUM_ASCOACH_MEN, 0) +
-      coalesce(ASCOACH_SALARY_WOMEN * NUM_ASCOACH_WOMEN, 0) +
-      coalesce(ASCOACH_SALARY_COED * NUM_ASCOACH_COED, 0),
-    recruiting =
-      coalesce(RECRUITEXP_MEN, 0) +
-      coalesce(RECRUITEXP_WOMEN, 0) +
-      coalesce(RECRUITEXP_COED, 0),
-    operating = IL_TOTAL_OPEXP_INCLCOED,
-    other = GRND_TOTAL_EXPENSE - operating - recruiting - hc_salaries - ac_salaries
+      coalesce(real_salary_asc_men * NUM_ASCOACH_MEN, 0) +
+      coalesce(real_salary_asc_women * NUM_ASCOACH_WOMEN, 0) +
+      coalesce(real_salary_asc_coed * NUM_ASCOACH_COED, 0),
+    recruiting = coalesce(real_recruit_exp, 0),
+    operating = real_opexp,
+    other = real_grnd_expense - operating - recruiting - hc_salaries - ac_salaries
   )
 
 # Input choices
@@ -211,14 +208,16 @@ server <- function(input, output, session) {
     d <- expense_breakdown %>%
       filter(year == yr) %>%
       mutate(across(c(operating, recruiting, hc_salaries, ac_salaries, other),
-                    ~ .x / GRND_TOTAL_EXPENSE * 100)) %>%
+                    ~ .x)) %>%
       select(institution_name, operating, recruiting, hc_salaries, ac_salaries, other) %>%
-      pivot_longer(-institution_name, names_to = "category", values_to = "percentage") %>%
+      pivot_longer(-institution_name, names_to = "category", values_to = "amount") %>%
       group_by(category) %>%
-      mutate(nwc_median = median(percentage[institution_name %in% nwc], na.rm = TRUE)) %>%
+      mutate(nwc_median = median(amount[institution_name %in% nwc], na.rm = TRUE)) %>%
       ungroup() %>%
       filter(institution_name == wu) %>%
-      mutate(difference = percentage - nwc_median,
+      mutate(difference = amount - nwc_median,
+             min_d = min(difference, na.rm = T),
+             max_d = max(difference, na.rm = T),
              category = dplyr::recode(category,
                                operating = "Operating expenses", recruiting = "Recruiting",
                                hc_salaries = "Head coach salaries",
@@ -229,13 +228,20 @@ server <- function(input, output, session) {
     ggplot(d, aes(x = difference, y = reorder(category, difference), fill = difference > 0)) +
       geom_col() +
       geom_vline(xintercept = 0, linetype = "dashed") +
-      scale_x_continuous(labels = \(x) paste0(x, " pp")) +
-      scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = wu_maroon)) +
+      scale_x_continuous(
+        breaks = \(x) seq(
+          from = floor(x[1] / 10000) * 10000,
+          to   = ceiling(x[2] / 10000) * 10000,
+          by   = 100000
+        ),
+        labels = \(x) paste0("$", x/1000, "k")
+      ) +
+      scale_fill_manual(values = c("TRUE" = wu_gold, "FALSE" = wu_maroon)) +
       theme_light(base_size = 14) +
       theme(legend.position = "none", plot.caption.position = "plot") +
       labs(title = paste0("Willamette's Budget Mix vs. NWC Median, ", yr),
-           subtitle = "Share of total athletics expenses, difference in percentage points",
-           x = "Difference in percentage points", y = "Expense Category",
+           subtitle = "Share of total athletics expenses, difference in dollars",
+           x = "Difference ($)", y = "Expense Category",
            caption = caption_txt)
   })
   
