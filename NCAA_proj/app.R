@@ -3,12 +3,14 @@
 #
 # Expected folder layout (adjust DATA_DIR below if yours differs):
 #   app.R
+#   www/Bearcat.png
 #   clean_data/
 #     d3_instLevel_ds.csv, d3_sports_ds.csv, nwc_sports_ds.csv
 
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
+library(plotly)
 
 # ---- Data ---------------------------------------------------------------
 DATA_DIR <- if (dir.exists("clean_data")) "clean_data" else "../clean_data"
@@ -114,7 +116,9 @@ sports_all  <- sort(unique(d3_sports$sport))
 years_all   <- sort(unique(d3_sports$year), decreasing = TRUE)
 years_recent <- sort(unique(d3_sports$year[d3_sports$year >= 2020]))
 sports_nwc  <- sort(unique(nwc_sports$sport[!is.na(nwc_sports$win_pct)]))
-years_nwc   <- sort(unique(nwc_sports$year[!is.na(nwc_sports$win_pct)]), decreasing = TRUE)
+# Years shown on the animated win % plot
+YEAR_MIN <- 2015
+YEAR_MAX <- 2025
 years_bd    <- sort(unique(expense_breakdown$year), decreasing = TRUE)
 
 default_sport <- if ("Men's Football" %in% sports_all) "Men's Football" else sports_all[1]
@@ -164,13 +168,13 @@ ui <- dashboardPage(
       # Plot 3 ----------------------------------------------------------
       tabItem("p3",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
-                  selectInput("p3_year", "Year", years_nwc, selected = years_nwc[1]),
                   radioButtons("p3_metric", "Spending measure",
                                choices = c("Total expenses" = "real_expense",
                                            "Operating expense per athlete" = "real_opexp_athlete")),
-                  selectizeInput("p3_sports", "Sports", choices = sports_nwc,
-                                 selected = sports_nwc, multiple = TRUE)),
-              box(width = 9, plotOutput("p3_plot", height = "auto"))
+                  selectInput("p3_sport", "Sport", sports_nwc,
+                              selected = if (default_sport %in% sports_nwc) default_sport else sports_nwc[1]),
+                  helpText("Press Play or drag the slider under the plot to move through the years.")),
+              box(width = 9, plotlyOutput("p3_plot", height = "560px"))
       )
     )
   )
@@ -196,7 +200,7 @@ server <- function(input, output, session) {
       theme(plot.caption.position = "plot") +
       scale_color_manual(values = c("Willamette University" = wu_maroon,
                                     "Other NWC Schools" = "grey70")) +
-      labs(title = paste0("Operating Expense per Athlete: ", input$p2_sport),
+      labs(title = paste0("Operating Expense per Athlete: ", input$p1_sport),
            subtitle = "Willamette compared with other Northwest Conference schools",
            x = "Year", y = "Operating Expense per Athlete ($)",
            color = "Institution", caption = caption_txt)
@@ -219,10 +223,10 @@ server <- function(input, output, session) {
              min_d = min(difference, na.rm = T),
              max_d = max(difference, na.rm = T),
              category = dplyr::recode(category,
-                               operating = "Operating expenses", recruiting = "Recruiting",
-                               hc_salaries = "Head coach salaries",
-                               ac_salaries = "Assistant coach salaries",
-                               other = "Other expenses"))
+                                      operating = "Operating expenses", recruiting = "Recruiting",
+                                      hc_salaries = "Head coach salaries",
+                                      ac_salaries = "Assistant coach salaries",
+                                      other = "Other expenses"))
     shiny::validate(need(nrow(d) > 0, "No Willamette data for this year."))
     
     ggplot(d, aes(x = difference, y = reorder(category, difference), fill = difference > 0)) +
@@ -245,28 +249,52 @@ server <- function(input, output, session) {
            caption = caption_txt)
   })
   
-  # Plot 3: Win pct vs spending (NWC only)
-  output$p3_plot <- renderPlot({
-    req(input$p3_sports)
+  # Plot 3: Win pct vs spending, animated by year (NWC schools + Willamette)
+  output$p3_plot <- renderPlotly({
+    req(input$p3_sport)
+    metric_label <- if (input$p3_metric == "real_expense") "Total expenses (real $)"
+    else "Operating expense per athlete (real $)"
+    
     d <- nwc_sports %>%
-      filter(!is.na(win_pct), year == as.numeric(input$p3_year),
-             sport %in% input$p3_sports)
+      filter(!is.na(win_pct),
+             year >= YEAR_MIN, year <= YEAR_MAX,
+             sport == input$p3_sport,
+             institution_name %in% c(nwc, wu)) %>%
+      mutate(spend = .data[[input$p3_metric]],
+             group = factor(if_else(institution_name == wu,
+                                    "Willamette University", "Other NWC Schools"),
+                            levels = c("Other NWC Schools", "Willamette University")),
+             hover = paste0("<b>", institution_name, "</b><br>",
+                            "Year: ", year, "<br>",
+                            "Win %: ", round(win_pct, 3), "<br>",
+                            metric_label, ": ", scales::dollar(spend))) %>%
+      filter(!is.na(spend)) %>%
+      arrange(year, group)
     shiny::validate(need(nrow(d) > 0, "No data for this selection."))
     
-    ggplot(d, aes(x = win_pct, y = .data[[input$p3_metric]], color = institution_name)) +
-      geom_point(size = 4, alpha = .8) +
-      facet_wrap(~sport, scales = "free_y") +
-      scale_y_continuous(labels = scales::dollar) +
-      scale_color_manual(values = nwc_colors) +
-      theme_light(base_size = 14) +
-      labs(x = "Win percentage",
-           y = if (input$p3_metric == "real_expense") "Total expenses (real $)"
-           else "Operating expense per athlete (real $)",
-           color = "Institution",
-           title = paste0("Spending vs. Winning, ", input$p3_year))
-  }, height = function() {
-    n <- max(1, length(input$p6_sports))
-    max(420, ceiling(n / 3) * 300)
+    plot_ly(
+      d,
+      x = ~win_pct, y = ~spend,
+      color = ~group,
+      colors = c("Other NWC Schools" = "grey70", "Willamette University" = wu_maroon),
+      frame = ~year,
+      ids = ~institution_name,      # keeps each school's point identity so it glides between years
+      text = ~hover, hoverinfo = "text",
+      type = "scatter", mode = "markers",
+      marker = list(size = 14, opacity = 0.8, line = list(color = "white", width = 1))
+    ) %>%
+      layout(
+        title = list(text = paste0("Spending vs. Winning, ", input$p3_sport)),
+        xaxis = list(title = "Win percentage",
+                     range = range(d$win_pct) + c(-0.05, 0.05) * diff(range(d$win_pct))),
+        yaxis = list(title = metric_label, tickprefix = "$", tickformat = ",.0f",
+                     range = c(0, max(d$spend) * 1.1)),
+        legend = list(title = list(text = "Institution"))
+      ) %>%
+      animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = FALSE) %>%
+      animation_slider(currentvalue = list(prefix = "Year: ", font = list(color = wu_maroon))) %>%
+      animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom") %>%
+      config(displayModeBar = FALSE)
   })
 }
 
