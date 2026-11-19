@@ -494,14 +494,14 @@ sports_ds = gender_long %>%
   mutate( # replace na with 0; na means there was not a coach but maybe still team
     total_hc = replace_na(total_hc, 0),
     total_ac = replace_na(total_ac, 0),
-    sport = case_when(
-      sport %in% c("Men's Track and Field, X-Country", "Men's Track and Field and Cross Country (combined)", "Men's All Track Combined") ~ "Men's Track Combined (Indoor, Outdoor, XC)",
-      sport %in% c("Women's Track and Field, X-Country", "Women's Track and Field and Cross Country (combined)", "Women's All Track Combined") ~ "Women's Track Combined (Indoor, Outdoor, XC)",
-      sport %in% c("Men's Track and Field, Indoor", "Men's Track and Field (Indoor)") ~ "Men's Track and Field (Indoor)",
-      sport %in% c("Women's Track and Field, Indoor", "Women's Track and Field (Indoor)") ~ "Women's Track and Field (Indoor)",
-      sport %in% c("Men's Track and Field, Outdoor", "Men's Track and Field (Outdoor)") ~ "Men's Track and Field (Outdoor)",
-      sport %in% c("Women's Track and Field, Outdoor", "Men's Track and Field (Outdoor)") ~ "Men's Track and Field (Outdoor)",
-      .default = sport
+    Sports = case_when(
+      Sports %in% c("Men's Track and Field, X-Country", "Men's Track and Field and Cross Country (combined)", "Men's All Track Combined") ~ "Men's Track Combined (Indoor, Outdoor, XC)",
+      Sports %in% c("Women's Track and Field, X-Country", "Women's Track and Field and Cross Country (combined)", "Women's All Track Combined") ~ "Women's Track Combined (Indoor, Outdoor, XC)",
+      Sports %in% c("Men's Track and Field, Indoor", "Men's Track and Field (Indoor)") ~ "Men's Track and Field (Indoor)",
+      Sports %in% c("Women's Track and Field, Indoor", "Women's Track and Field (Indoor)") ~ "Women's Track and Field (Indoor)",
+      Sports %in% c("Men's Track and Field, Outdoor", "Men's Track and Field (Outdoor)") ~ "Men's Track and Field (Outdoor)",
+      Sports %in% c("Women's Track and Field, Outdoor", "Men's Track and Field (Outdoor)") ~ "Men's Track and Field (Outdoor)",
+      .default = Sports
     )
   ) %>%
   select( # remove old/unnecessary cols

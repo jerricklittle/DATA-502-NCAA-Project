@@ -110,8 +110,12 @@ expense_breakdown <- nwc_instLevel %>%
     other = real_grnd_expense - operating - recruiting - hc_salaries - ac_salaries
   )
 
-sport_counts <- table(nwc_sports$sport[nwc_sports$institution_name == "Willamette University"])
-sports_all <- sort(names(sport_counts[sport_counts >= 3]))
+# sports that willamette competed in 2025, the problem is that track changed groupings
+sport_counts <- table(nwc_sports$sport[
+  nwc_sports$institution_name == "Willamette University" & nwc_sports$year == 2025
+])
+sports_all <- sort(names(sport_counts))
+
 sports_nwc <- sort(unique(win_pct_sports$sport[!is.na(win_pct_sports$win_pct)]))
 
 # Years shown on the animated plots
