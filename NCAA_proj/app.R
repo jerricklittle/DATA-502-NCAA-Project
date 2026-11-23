@@ -11,6 +11,7 @@ library(shiny)
 library(shinydashboard)
 library(tidyverse)
 library(plotly)
+library(scales)
 
 # ---- Data ---------------------------------------------------------------
 DATA_DIR <- if (dir.exists("clean_data")) "clean_data" else "../clean_data"
@@ -157,7 +158,7 @@ ui <- dashboardPage(
       tabItem("p1",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
                   selectInput("p1_sport", "Sport", sports_all, selected = default_sport)),
-              box(width = 9, plotOutput("p1_plot", height = "520px"))
+              box(width = 9, plotlyOutput("p1_plot", height = "520px"))
       ),
       # Plot 2 -----------------------------------------------------------
       tabItem("p2",
@@ -167,7 +168,7 @@ ui <- dashboardPage(
       tabItem("p3",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
                   radioButtons("p3_metric", "Spending measure",
-                               choices = c("Total expense per athlete" = "real_exp_athlete",
+                               choices = c("Total expenses" = "real_expense",
                                            "Operating expense per athlete" = "real_opexp_athlete")),
                   selectInput("p3_sport", "Sport", sports_nwc,
                               selected = if (default_sport %in% sports_nwc) default_sport else sports_nwc[1]),
@@ -181,27 +182,60 @@ ui <- dashboardPage(
 # ---- Server -------------------------------------------------------------
 server <- function(input, output, session) {
   
-  # Plot 1: expense per athlete by year
-  output$p1_plot <- renderPlot({
-    pts <- nwc_sports %>% filter(sport == input$p1_sport, institution_name %in% nwc)
-    wu_pts <- nwc_sports %>% filter(sport == input$p1_sport, institution_name == wu)
-    shiny::validate(need(nrow(pts) > 0, "No data for this sport."))
+  # Plot 1: expenses by year
+    output$p1_plot <- renderPlotly({
+      pts <- nwc_sports %>% 
+        filter(sport == input$p1_sport, institution_name %in% nwc) %>%
+        mutate(
+          hover = paste0(
+            "<b>", institution_name, "</b><br>",
+            "Year: ", year, "<br>",
+            "Total Expenses: ", dollar(real_expense)
+          )
+        )
+      wu_pts <- nwc_sports %>% 
+        filter(sport == input$p1_sport, institution_name == wu) %>%
+        mutate(
+          hover = paste0(
+            "<b>", institution_name, "</b><br>",
+            "Year: ", year, "<br>",
+            "Total Expenses: ", dollar(real_expense)
+          )
+        )
+      shiny::validate(need(nrow(pts) > 0, "No data for this sport."))
+      
+      p <- ggplot(pts, aes(x = year, y = real_expense)) +
+        geom_point(alpha = .4, aes(color = "Other NWC Schools", text = hover)) +
+        geom_smooth(se = FALSE, alpha = .5, aes(color = "Other NWC Schools"),
+                    method = "loess", formula = y ~ x) +
+        geom_point(data = wu_pts, aes(color = "Willamette University", text = hover)) +
+        geom_smooth(data = wu_pts, se = FALSE, aes(color = "Willamette University"),
+                    method = "loess", formula = y ~ x) +
+        theme_light(base_size = 14) +
+        theme(plot.caption.position = "plot", legend.position = "top") +
+        scale_y_continuous(labels = scales::label_dollar(), 
+                           limits = c(0, max(bind_rows(pts, wu_pts)$real_expense, na.rm = T))) +
+        scale_color_manual(values = c("Willamette University" = wu_maroon,
+                                      "Other NWC Schools" = "grey70")) +
+        labs(title = paste0("Total Expenses: ", input$p1_sport),
+             subtitle = "Willamette compared with other Northwest Conference schools",
+             x = "Year", y = "Total Expenses (real $)",
+             color = "Institution", caption = caption_txt)
     
-    ggplot(pts, aes(x = year, y = real_expense/n_athletes)) +
-      geom_point(alpha = .4, aes(color = "Other NWC Schools")) +
-      geom_smooth(se = FALSE, alpha = .5, aes(color = "Other NWC Schools"),
-                  method = "loess", formula = y ~ x) +
-      geom_point(data = wu_pts, aes(color = "Willamette University")) +
-      geom_smooth(data = wu_pts, se = FALSE, aes(color = "Willamette University"),
-                  method = "loess", formula = y ~ x) +
-      theme_light(base_size = 14) +
-      theme(plot.caption.position = "plot") +
-      scale_color_manual(values = c("Willamette University" = wu_maroon,
-                                    "Other NWC Schools" = "grey70")) +
-      labs(title = paste0("Total Expense per Athlete: ", input$p1_sport),
-           subtitle = "Willamette compared with other Northwest Conference schools",
-           x = "Year", y = "Total Expense per Athlete ($)",
-           color = "Institution", caption = caption_txt)
+    # Convert ggplot to interactive Plotly
+    ggplotly(p, tooltip = "text") %>%
+      layout(
+        title = list(y = 0.98),
+        legend = list(
+          orientation = "h",
+          x = 0.5,
+          xanchor = "center",
+          y = 1.08
+        ),
+        margin = list(t = 100)
+      ) %>%
+      plotly::config(displayModeBar = FALSE)
+    
   })
   
   # Plot 2: Willamette's budget mix vs NWC median (dollars), animated by year
@@ -258,14 +292,14 @@ server <- function(input, output, session) {
       animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = FALSE) %>%
       animation_slider(currentvalue = list(prefix = "Year: ", font = list(color = wu_maroon))) %>%
       animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom") %>%
-      config(displayModeBar = FALSE)
+      plotly::config(displayModeBar = FALSE)
   })
   
   # Plot 3: Win pct vs spending, animated by year (NWC schools + Willamette)
   output$p3_plot <- renderPlotly({
     req(input$p3_sport)
-    metric_label <- if (input$p3_metric == "real_exp_athlete") "Total expense per athlete (real $)"
-    else "Operating expense per athlete (real $)"
+    metric_label <- if (input$p3_metric == "real_expense") "Total Expenses (real $)"
+    else "Operating Expense per Athlete (real $)"
     
     d <- win_pct_sports %>%
       filter(!is.na(win_pct),
@@ -298,7 +332,7 @@ server <- function(input, output, session) {
     ) %>%
       layout(
         title = list(text = paste0("Spending vs. Winning, ", input$p3_sport)),
-        xaxis = list(title = "Win percentage",
+        xaxis = list(title = "Conference Win Rate",
                      range = range(d$win_pct) + c(-0.05, 0.05) * diff(range(d$win_pct))),
         yaxis = list(title = metric_label, tickprefix = "$", tickformat = ",.0f",
                      range = c(0, max(d$spend) * 1.1)),
