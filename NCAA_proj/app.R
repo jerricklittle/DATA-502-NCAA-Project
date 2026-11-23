@@ -285,7 +285,7 @@ server <- function(input, output, session) {
       text = ~hover, hoverinfo = "text", textposition = "none"
     ) %>%
       layout(
-        margin = list(t = 60),
+        margin = list(t = 60, r = 10),
         title = list(text = paste0("<b>Willamette's Direct Athlete Investment Consistently Lags Behind the NWC</b>",
                                    "<br><sup>Sources: U.S. Department of Education (EADA) and the Commonfund Institute (HEPI); Financial values adjusted to 2025 dollars.</sup>"),
                      xanchor = "left", x = 0),
