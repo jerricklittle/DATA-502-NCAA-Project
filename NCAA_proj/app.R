@@ -5,7 +5,7 @@
 #   app.R
 #   www/Bearcat.png
 #   clean_data/
-#     d3_instLevel_ds.csv, d3_sports_ds.csv, nwc_sports_ds.csv, nwc_instLevel_ds.csv
+#     nwc_sports_ds.csv, nwc_instLevel_ds.csv
 
 library(shiny)
 library(shinydashboard)
@@ -16,10 +16,17 @@ library(scales)
 # ---- Data ---------------------------------------------------------------
 DATA_DIR <- if (dir.exists("clean_data")) "clean_data" else "../clean_data"
 
-d3_instLevel <- read_csv(file.path(DATA_DIR, "d3_instLevel_ds.csv"), show_col_types = FALSE)
-d3_sports    <- read_csv(file.path(DATA_DIR, "d3_sports_ds.csv"),    show_col_types = FALSE)
-nwc_sports   <- read_csv(file.path(DATA_DIR, "nwc_sports_ds.csv"),   show_col_types = FALSE)
+nwc_sports <- read_csv(file.path(DATA_DIR, "nwc_sports_ds.csv"),   show_col_types = FALSE)
 nwc_instLevel <- read_csv(file.path(DATA_DIR, "nwc_instLevel_ds.csv"), show_col_types = FALSE)
+
+nwc_sports <- nwc_sports %>%
+  mutate(
+    school_year = paste0(year - 1, "-", year)
+  )
+nwc_instLevel <- nwc_instLevel %>%
+  mutate(
+    school_year = paste0(year - 1, "-", year)
+  )
 
 # Sports shown in the dashboard (names must match the `sport` column)
 keep_sports <- c(
@@ -242,7 +249,7 @@ server <- function(input, output, session) {
   output$p2_plot <- renderPlotly({
     d <- expense_breakdown %>%
       filter(year >= YEAR_MIN, year <= YEAR_MAX) %>%
-      select(year, institution_name, operating, recruiting, hc_salaries, ac_salaries, other) %>%
+      select(year, school_year, institution_name, operating, recruiting, hc_salaries, ac_salaries, other) %>%
       pivot_longer(c(operating, recruiting, hc_salaries, ac_salaries, other),
                    names_to = "category", values_to = "amount") %>%
       group_by(year, category) %>%
@@ -257,13 +264,17 @@ server <- function(input, output, session) {
                                       other = "Other expenses"),
              bar_color = if_else(difference > 0, wu_gold, wu_maroon),
              hover = paste0("<b>", category, "</b><br>",
-                            "Year: ", year, "<br>",
+                            "School Year: ", school_year, "<br>",
                             "Willamette: ", scales::dollar(amount), "<br>",
                             "NWC median: ", scales::dollar(nwc_median), "<br>",
                             "Difference: ", scales::dollar(difference))) %>%
       filter(!is.na(difference)) %>%
       # fixed category order so bars don't reshuffle while animating
-      mutate(category = fct_reorder(category, difference, .fun = mean, na.rm = TRUE)) %>%
+      mutate(category = factor(
+        category,
+        levels = c("Other expenses", "Operating expenses", "Recruiting",
+                   "Assistant coach salaries", "Head coach salaries")
+      )) %>%
       arrange(year, category)
     shiny::validate(need(nrow(d) > 0, "No Willamette data for these years."))
     
@@ -273,16 +284,18 @@ server <- function(input, output, session) {
     plot_ly(
       d,
       x = ~difference, y = ~category,
-      frame = ~year,
+      frame = ~school_year,
       ids = ~category,
       type = "bar", orientation = "h",
       marker = list(color = ~bar_color),
-      text = ~hover, hoverinfo = "text"
+      text = ~hover, hoverinfo = "text", textposition = "none"
     ) %>%
       layout(
-        title = list(text = paste0("Willamette's Budget Mix vs. NWC Median",
-                                   "<br><sup>Difference in dollars from the NWC median</sup>")),
-        xaxis = list(title = "Difference ($)", tickformat = "$,.0f",
+        margin = list(t = 60),
+        title = list(text = paste0("<b>Willamette's Budget Mix vs. NWC Median</b>",
+                                   "<br><sup>Sources: U.S. Department of Education (EADA) and the Commonfund Institute (HEPI); Financial values adjusted to 2025 dollars.</sup>"),
+                     xanchor = "left", x = 0),
+        xaxis = list(title = "Difference From the NWC Median($)", tickformat = "$,.0f",
                      range = c(rng[1] - pad, rng[2] + pad), zeroline = FALSE),
         yaxis = list(title = "", automargin = TRUE),
         showlegend = FALSE,
@@ -290,7 +303,7 @@ server <- function(input, output, session) {
                            line = list(dash = "dash", color = "black", width = 1)))
       ) %>%
       animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = FALSE) %>%
-      animation_slider(currentvalue = list(prefix = "Year: ", font = list(color = wu_maroon))) %>%
+      animation_slider(currentvalue = list(prefix = "School Year: ", font = list(color = wu_maroon))) %>%
       animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom") %>%
       plotly::config(displayModeBar = FALSE)
   })
