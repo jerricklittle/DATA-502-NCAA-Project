@@ -97,11 +97,6 @@ wu_css <- sprintf("
   a { color: %1$s; }
 ", wu_maroon, wu_maroon_dark, wu_gold)
 
-caption_txt <- paste0(
-  "Data retrieved from the Equity in Athletics Data Analysis Cutting Tool\n",
-  "by the U.S. Department of Education (https://ope.ed.gov/athletics/)."
-)
-
 # Budget breakdown used on the "Budget Mix" tab (computed once)
 expense_breakdown <- nwc_instLevel %>%
   mutate(
@@ -130,7 +125,7 @@ sports_nwc <- sort(unique(win_pct_sports$sport[!is.na(win_pct_sports$win_pct)]))
 YEAR_MIN <- 2015
 YEAR_MAX <- 2025
 
-default_sport <- if ("Men's Football" %in% sports_all) "Men's Football" else sports_all[1]
+default_sport <- sports_all[1]
 
 # Small helper for a written takeaway box. Not currently used in the UI; to show
 # one, add e.g. takeaway("Your text here") after a tab's plot box.
@@ -218,28 +213,27 @@ server <- function(input, output, session) {
         geom_point(data = wu_pts, aes(color = "Willamette University", text = hover)) +
         geom_smooth(data = wu_pts, se = FALSE, aes(color = "Willamette University"),
                     method = "loess", formula = y ~ x) +
-        theme_light(base_size = 14) +
+        theme_light() +
         theme(plot.caption.position = "plot", legend.position = "top") +
         scale_y_continuous(labels = scales::label_dollar(), 
                            limits = c(0, max(bind_rows(pts, wu_pts)$real_expense, na.rm = T))) +
+        scale_x_continuous(
+          breaks = sort(unique(pts$year))[seq(1, length(unique(pts$year)), by = 5)],
+          labels = sort(unique(pts$school_year))[seq(1, length(unique(pts$year)), by = 5)]
+        ) +
         scale_color_manual(values = c("Willamette University" = wu_maroon,
                                       "Other NWC Schools" = "grey70")) +
-        labs(title = paste0("Total Expenses: ", input$p1_sport),
-             subtitle = "Willamette compared with other Northwest Conference schools",
-             x = "Year", y = "Total Expenses (real $)",
-             color = "Institution", caption = caption_txt)
+        labs(x = "School Year", y = "Total Expenses (real $)",
+             color = "Institution")
     
     # Convert ggplot to interactive Plotly
     ggplotly(p, tooltip = "text") %>%
       layout(
-        title = list(y = 0.98),
-        legend = list(
-          orientation = "h",
-          x = 0.5,
-          xanchor = "center",
-          y = 1.08
-        ),
-        margin = list(t = 100)
+        title = list(text = paste0("<b>Willamette Historically Spends Less on Athletics</b>",
+                                   "<br><sup>Sources: U.S. Department of Education (EADA) and the Commonfund Institute (HEPI, 2025 dollars)</sup>"),
+                     xanchor = "left", x = 0, font = list(size = 17), yanchor = "top", y = 1, pad=list(t=18)),
+        legend = list(orientation = "h", x = 0, xanchor = "left", y = 1),
+        margin = list(t = 80)
       ) %>%
       plotly::config(displayModeBar = FALSE)
     
@@ -292,7 +286,7 @@ server <- function(input, output, session) {
     ) %>%
       layout(
         margin = list(t = 60),
-        title = list(text = paste0("<b>Willamette's Budget Mix vs. NWC Median</b>",
+        title = list(text = paste0("<b>Willamette's Direct Athlete Investment Consistently Lags Behind the NWC</b>",
                                    "<br><sup>Sources: U.S. Department of Education (EADA) and the Commonfund Institute (HEPI); Financial values adjusted to 2025 dollars.</sup>"),
                      xanchor = "left", x = 0),
         xaxis = list(title = "Difference From the NWC Median($)", tickformat = "$,.0f",
@@ -303,8 +297,8 @@ server <- function(input, output, session) {
                            line = list(dash = "dash", color = "black", width = 1)))
       ) %>%
       animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = FALSE) %>%
-      animation_slider(currentvalue = list(prefix = "School Year: ", font = list(color = wu_maroon))) %>%
-      animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom") %>%
+      animation_slider(currentvalue = list(prefix = "School Year: ", font = list(color = wu_maroon), xanchor = "left"), y = -.1) %>%
+      animation_button(x = 1, xanchor = "right", y = -.31, yanchor = "bottom") %>%
       plotly::config(displayModeBar = FALSE)
   })
   
@@ -325,35 +319,55 @@ server <- function(input, output, session) {
                                     "Willamette University", "Other NWC Schools"),
                             levels = c("Other NWC Schools", "Willamette University")),
              hover = paste0("<b>", institution_name, "</b><br>",
-                            "Year: ", year, "<br>",
-                            "Win %: ", round(win_pct, 3), "<br>",
+                            "School Year: ", school_year, "<br>",
+                            "Conference Win Rate: ", round(win_pct, 3), "<br>",
                             metric_label, ": ", scales::dollar(spend))) %>%
       filter(!is.na(spend)) %>%
       arrange(year, group)
     shiny::validate(need(nrow(d) > 0, "No data for this selection."))
+    
+    trend <- d %>%
+      group_by(school_year) %>%
+      group_modify(~ {
+        fit <- lm(spend ~ win_pct, data = .x)
+        x_vals <- seq(0, 1, length.out = 100)
+        tibble(
+          win_pct = x_vals,
+          spend = predict(fit, newdata = data.frame(win_pct = x_vals)),
+          trace_group = "Trendline"
+        )
+      }) %>%
+      ungroup()
     
     plot_ly(
       d,
       x = ~win_pct, y = ~spend,
       color = ~group,
       colors = c("Other NWC Schools" = "grey70", "Willamette University" = wu_maroon),
-      frame = ~year,
+      frame = ~school_year,
       ids = ~institution_name,      # keeps each school's point identity so it glides between years
       text = ~hover, hoverinfo = "text",
       type = "scatter", mode = "markers",
       marker = list(size = 14, opacity = 0.8, line = list(color = "white", width = 1))
     ) %>%
-      layout(
-        title = list(text = paste0("Spending vs. Winning, ", input$p3_sport)),
-        xaxis = list(title = "Conference Win Rate",
-                     range = range(d$win_pct) + c(-0.05, 0.05) * diff(range(d$win_pct))),
-        yaxis = list(title = metric_label, tickprefix = "$", tickformat = ",.0f",
-                     range = c(0, max(d$spend) * 1.1)),
-        legend = list(title = list(text = "Institution"))
+      add_trace(
+        data = trend, x = ~win_pct, y = ~spend, frame = ~school_year,
+        type = "scatter", mode = "lines", inherit = FALSE, showlegend = FALSE,
+        hoverinfo = "skip", line = list(color = "black", width = 2, connectgaps = F)
       ) %>%
-      animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = FALSE) %>%
-      animation_slider(currentvalue = list(prefix = "Year: ", font = list(color = wu_maroon))) %>%
-      animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom") %>%
+      layout(
+        title = list(text = paste0("<b>Schools That Spend More Tend to Win More</b>",
+                                   "<br><sup>Sources: U.S. Department of Education (EADA) and the Commonfund Institute (HEPI, 2025 dollars)</sup>"),
+                     xanchor = "left", x = 0, font = list(size = 17), yanchor = "top", y = 1, pad=list(t=18)),
+        xaxis = list(title = "Conference Win Rate", zeroline = F, range = c(-0.05, 1.05)),
+        yaxis = list(title = metric_label, tickprefix = "$", tickformat = ",.0f",
+                     range = c(0, max(d$spend) * 1.1), nticks = 5),
+        legend = list(title = list(text = "Institution"), orientation = "h", x = 0, xanchor = "left", y = 1.1),
+        margin = list(t = 80, r = 25)
+      ) %>%
+      animation_opts(frame = 900, transition = 700, easing = "cubic-in-out", redraw = T) %>%
+      animation_slider(currentvalue = list(prefix = "School Year: ", font = list(color = wu_maroon), xanchor = "left"), y = -.1) %>%
+      animation_button(x = 1, xanchor = "right", y = -.31, yanchor = "bottom") %>%
       plotly::config(displayModeBar = FALSE)
   })
 }
