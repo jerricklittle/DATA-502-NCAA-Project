@@ -149,9 +149,9 @@ ui <- dashboardPage(
       menuItem("Spending Over Time",       tabName = "p1", icon = icon("clock")),
       menuItem("Budget Mix",               tabName = "p2", icon = icon("chart-pie")),
       menuItem("Spending vs. Win %",       tabName = "p3", icon = icon("trophy"))
-    ),
-    div(style = "padding: 15px; font-size: 11px; color: #b8c7ce;",
-        "Maroon = Willamette. Grey / blue = other Northwest Conference (NWC) schools.")
+    )#,
+    #div(style = "padding: 15px; font-size: 11px; color: #b8c7ce;",
+        #"Maroon = Willamette\nGrey = other Northwest Conference (NWC) schools.")
   ),
   dashboardBody(
     tags$head(tags$style(HTML(wu_css))),
@@ -285,7 +285,7 @@ server <- function(input, output, session) {
       text = ~hover, hoverinfo = "text", textposition = "none"
     ) %>%
       layout(
-        margin = list(t = 60, r = 10),
+        margin = list(t = 60, r = 25),
         title = list(text = paste0("<b>Willamette's Direct Athlete Investment Consistently Lags Behind the NWC</b>",
                                    "<br><sup>Sources: U.S. Department of Education (EADA) and the Commonfund Institute (HEPI); Financial values adjusted to 2025 dollars.</sup>"),
                      xanchor = "left", x = 0),
