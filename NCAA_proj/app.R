@@ -55,7 +55,7 @@ nwc_colors <- c(
   "University of Puget Sound"   = "#7F1734",
   "Whitman College"             = "#1D5FA8",
   "Whitworth University"        = "#CE1126",
-  "Willamette University"       = "#E6A91C"
+  "Willamette University"       = "#C6AA76"
 )
 
 school_labels <- c(
@@ -69,7 +69,7 @@ school_labels <- c(
 # ---- Willamette theme ---------------------------------------------------
 # Change these values to re-tint the whole dashboard.
 wu_maroon      <- "#7A1F2B"
-wu_gold        <- "#E6A91C"
+wu_gold        <- "#C6AA76"
 wu_maroon_dark <- "#5C1720"
 
 # Logo
@@ -95,6 +95,15 @@ wu_css <- sprintf("
   .wu-brand img { height: 34px; width: auto; }
   .selectize-input.focus { border-color: %1$s; box-shadow: 0 0 4px %1$s55; }
   a { color: %1$s; }
+  .team-photo { width: 100%%; height: 340px; object-fit: cover; border-radius: 4px; }
+  .photo-caption { text-align: center; margin-top: 8px; font-family: Georgia, 'Times New Roman', serif; }
+  .overview-text { font-size: 16px; line-height: 1.55; }
+  .small-box.bg-red { background-color: %1$s !important; }
+  .small-box.bg-yellow { background-color: %3$s !important; }
+  .small-box.bg-yellow h3, .small-box.bg-yellow p { color: %2$s !important; }
+  .small-box h3 { font-family: Georgia, 'Times New Roman', serif; }
+  .goal-callout { margin-top: 18px; padding: 14px 16px; border-left: 5px solid %3$s; background: #f5eeee; border-radius: 4px; }
+  .goal-callout h4 { margin: 0 0 6px 0; font-family: Georgia, 'Times New Roman', serif; color: %1$s; }
 ", wu_maroon, wu_maroon_dark, wu_gold)
 
 # Budget breakdown used on the "Budget Mix" tab (computed once)
@@ -158,25 +167,52 @@ ui <- dashboardPage(
     tags$head(tags$style(HTML(wu_css))),
     tabItems(
       tabItem("p4",
-              box(width = 12, status = "danger", solidHeader = TRUE,
-                  title = "Our proposal: reallocate toward where we fall below the NWC",
-                  div(class = "overview-text",
-                      p("We propose reallocating Willamette's athletics budget toward the areas where we fall below other Northwest Conference schools, to support:"),
-                      tags$ul(
-                        tags$li(strong("Program success:"), " competitive coach pay and operating support for teams."),
-                        tags$li(strong("Recruitment:"), " recruiting resources that help us compete for athletes."),
-                        tags$li(strong("Community engagement:"), " programming that connects athletics with students, alumni and the Salem community.")),
-                      p("See the evidence: ",
-                        actionLink("go_spend",  "Spending Over Time"), " | ",
-                        actionLink("go_budget", "Budget Mix"), " | ",
-                        actionLink("go_win",    "Spending vs. Win %")))),
+              # Row 1: photo | proposal | photo
+              fluidRow(
+                box(width = 3, status = "danger",
+                    img(src = "PLU_Game.jpg", class = "team-photo",
+                        style = "object-position: 10% center;", alt = "Willamette football"),
+                    div(class = "photo-caption", strong("Jerrick Little"), br(), "WU Football RB")),
+                box(width = 6, height = 410, status = "danger", solidHeader = TRUE,
+                    title = "Our proposal: reallocate toward where we fall below the NWC",
+                    div(class = "overview-text",
+                        p("We propose reallocating Willamette's athletics budget toward the areas where we fall below other Northwest Conference schools, to support:"),
+                        tags$ul(
+                          tags$li(strong("Program success:"), " competitive coach pay and operating support for teams."),
+                          tags$li(strong("Recruitment:"), " recruiting resources that help us compete for athletes."),
+                          tags$li(strong("Community engagement:"), " programming that connects athletics with students, alumni and the Salem community.")),
+                        p("See the evidence: ",
+                          actionLink("go_spend",  "Spending Over Time"), " | ",
+                          actionLink("go_budget", "Budget Mix"), " | ",
+                          actionLink("go_win",    "Spending vs. Win %"))),
+                    div(class = "goal-callout",
+                        h4("Our goal"),
+                        p("A Willamette athletics department with the resources to compete for the McIlroy-Lewis Trophy again."))),
+                box(width = 3, status = "danger",
+                    img(src = "Jenna_Linfield.jpg", class = "team-photo",
+                        style = "object-position: 45% center;", alt = "Willamette softball"),
+                    div(class = "photo-caption", strong("Jenna Hopkins"), br(), "WU Softball 2B"))
+              ),
               
-              box(width = 12, status = "danger", title = "About the data and its limits",
-                  collapsible = TRUE, collapsed = TRUE,
-                  div(
-                    p("Trophy standings come from Northwest Conference releases. Season labels follow the year the season ended (2025-26 is shown as 2026). The trophy was not awarded in 2019-20 or 2020-21."),
-                    p("Exact finishes for 2016-17 through 2018-19 and 2022-23 were not confirmed. They are shown as a 6th-to-9th range, based on Willamette's 2024 release saying its 5th place in 2023-24 was its best finish since 2016."),
-                    p("Spending and win percentage data come from the U.S. Department of Education's Equity in Athletics tool, adjusted for inflation. Spending that lines up with winning does not by itself show that spending causes winning, and the Equity in Athletics data has no direct measure of community engagement spending.")))),
+              # Row 2: three headline boxes (third is a blank placeholder for now)
+              fluidRow(
+                valueBox("1994", "Willamette's last McIlroy-Lewis All-Sports Trophy",
+                         icon = icon("trophy"), color = "yellow", width = 4),
+                valueBox("7th of 9", "Willamette's 2025-26 All-Sports finish",
+                         icon = icon("ranking-star"), color = "red", width = 4),
+                valueBox("2016", "Willamette has ranked 5th or lower since 2016",
+                         icon = icon("poo"), color = "yellow", width = 4)
+              ),
+              
+              # Row 3: collapsible About box
+              fluidRow(
+                box(width = 12, status = "danger", title = "About the data and its limits",
+                    collapsible = TRUE, collapsed = TRUE,
+                    div(
+                      p("Trophy standings come from Northwest Conference releases. Season labels follow the year the season ended (2025-26 is shown as 2026). The trophy was not awarded in 2019-20 or 2020-21."),
+                      p("Spending and win percentage data come from the U.S. Department of Education's Equity in Athletics tool, adjusted for inflation. Spending that lines up with winning does not by itself show that spending causes winning, and the Equity in Athletics data has no direct measure of community engagement spending.")))
+              )
+      ),
       # Plot 1 -----------------------------------------------------------
       tabItem("p1",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
@@ -204,6 +240,9 @@ ui <- dashboardPage(
 
 # ---- Server -------------------------------------------------------------
 server <- function(input, output, session) {
+  observeEvent(input$go_spend,  updateTabItems(session, "tabs", "p1"))
+  observeEvent(input$go_budget, updateTabItems(session, "tabs", "p2"))
+  observeEvent(input$go_win,    updateTabItems(session, "tabs", "p3"))
   
   # Plot 1: expenses by year
     output$p1_plot <- renderPlotly({
