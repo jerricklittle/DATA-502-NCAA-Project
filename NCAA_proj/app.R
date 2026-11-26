@@ -178,9 +178,9 @@ ui <- dashboardPage(
                     div(class = "overview-text",
                         p("We propose reallocating Willamette's athletics budget toward the areas where we fall below other Northwest Conference schools, to support:"),
                         tags$ul(
-                          tags$li(strong("Program success:"), " competitive coach pay and operating support for teams."),
-                          tags$li(strong("Recruitment:"), " recruiting resources that help us compete for athletes."),
-                          tags$li(strong("Community engagement:"), " programming that connects athletics with students, alumni and the Salem community.")),
+                          tags$li(strong("Program success:"), " We need to decide what to write for these"),
+                          tags$li(strong("Recruitment:"), " They're just placeholders"),
+                          tags$li(strong("Community engagement:"), " Should we have something for this? It's in our Big Idea")),
                         p("See the evidence: ",
                           actionLink("go_spend",  "Spending Over Time"), " | ",
                           actionLink("go_budget", "Budget Mix"), " | ",
@@ -194,7 +194,7 @@ ui <- dashboardPage(
                     div(class = "photo-caption", strong("Jenna Hopkins"), br(), "WU Softball 2B"))
               ),
               
-              # Row 2: three headline boxes (third is a blank placeholder for now)
+              # Row 2: three headline boxes
               fluidRow(
                 valueBox("1994", "Willamette's last McIlroy-Lewis All-Sports Trophy",
                          icon = icon("trophy"), color = "yellow", width = 4),
