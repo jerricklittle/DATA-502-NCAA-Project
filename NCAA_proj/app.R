@@ -146,9 +146,10 @@ ui <- dashboardPage(
     width = 260,
     sidebarMenu(
       id = "tabs",
-      menuItem("Spending Over Time",       tabName = "p1", icon = icon("clock")),
-      menuItem("Budget Mix",               tabName = "p2", icon = icon("chart-pie")),
-      menuItem("Spending vs. Win %",       tabName = "p3", icon = icon("trophy"))
+      menuItem("Overview", tabName = "p4", icon = icon("star")),
+      menuItem("Spending Over Time", tabName = "p1", icon = icon("clock")),
+      menuItem("Budget Mix", tabName = "p2", icon = icon("chart-pie")),
+      menuItem("Spending vs. Win %", tabName = "p3", icon = icon("trophy"))
     )#,
     #div(style = "padding: 15px; font-size: 11px; color: #b8c7ce;",
         #"Maroon = Willamette\nGrey = other Northwest Conference (NWC) schools.")
@@ -156,6 +157,26 @@ ui <- dashboardPage(
   dashboardBody(
     tags$head(tags$style(HTML(wu_css))),
     tabItems(
+      tabItem("p4",
+              box(width = 12, status = "danger", solidHeader = TRUE,
+                  title = "Our proposal: reallocate toward where we fall below the NWC",
+                  div(class = "overview-text",
+                      p("We propose reallocating Willamette's athletics budget toward the areas where we fall below other Northwest Conference schools, to support:"),
+                      tags$ul(
+                        tags$li(strong("Program success:"), " competitive coach pay and operating support for teams."),
+                        tags$li(strong("Recruitment:"), " recruiting resources that help us compete for athletes."),
+                        tags$li(strong("Community engagement:"), " programming that connects athletics with students, alumni and the Salem community.")),
+                      p("See the evidence: ",
+                        actionLink("go_spend",  "Spending Over Time"), " | ",
+                        actionLink("go_budget", "Budget Mix"), " | ",
+                        actionLink("go_win",    "Spending vs. Win %")))),
+              
+              box(width = 12, status = "danger", title = "About the data and its limits",
+                  collapsible = TRUE, collapsed = TRUE,
+                  div(
+                    p("Trophy standings come from Northwest Conference releases. Season labels follow the year the season ended (2025-26 is shown as 2026). The trophy was not awarded in 2019-20 or 2020-21."),
+                    p("Exact finishes for 2016-17 through 2018-19 and 2022-23 were not confirmed. They are shown as a 6th-to-9th range, based on Willamette's 2024 release saying its 5th place in 2023-24 was its best finish since 2016."),
+                    p("Spending and win percentage data come from the U.S. Department of Education's Equity in Athletics tool, adjusted for inflation. Spending that lines up with winning does not by itself show that spending causes winning, and the Equity in Athletics data has no direct measure of community engagement spending.")))),
       # Plot 1 -----------------------------------------------------------
       tabItem("p1",
               box(width = 3, title = "Filters", status = "danger", solidHeader = TRUE,
